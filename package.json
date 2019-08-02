@@ -1,5 +1,5 @@
 {
-  "name": "supertokens-node-mysql-ref-jwt",
+  "name": "supertokens-node-postgres-ref-jwt",
   "version": "4.2.0",
   "description": "",
   "main": "index.js",
@@ -17,13 +17,13 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/supertokens/supertokens-node-mysql-ref-jwt.git"
+    "url": "git+https://github.com/supertokens/supertokens-node-postgres-ref-jwt.git"
   },
   "keywords": [
     "auth",
     "authentication",
     "authorisation",
-    "mysql",
+    "postgres",
     "nodejs",
     "supertokens",
     "jwt",
@@ -39,13 +39,12 @@
   ],
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/supertokens/supertokens-node-mysql-ref-jwt/issues"
+    "url": "https://github.com/supertokens/supertokens-node-postgres-ref-jwt/issues"
   },
-  "homepage": "https://github.com/supertokens/supertokens-node-mysql-ref-jwt#readme",
+  "homepage": "https://github.com/supertokens/supertokens-node-postgres-ref-jwt#readme",
   "dependencies": {
     "@types/cookie": "0.3.3",
     "@types/express": "4.16.1",
-    "@types/mysql": "2.15.6",
     "@types/node-cron": "2.0.2",
     "@types/uuid": "3.4.4",
     "@types/validator": "10.11.0",
@@ -55,15 +54,15 @@
     "validator": "10.11.0"
   },
   "peerDependencies": {
-    "mysql": "*"
+    "pg": "*"
   },
   "devDependencies": {
     "cookie-parser": "1.4.4",
     "express": "4.17.1",
     "mocha": "6.1.4",
-    "mysql": "2.17.1",
     "prettier": "1.17.1",
     "supertest": "4.0.2",
-    "typescript": "3.5.2"
+    "typescript": "3.5.2",
+    "pg": "7.12.0"
   }
 }
