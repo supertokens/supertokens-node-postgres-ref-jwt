@@ -1,10 +1,9 @@
 export type TypeInputConfig = {
-    mysql: {
+    postgres: {
         host?: string;
         port?: number;
         user: string;
         password: string;
-        connectionLimit?: number;
         database: string;
         tables?: {
             signingKey?: string;
@@ -40,12 +39,11 @@ export type TypeInputConfig = {
 };
 
 export type TypeConfig = {
-    mysql: {
+    postgres: {
         host: string;
         port: number;
         user: string;
         password: string;
-        connectionLimit: number;
         database: string;
         tables: {
             signingKey: string;
@@ -82,7 +80,7 @@ export type TypeConfig = {
 
 export type TypeGetSigningKeyUserFunction = () => Promise<string>;
 
-export type MySQLParamTypes = string | number | boolean | null | Date;
+export type PostgresParamTypes = string | number | boolean | null;
 
 export type TypeAuthError = {
     errType: number;

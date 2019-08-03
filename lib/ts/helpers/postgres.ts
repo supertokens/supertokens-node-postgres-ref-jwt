@@ -1,43 +1,51 @@
-import * as mysql from "mysql";
+import * as pg from "pg";
+import { Pool } from "pg";
 
 import Config from "../config";
 import { AuthError, generateError } from "../error";
 import { checkIfTableExists, createTablesIfNotExists as createTablesIfNotExistsQueries } from "./dbQueries";
-import { MySQLParamTypes, TypeConfig } from "./types";
+import { PostgresParamTypes, TypeConfig } from "./types";
 
 /**
  * @description This is a singleton class since we need just one MySQL pool per node process.
  */
-export class Mysql {
-    private static instance: undefined | Mysql;
-    private pool: mysql.Pool;
+export class Postgres {
+    private static instance: undefined | Postgres;
+    private pool: pg.Pool;
 
-    private constructor(config: TypeConfig) {
-        this.pool = mysql.createPool({
-            host: config.mysql.host,
-            port: config.mysql.port,
-            user: config.mysql.user,
-            password: config.mysql.password,
-            database: config.mysql.database,
-            connectionLimit: config.mysql.connectionLimit
+    private constructor(config: TypeConfig, clientPool?: pg.Pool) {
+        if (clientPool !== undefined) {
+            this.pool = clientPool;
+            return;
+        }
+        this.pool = new Pool({
+            host: config.postgres.host,
+            port: config.postgres.port,
+            user: config.postgres.user,
+            password: config.postgres.password,
+            database: config.postgres.database
+        });
+        this.pool.on("error", (err, client) => {
+            // we should log this event.
+            generateError(AuthError.GENERAL_ERROR, err);
         });
     }
 
-    static async init() {
-        if (Mysql.instance === undefined) {
+    static async init(clientPool?: pg.Pool) {
+        if (Postgres.instance === undefined) {
             const config = Config.get();
-            Mysql.instance = new Mysql(config);
+            Postgres.instance = new Postgres(config, clientPool);
             await createTablesIfNotExists();
         }
     }
 
-    static getConnection(): Promise<mysql.PoolConnection> {
-        return new Promise<mysql.PoolConnection>((resolve, reject) => {
-            if (Mysql.instance === undefined) {
-                reject(generateError(AuthError.GENERAL_ERROR, new Error("mysql not initiated")));
+    static getConnection(): Promise<pg.PoolClient> {
+        return new Promise<pg.PoolClient>((resolve, reject) => {
+            if (Postgres.instance === undefined) {
+                reject(generateError(AuthError.GENERAL_ERROR, new Error("postgres not initiated")));
                 return;
             }
-            Mysql.instance.pool.getConnection((err, connection) => {
+            Postgres.instance.pool.connect((err, connection) => {
                 if (err) {
                     reject(generateError(AuthError.GENERAL_ERROR, err));
                     return;
@@ -51,14 +59,14 @@ export class Mysql {
         if (process.env.TEST_MODE !== "testing") {
             throw Error("call this function only during testing");
         }
-        Mysql.instance = undefined;
+        Postgres.instance = undefined;
     };
 }
 
 export async function getConnection(): Promise<Connection> {
     try {
-        const mysqlConnection = await Mysql.getConnection();
-        return new Connection(mysqlConnection);
+        const postgresConnection = await Postgres.getConnection();
+        return new Connection(postgresConnection);
     } catch (err) {
         throw generateError(AuthError.GENERAL_ERROR, err);
     }
@@ -71,21 +79,21 @@ export async function getConnection(): Promise<Connection> {
 export class Connection {
     private isClosed = false;
     private destroyConnnection = false;
-    private mysqlConnection: mysql.PoolConnection;
+    private postgresConnection: pg.PoolClient;
     private currTransactionCount = 0; // used to keep track of live transactions. so that in case a connection is closed prematurely, we can destroy it.
 
-    constructor(mysqlConnection: mysql.PoolConnection) {
-        this.mysqlConnection = mysqlConnection;
+    constructor(postgresConnection: pg.PoolClient) {
+        this.postgresConnection = postgresConnection;
     }
 
-    executeQuery = (query: string, params: MySQLParamTypes[]): Promise<any> => {
+    executeQuery = (query: string, params: PostgresParamTypes[]): Promise<any> => {
         return new Promise<any>(async (resolve, reject) => {
-            this.mysqlConnection.query(query, params, (err, results, fields) => {
+            this.postgresConnection.query(query, params, (err, result) => {
                 if (err) {
                     reject(generateError(AuthError.GENERAL_ERROR, err));
                     return;
                 }
-                resolve(results);
+                resolve(result);
             });
         });
     };
@@ -111,20 +119,21 @@ export class Connection {
     };
 
     closeConnection = () => {
-        if (this.isClosed) {
-            return;
-        }
-        if (this.mysqlConnection === undefined) {
-            throw Error("no connect to MySQL server.");
-        }
-        if (this.currTransactionCount > 0) {
-            this.setDestroyConnection();
-        }
         try {
+            if (this.isClosed) {
+                return;
+            }
+            if (this.postgresConnection === undefined) {
+                throw Error("no connect to MySQL server.");
+            }
+            if (this.currTransactionCount > 0) {
+                this.setDestroyConnection();
+            }
             if (this.destroyConnnection) {
-                this.mysqlConnection.destroy();
+                // passing an error also causes the client to disconnect this client
+                this.postgresConnection.release(new Error("exiting client without ending transaction"));
             } else {
-                this.mysqlConnection.release();
+                this.postgresConnection.release();
             }
             this.isClosed = true;
         } catch (err) {
@@ -140,8 +149,8 @@ async function createTablesIfNotExists() {
         return;
     }
     const config = Config.get();
-    let signingKeyTableName = config.mysql.tables.signingKey;
-    let refreshTokensTableName = config.mysql.tables.refreshTokens;
+    let signingKeyTableName = config.postgres.tables.signingKey;
+    let refreshTokensTableName = config.postgres.tables.refreshTokens;
     let connection = await getConnection();
     try {
         await createTablesIfNotExistsQueries(connection, signingKeyTableName, refreshTokensTableName);
@@ -152,7 +161,7 @@ async function createTablesIfNotExists() {
 
 export async function checkIfSigningKeyTableExists(): Promise<boolean> {
     const config = Config.get();
-    let signingKeyTableName = config.mysql.tables.signingKey;
+    let signingKeyTableName = config.postgres.tables.signingKey;
     let connection = await getConnection();
     try {
         await checkIfTableExists(connection, signingKeyTableName);
@@ -167,7 +176,7 @@ export async function checkIfSigningKeyTableExists(): Promise<boolean> {
 
 export async function checkIfRefreshTokensTableExists(): Promise<boolean> {
     const config = Config.get();
-    let refreshTokensTableName = config.mysql.tables.refreshTokens;
+    let refreshTokensTableName = config.postgres.tables.refreshTokens;
     let connection = await getConnection();
     try {
         await checkIfTableExists(connection, refreshTokensTableName);

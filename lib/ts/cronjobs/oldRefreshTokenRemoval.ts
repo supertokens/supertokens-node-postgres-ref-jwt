@@ -1,5 +1,5 @@
 import { deleteAllExpiredSessions } from "../helpers/dbQueries";
-import { getConnection } from "../helpers/mysql";
+import { getConnection } from "../helpers/postgres";
 
 /**
  * @description removes expired sessions. Even if this does not run, it is OK since we check if a session has expired in our logic anways.

@@ -58,28 +58,27 @@ const validateAndNormalise = (config: any): TypeInputConfig => {
     if (config === null || typeof config !== "object") {
         throw generateError(AuthError.GENERAL_ERROR, new Error("passed config is not an object"), false);
     }
-    const mysqlInputConfig = config.mysql;
-    if (typeof mysqlInputConfig !== "object") {
+    const postgresInputConfig = config.postgres;
+    if (typeof postgresInputConfig !== "object") {
         throw generateError(
             AuthError.GENERAL_ERROR,
-            new Error("mysql config not passed. user, password and database are required"),
+            new Error("postgres config not passed. user, password and database are required"),
             false
         );
     }
-    const host = sanitizeStringInput(mysqlInputConfig.host);
-    const port = sanitizeNumberInput(mysqlInputConfig.port);
-    const user = sanitizeStringInput(mysqlInputConfig.user);
+    const host = sanitizeStringInput(postgresInputConfig.host);
+    const port = sanitizeNumberInput(postgresInputConfig.port);
+    const user = sanitizeStringInput(postgresInputConfig.user);
     if (user === undefined) {
-        throw generateError(AuthError.GENERAL_ERROR, new Error("mysql config error. user not passed"), false);
+        throw generateError(AuthError.GENERAL_ERROR, new Error("postgres config error. user not passed"), false);
     }
-    const password = sanitizeStringInput(mysqlInputConfig.password);
+    const password = sanitizeStringInput(postgresInputConfig.password);
     if (password === undefined) {
-        throw generateError(AuthError.GENERAL_ERROR, new Error("mysql config error. password not passed"), false);
+        throw generateError(AuthError.GENERAL_ERROR, new Error("postgres config error. password not passed"), false);
     }
-    const connectionLimit = sanitizeNumberInput(mysqlInputConfig.connectionLimit);
-    const database = sanitizeStringInput(mysqlInputConfig.database);
+    const database = sanitizeStringInput(postgresInputConfig.database);
     if (database === undefined) {
-        throw generateError(AuthError.GENERAL_ERROR, new Error("mysql config error. database not passed"), false);
+        throw generateError(AuthError.GENERAL_ERROR, new Error("postgres config error. database not passed"), false);
     }
     let tables:
         | {
@@ -87,21 +86,20 @@ const validateAndNormalise = (config: any): TypeInputConfig => {
               refreshTokens: string | undefined;
           }
         | undefined;
-    const tablesMysqlInputConfig = mysqlInputConfig.tables;
-    if (tablesMysqlInputConfig !== undefined) {
-        const signingKey = sanitizeStringInput(tablesMysqlInputConfig.signingKey);
-        const refreshTokens = sanitizeStringInput(tablesMysqlInputConfig.refreshTokens);
+    const tablesPostgresInputConfig = postgresInputConfig.tables;
+    if (tablesPostgresInputConfig !== undefined) {
+        const signingKey = sanitizeStringInput(tablesPostgresInputConfig.signingKey);
+        const refreshTokens = sanitizeStringInput(tablesPostgresInputConfig.refreshTokens);
         tables = {
             signingKey,
             refreshTokens
         };
     }
-    const mysql = {
+    const postgres = {
         host,
         port,
         user,
         password,
-        connectionLimit,
         database,
         tables
     };
@@ -281,7 +279,7 @@ const validateAndNormalise = (config: any): TypeInputConfig => {
         secure
     };
     return {
-        mysql,
+        postgres,
         tokens,
         cookie,
         logging
@@ -291,19 +289,19 @@ const validateAndNormalise = (config: any): TypeInputConfig => {
 const setDefaults = (config: TypeInputConfig): TypeConfig => {
     // TODO: change this style of a || b to a === undefined ? b : a
     return {
-        mysql: {
-            host: config.mysql.host || defaultConfig.mysql.host,
-            port: config.mysql.port || defaultConfig.mysql.port,
-            user: config.mysql.user,
-            password: config.mysql.password,
-            connectionLimit: config.mysql.connectionLimit || defaultConfig.mysql.connectionLimit,
-            database: config.mysql.database,
+        postgres: {
+            host: config.postgres.host || defaultConfig.postgres.host,
+            port: config.postgres.port || defaultConfig.postgres.port,
+            user: config.postgres.user,
+            password: config.postgres.password,
+            database: config.postgres.database,
             tables:
-                config.mysql.tables === undefined
-                    ? defaultConfig.mysql.tables
+                config.postgres.tables === undefined
+                    ? defaultConfig.postgres.tables
                     : {
-                          refreshTokens: config.mysql.tables.refreshTokens || defaultConfig.mysql.tables.refreshTokens,
-                          signingKey: config.mysql.tables.signingKey || defaultConfig.mysql.tables.signingKey
+                          refreshTokens:
+                              config.postgres.tables.refreshTokens || defaultConfig.postgres.tables.refreshTokens,
+                          signingKey: config.postgres.tables.signingKey || defaultConfig.postgres.tables.signingKey
                       }
         },
         tokens: {
@@ -386,10 +384,9 @@ const setDefaults = (config: TypeInputConfig): TypeConfig => {
 };
 
 const defaultConfig = {
-    mysql: {
+    postgres: {
         host: "localhost",
-        port: 3306,
-        connectionLimit: 50,
+        port: 5432,
         tables: {
             signingKey: "signing_key",
             refreshTokens: "refresh_token"

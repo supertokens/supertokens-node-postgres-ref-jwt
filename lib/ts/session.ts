@@ -12,19 +12,20 @@ import {
     updateSessionData as updateSessionDataInDB,
     updateSessionInfo_Transaction
 } from "./helpers/dbQueries";
-import { getConnection, Mysql } from "./helpers/mysql";
+import { getConnection, Postgres } from "./helpers/postgres";
 import { TypeInputConfig } from "./helpers/types";
 import { assertUserIdHasCorrectType, generateSessionHandle, generateUUID, hash } from "./helpers/utils";
 import { createNewRefreshToken, getInfoFromRefreshToken, init as refreshTokenInit } from "./refreshToken";
+import * as pg from "pg";
 
 /**
  * @description: to be called by user of the library. This initiates all the modules necessary for this library to work.
- * Please create a database in your mysql instance before calling this function
+ * Please create a database in your postgres instance before calling this function
  * @throws AuthError GENERAL_ERROR in case anything fails.
  */
-export async function init(config: TypeInputConfig) {
+export async function init(config: TypeInputConfig, clientPool?: pg.Pool) {
     Config.init(config);
-    await Mysql.init();
+    await Postgres.init(clientPool);
     await accessTokenInit();
     await refreshTokenInit();
     CronJob.init();

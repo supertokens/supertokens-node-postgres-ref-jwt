@@ -1,7 +1,7 @@
 import Config from "./config";
 import { AuthError, generateError } from "./error";
 import { getKeyValueFromKeyName_Transaction, insertKeyValueForKeyName_Transaction } from "./helpers/dbQueries";
-import { getConnection } from "./helpers/mysql";
+import { getConnection } from "./helpers/postgres";
 import {
     decrypt,
     encrypt,

@@ -1,6 +1,6 @@
 import Config from "../config";
 import { AuthError, generateError } from "../error";
-import { Connection, getConnection } from "./mysql";
+import { Connection, getConnection } from "./postgres";
 import { parseUserIdToCorrectFormat, stringifyUserId } from "./utils";
 
 /**
@@ -60,7 +60,7 @@ export async function getKeyValueFromKeyName_Transaction(
     const config = Config.get();
     connection.throwIfTransactionIsNotStarted("expected to be in transaction when reading signing keys");
     let query = `SELECT key_value, created_at_time FROM ${
-        config.mysql.tables.signingKey
+        config.postgres.tables.signingKey
     } WHERE key_name = ? FOR UPDATE`;
     let result = await connection.executeQuery(query, [keyName]);
     if (result.length === 0) {
@@ -81,14 +81,14 @@ export async function insertKeyValueForKeyName_Transaction(
     const config = Config.get();
     connection.throwIfTransactionIsNotStarted("expected to be in transaction when reading signing keys");
     let query = `INSERT INTO ${
-        config.mysql.tables.signingKey
+        config.postgres.tables.signingKey
     }(key_name, key_value, created_at_time) VALUES (?, ?, ?) ON DUPLICATE KEY UPDATE key_value = ?, created_at_time = ?`;
     await connection.executeQuery(query, [keyName, keyValue, createdAtTime, keyValue, createdAtTime]);
 }
 
 export async function updateSessionData(connection: Connection, sessionHandle: string, sessionData: any) {
     const config = Config.get();
-    let query = `UPDATE ${config.mysql.tables.refreshTokens} SET session_info = ? WHERE session_handle = ?`;
+    let query = `UPDATE ${config.postgres.tables.refreshTokens} SET session_info = ? WHERE session_handle = ?`;
     let result = await connection.executeQuery(query, [serialiseSessionData(sessionData), sessionHandle]);
     return result.affectedRows;
 }
@@ -98,7 +98,7 @@ export async function getSessionData(
     sessionHandle: string
 ): Promise<{ found: false } | { found: true; data: any }> {
     const config = Config.get();
-    let query = `SELECT session_info FROM ${config.mysql.tables.refreshTokens} WHERE session_handle = ?`;
+    let query = `SELECT session_info FROM ${config.postgres.tables.refreshTokens} WHERE session_handle = ?`;
     let result = await connection.executeQuery(query, [sessionHandle]);
     if (result.length === 0) {
         return {
@@ -113,7 +113,7 @@ export async function getSessionData(
 
 export async function deleteSession(connection: Connection, sessionHandle: string): Promise<number> {
     const config = Config.get();
-    let query = `DELETE FROM ${config.mysql.tables.refreshTokens} WHERE session_handle = ?`;
+    let query = `DELETE FROM ${config.postgres.tables.refreshTokens} WHERE session_handle = ?`;
     let result = await connection.executeQuery(query, [sessionHandle]);
     return result.affectedRows;
 }
@@ -129,7 +129,7 @@ export async function createNewSession(
 ) {
     userId = stringifyUserId(userId);
     const config = Config.get();
-    let query = `INSERT INTO ${config.mysql.tables.refreshTokens} 
+    let query = `INSERT INTO ${config.postgres.tables.refreshTokens} 
     (session_handle, user_id, refresh_token_hash_2,
     session_info, expires_at, jwt_user_payload) VALUES (?, ?, ?, ?, ?, ?)`;
     await connection.executeQuery(query, [
@@ -144,7 +144,7 @@ export async function createNewSession(
 
 export async function isSessionBlacklisted(connection: Connection, sessionHandle: string): Promise<boolean> {
     const config = Config.get();
-    let query = `SELECT session_handle FROM ${config.mysql.tables.refreshTokens} WHERE session_handle = ?`;
+    let query = `SELECT session_handle FROM ${config.postgres.tables.refreshTokens} WHERE session_handle = ?`;
     let result = await connection.executeQuery(query, [sessionHandle]);
     return result.length === 0;
 }
@@ -166,7 +166,7 @@ export async function getSessionInfo_Transaction(
     connection.throwIfTransactionIsNotStarted("expected to be in transaction when reading session data");
     let query = `SELECT user_id,
     refresh_token_hash_2, session_info,
-    expires_at, jwt_user_payload FROM ${config.mysql.tables.refreshTokens} WHERE session_handle = ? FOR UPDATE`;
+    expires_at, jwt_user_payload FROM ${config.postgres.tables.refreshTokens} WHERE session_handle = ? FOR UPDATE`;
     let result = await connection.executeQuery(query, [sessionHandle]);
     if (result.length === 0) {
         return undefined;
@@ -190,7 +190,7 @@ export async function updateSessionInfo_Transaction(
 ): Promise<number> {
     const config = Config.get();
     connection.throwIfTransactionIsNotStarted("expected to be in transaction when updating session data");
-    let query = `UPDATE ${config.mysql.tables.refreshTokens} SET refresh_token_hash_2 = ?, 
+    let query = `UPDATE ${config.postgres.tables.refreshTokens} SET refresh_token_hash_2 = ?, 
     session_info = ?, expires_at = ? WHERE session_handle = ?`;
     let result = await connection.executeQuery(query, [
         refreshTokenHash2,
@@ -204,14 +204,14 @@ export async function updateSessionInfo_Transaction(
 export async function getAllSessionHandlesForUser(connection: Connection, userId: string | number): Promise<string[]> {
     userId = stringifyUserId(userId);
     const config = Config.get();
-    let query = `SELECT session_handle FROM ${config.mysql.tables.refreshTokens} WHERE user_id = ?`;
+    let query = `SELECT session_handle FROM ${config.postgres.tables.refreshTokens} WHERE user_id = ?`;
     let result = await connection.executeQuery(query, [userId]);
     return result.map((i: any) => i.session_handle.toString());
 }
 
 export async function deleteAllExpiredSessions(connection: Connection) {
     const config = Config.get();
-    const query = `DELETE FROM ${config.mysql.tables.refreshTokens} WHERE expires_at <= ?;`;
+    const query = `DELETE FROM ${config.postgres.tables.refreshTokens} WHERE expires_at <= ?;`;
     await connection.executeQuery(query, [Date.now()]);
 }
 
@@ -240,7 +240,7 @@ export async function resetTables(connection: Connection) {
         throw Error("call this function only during testing");
     }
     const config = Config.get();
-    let query = `DROP TABLE IF EXISTS ${config.mysql.tables.refreshTokens}, ${config.mysql.tables.signingKey};`;
+    let query = `DROP TABLE IF EXISTS ${config.postgres.tables.refreshTokens}, ${config.postgres.tables.signingKey};`;
     await connection.executeQuery(query, []);
 }
 
@@ -251,7 +251,7 @@ export async function getNumberOfRowsInRefreshTokensTable(): Promise<number> {
     let connection = await getConnection();
     try {
         const config = Config.get();
-        let query = `SELECT COUNT(*) AS rowsCount FROM ${config.mysql.tables.refreshTokens};`;
+        let query = `SELECT COUNT(*) AS rowsCount FROM ${config.postgres.tables.refreshTokens};`;
         let result = await connection.executeQuery(query, []);
         return Number(result[0].rowsCount);
     } finally {

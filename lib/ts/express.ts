@@ -17,6 +17,7 @@ import { AuthError, generateError } from "./error";
 import { TypeInputConfig } from "./helpers/types";
 import * as SessionFunctions from "./session";
 
+import * as pg from "pg";
 export { AuthError as Error } from "./error";
 
 /**
@@ -26,8 +27,8 @@ export { AuthError as Error } from "./error";
  * @param client: mongo client. Default is undefined. If you provide this, please make sure that it is already connected to the right database that has the auth collections. If you do not provide this, then the library will manage its own connection.
  * @throws AuthError GENERAL_ERROR in case anything fails.
  */
-export async function init(config: TypeInputConfig) {
-    return SessionFunctions.init(config);
+export async function init(config: TypeInputConfig, clientPool?: pg.Pool) {
+    return SessionFunctions.init(config, clientPool);
 }
 
 /**

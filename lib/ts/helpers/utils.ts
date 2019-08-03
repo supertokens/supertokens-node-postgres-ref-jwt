@@ -8,7 +8,7 @@ import { AuthError, generateError } from "../error";
 import { reset as refreshTokenReset } from "../refreshToken";
 import { init } from "../session";
 import { resetTables } from "./dbQueries";
-import { getConnection, Mysql } from "./mysql";
+import { getConnection, Postgres } from "./postgres";
 import { TypeInputConfig } from "./types";
 
 /**
@@ -182,7 +182,7 @@ export async function reset(newConfig?: TypeInputConfig) {
         // if reset function is called before init, this part will throw error
     } finally {
         Config.reset();
-        Mysql.reset();
+        Postgres.reset();
         refreshTokenReset();
         accessTokenReset();
         if (newConfig !== undefined) {

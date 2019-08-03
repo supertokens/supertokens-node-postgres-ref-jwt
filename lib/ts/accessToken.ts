@@ -2,7 +2,7 @@ import Config from "./config";
 import { AuthError, generateError } from "./error";
 import { getKeyValueFromKeyName_Transaction, insertKeyValueForKeyName_Transaction } from "./helpers/dbQueries";
 import * as JWT from "./helpers/jwt";
-import { getConnection } from "./helpers/mysql";
+import { getConnection } from "./helpers/postgres";
 import { TypeConfig, TypeGetSigningKeyUserFunction } from "./helpers/types";
 import { generateNewSigningKey, sanitizeNumberInput, sanitizeStringInput } from "./helpers/utils";
 

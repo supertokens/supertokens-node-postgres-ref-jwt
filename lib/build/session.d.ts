@@ -1,10 +1,11 @@
 import { TypeInputConfig } from "./helpers/types";
+import * as pg from "pg";
 /**
  * @description: to be called by user of the library. This initiates all the modules necessary for this library to work.
- * Please create a database in your mysql instance before calling this function
+ * Please create a database in your postgres instance before calling this function
  * @throws AuthError GENERAL_ERROR in case anything fails.
  */
-export declare function init(config: TypeInputConfig): Promise<void>;
+export declare function init(config: TypeInputConfig, clientPool?: pg.Pool): Promise<void>;
 /**
  * @description call this to "login" a user.
  * @throws GENERAL_ERROR in case anything fails.

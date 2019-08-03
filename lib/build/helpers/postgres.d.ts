@@ -1,14 +1,14 @@
-import * as mysql from "mysql";
-import { MySQLParamTypes } from "./types";
+import * as pg from "pg";
+import { PostgresParamTypes } from "./types";
 /**
  * @description This is a singleton class since we need just one MySQL pool per node process.
  */
-export declare class Mysql {
+export declare class Postgres {
     private static instance;
     private pool;
     private constructor();
-    static init(): Promise<void>;
-    static getConnection(): Promise<mysql.PoolConnection>;
+    static init(clientPool?: pg.Pool): Promise<void>;
+    static getConnection(): Promise<pg.PoolClient>;
     static reset: () => void;
 }
 export declare function getConnection(): Promise<Connection>;
@@ -19,10 +19,10 @@ export declare function getConnection(): Promise<Connection>;
 export declare class Connection {
     private isClosed;
     private destroyConnnection;
-    private mysqlConnection;
+    private postgresConnection;
     private currTransactionCount;
-    constructor(mysqlConnection: mysql.PoolConnection);
-    executeQuery: (query: string, params: MySQLParamTypes[]) => Promise<any>;
+    constructor(postgresConnection: pg.PoolClient);
+    executeQuery: (query: string, params: PostgresParamTypes[]) => Promise<any>;
     private setDestroyConnection;
     throwIfTransactionIsNotStarted: (message: string) => void;
     startTransaction: () => Promise<void>;

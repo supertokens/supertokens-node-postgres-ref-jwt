@@ -1,4 +1,4 @@
-import { Connection } from "./mysql";
+import { Connection } from "./postgres";
 /**
  * @description contains all the mysql queries.
  * @throws AuthError GENERAL_ERROR
