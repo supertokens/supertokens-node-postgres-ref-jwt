@@ -50,7 +50,6 @@ describe(`SuperToken: ${printPath("[test/supertoken/supertoken.test.js]")}`, fun
             }
         }
         if (!sAccessTokenCookieFound || !sRefreshTokenCookieFound || !sIdRefreshTokenCookieFound) {
-            console.log(sAccessTokenCookieFound, sRefreshTokenCookieFound, sIdRefreshTokenCookieFound);
             throw Error("");
         }
         /**

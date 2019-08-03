@@ -1,12 +1,12 @@
 const assert = require("assert");
 const { printPath } = require("./utils");
 
-const mysqlCommonConfig = {
-    host: process.env.MYSQL_HOST,
-    port: process.env.MYSQL_PORT,
-    user: process.env.MYSQL_USER || "root",
-    password: process.env.MYSQL_PASSWORD || "root",
-    database: process.env.MYSQL_DB || "auth_session",
+const postgresCommonConfig = {
+    host: process.env.POSTGRES_HOST,
+    port: process.env.POSTGRES_PORT,
+    user: process.env.POSTGRES_USER || "postgres",
+    password: process.env.POSTGRES_PASSWORD === undefined ? null : process.env.POSTGRES_PASSWORD,
+    database: process.env.POSTGRES_DB || "auth_session",
     tables: {
         refreshTokens: "refresh_token_test",
         signingKey: "signing_key_test"
@@ -14,7 +14,7 @@ const mysqlCommonConfig = {
 };
 
 module.exports.minConfigTest = {
-    mysql: mysqlCommonConfig,
+    postgres: postgresCommonConfig,
     tokens: {
         enableAntiCsrf: true,
         accessToken: {
@@ -32,7 +32,7 @@ module.exports.minConfigTest = {
 };
 
 module.exports.minConfigTestWithAntiCsrfDisabled = {
-    mysql: mysqlCommonConfig,
+    postgres: postgresCommonConfig,
     tokens: {
         enableAntiCsrf: false,
         accessToken: {
@@ -50,7 +50,7 @@ module.exports.minConfigTestWithAntiCsrfDisabled = {
 };
 
 module.exports.minConfigTestWithBlacklisting = {
-    mysql: mysqlCommonConfig,
+    postgres: postgresCommonConfig,
     tokens: {
         enableAntiCsrf: true,
         accessToken: {
@@ -69,7 +69,7 @@ module.exports.minConfigTestWithBlacklisting = {
 };
 
 module.exports.configWithSigningKeyFunction = {
-    mysql: mysqlCommonConfig,
+    postgres: postgresCommonConfig,
     tokens: {
         enableAntiCsrf: true,
         accessToken: {
@@ -89,7 +89,7 @@ module.exports.configWithSigningKeyFunction = {
 };
 
 module.exports.configWithShortSigningKeyUpdateInterval = {
-    mysql: mysqlCommonConfig,
+    postgres: postgresCommonConfig,
     tokens: {
         enableAntiCsrf: true,
         accessToken: {
@@ -107,7 +107,7 @@ module.exports.configWithShortSigningKeyUpdateInterval = {
 };
 
 module.exports.configWithShortValidityForAccessToken = {
-    mysql: mysqlCommonConfig,
+    postgres: postgresCommonConfig,
     tokens: {
         enableAntiCsrf: true,
         accessToken: {
@@ -124,7 +124,7 @@ module.exports.configWithShortValidityForAccessToken = {
 };
 
 module.exports.configWithShortValidityForAccessTokenAndAntiCsrfDisabled = {
-    mysql: mysqlCommonConfig,
+    postgres: postgresCommonConfig,
     tokens: {
         enableAntiCsrf: false,
         accessToken: {
@@ -140,7 +140,7 @@ module.exports.configWithShortValidityForAccessTokenAndAntiCsrfDisabled = {
 };
 
 module.exports.configWithShortValidityForRefreshToken = {
-    mysql: mysqlCommonConfig,
+    postgres: postgresCommonConfig,
     tokens: {
         enableAntiCsrf: true,
         accessToken: {

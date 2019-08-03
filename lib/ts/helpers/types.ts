@@ -3,7 +3,7 @@ export type TypeInputConfig = {
         host?: string;
         port?: number;
         user: string;
-        password: string;
+        password?: string;
         database: string;
         tables?: {
             signingKey?: string;
@@ -43,7 +43,7 @@ export type TypeConfig = {
         host: string;
         port: number;
         user: string;
-        password: string;
+        password?: string;
         database: string;
         tables: {
             signingKey: string;

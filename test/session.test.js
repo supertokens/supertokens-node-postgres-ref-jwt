@@ -2,9 +2,10 @@ const session = require("../");
 const assert = require("assert");
 const { reset, delay } = require("../lib/build/helpers/utils");
 const config = require("./config");
-const { getNumberOfRowsInRefreshTokensTable } = require("../lib/build/helpers/dbQueries");
+const { getNumberOfRowsInRefreshTokensTable, deleteAllExpiredSessions } = require("../lib/build/helpers/dbQueries");
 const { printPath } = require("./utils");
 const errors = require("../lib/build/error");
+const { getConnection } = require("../lib/build/helpers/postgres");
 
 describe(`Session: ${printPath("[test/session.test.js]")}`, function() {
     it("testing non-string userId (number)", async function() {
@@ -1030,6 +1031,28 @@ describe(`Session: ${printPath("[test/session.test.js]")}`, function() {
             if (err.errType !== errors.AuthError.UNAUTHORISED) {
                 throw err;
             }
+        }
+    });
+
+    it("test delete all expired sessions", async function() {
+        await reset(config.configWithShortValidityForRefreshToken);
+        const userId = "testing";
+        const jwtPayload = { a: "testing" };
+        const sessionData = { s: "session" };
+        let session1 = await session.createNewSession(userId, jwtPayload, sessionData);
+        let session2 = await session.createNewSession(userId, jwtPayload, sessionData);
+        let session3 = await session.createNewSession(userId, jwtPayload, sessionData);
+        const noOfRows = await getNumberOfRowsInRefreshTokensTable();
+        assert.deepStrictEqual(noOfRows, 3);
+        await delay(3000);
+        await session.createNewSession(userId, jwtPayload, sessionData);
+        let client = await getConnection();
+        try {
+            await deleteAllExpiredSessions(client);
+            const noOfRows = await getNumberOfRowsInRefreshTokensTable();
+            assert.deepStrictEqual(noOfRows, 1);
+        } finally {
+            client.closeConnection();
         }
     });
 });

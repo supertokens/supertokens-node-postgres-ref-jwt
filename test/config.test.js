@@ -2,7 +2,7 @@ const SuperTokens = require("..");
 const config = require("./config");
 const assert = require("assert");
 const { reset } = require("../lib/build/helpers/utils");
-const { checkIfSigningKeyTableExists, checkIfRefreshTokensTableExists } = require("../lib/build/helpers/mysql");
+const { checkIfSigningKeyTableExists, checkIfRefreshTokensTableExists } = require("../lib/build/helpers/postgres");
 const { printPath } = require("./utils");
 
 describe(`Config: ${printPath("[test/config.test.js]")}`, function() {

@@ -73,9 +73,6 @@ const validateAndNormalise = (config: any): TypeInputConfig => {
         throw generateError(AuthError.GENERAL_ERROR, new Error("postgres config error. user not passed"), false);
     }
     const password = sanitizeStringInput(postgresInputConfig.password);
-    if (password === undefined) {
-        throw generateError(AuthError.GENERAL_ERROR, new Error("postgres config error. password not passed"), false);
-    }
     const database = sanitizeStringInput(postgresInputConfig.database);
     if (database === undefined) {
         throw generateError(AuthError.GENERAL_ERROR, new Error("postgres config error. database not passed"), false);

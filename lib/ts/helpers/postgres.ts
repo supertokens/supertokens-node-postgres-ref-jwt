@@ -93,7 +93,7 @@ export class Connection {
                     reject(generateError(AuthError.GENERAL_ERROR, err));
                     return;
                 }
-                resolve(result);
+                resolve(result.rows);
             });
         });
     };
@@ -153,6 +153,7 @@ async function createTablesIfNotExists() {
     let refreshTokensTableName = config.postgres.tables.refreshTokens;
     let connection = await getConnection();
     try {
+        // we intentionally fo not catch err because it should propagate to client's init function
         await createTablesIfNotExistsQueries(connection, signingKeyTableName, refreshTokensTableName);
     } finally {
         connection.closeConnection();
