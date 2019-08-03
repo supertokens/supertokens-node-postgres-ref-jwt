@@ -1,0 +1,1 @@
+docker run -p 5432:5432 -d --rm --user postgres --name postgres mypostgres /usr/lib/postgresql/9.5/bin/postgres -D /var/lib/postgresql/9.5/main -c config_file=/etc/postgresql/9.5/main/postgresql.conf -i && sleep 5 && docker exec postgres psql -c "CREATE DATABASE auth_session"
