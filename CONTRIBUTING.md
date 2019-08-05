@@ -1,6 +1,6 @@
 # Contributing to SuperTokens
 
-Contributions are always welcome. Before contributing please read the [code of conduct](https://github.com/supertokens/supertokens-node-mysql-ref-jwt/blob/master/CODE_OF_CONDUCT.md) & search [the issue tracker](https://github.com/supertokens/supertokens-node-mysql-ref-jwt/issues); your issue may have already been discussed or fixed in master. To contribute, fork SuperTokens, commit your changes, & send a pull request.
+Contributions are always welcome. Before contributing please read the [code of conduct](https://github.com/supertokens/supertokens-node-postgres-ref-jwt/blob/master/CODE_OF_CONDUCT.md) & search [the issue tracker](https://github.com/supertokens/supertokens-node-postgres-ref-jwt/issues); your issue may have already been discussed or fixed in master. To contribute, fork SuperTokens, commit your changes, & send a pull request.
 
 # Questions
 We are most accessible via team@supertokens.io, via the GitHub issues feature and our [Discord server](https://supertokens.io/discord). 
@@ -16,7 +16,7 @@ Please only issue pull requests to the dev branch.
 
 ## Prerequisites
 
-1) You will need NodeJS and MySQL on your local system to run and test the repo.
+1) You will need NodeJS and PostgreSQL on your local system to run and test the repo.
 
 2) Install node dependencies
     ```bash
@@ -64,24 +64,24 @@ Run unit tests and make sure all tests are passing.
 ```bash
 npm test
 ```
-You can change the following MySQL params while testing:
+You can change the following PostgreSQL params while testing:
 ```bash
-host: process.env.MYSQL_HOST, # default is localhost
-port: process.env.MYSQL_PORT, # default is 3306
-user: process.env.MYSQL_USER, # default is "root"
-password: process.env.MYSQL_PASSWORD, # default is "root"
-database: process.env.MYSQL_DB # default is "auth_session"
+host: process.env.POSTGRES_HOST, # default is localhost
+port: process.env.POSTGRES_PORT, # default is 3306
+user: process.env.POSTGRES_USER, # default is "root"
+password: process.env.POSTGRES_PASSWORD, # default is "root"
+database: process.env.POSTGRES_DB # default is "auth_session"
 
 # For example
-MYSQL_HOST=somehost MYSQL_PORT=9999 npm test
+POSTGRES_HOST=somehost POSTGRES_PORT=9999 npm test
 ```
-If you have docker, we have a container that has node, mysql and git installed in it
+If you have docker, we have a container that has node, postgres and git installed in it
 ````bash
-docker pull rishabhpoddar/node-mysql-git
+docker pull rishabhpoddar/node-postgres-git
 
 # open a shell in the container, checkout your repo and run:
-(cd / && ./runMySQL.sh)
-mysql -u root --password=root -e "CREATE DATABASE auth_session;"
+/usr/lib/postgresql/9.5/bin/postgres -D /var/lib/postgresql/9.5/main -c config_file=/etc/postgresql/9.5/main/postgresql.conf -i
+psql -c "CREATE DATABASE auth_session"
 npm install -d
 npm test
 ````

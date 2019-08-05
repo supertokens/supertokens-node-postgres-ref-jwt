@@ -1,6 +1,6 @@
 import { Connection } from "./postgres";
 /**
- * @description contains all the mysql queries.
+ * @description contains all the postgres queries.
  * @throws AuthError GENERAL_ERROR
  */
 /**

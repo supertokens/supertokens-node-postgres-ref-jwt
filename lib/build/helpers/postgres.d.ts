@@ -1,7 +1,7 @@
 import * as pg from "pg";
 import { PostgresParamTypes } from "./types";
 /**
- * @description This is a singleton class since we need just one MySQL pool per node process.
+ * @description This is a singleton class since we need just one Postgres pool per node process.
  */
 export declare class Postgres {
     private static instance;
@@ -14,7 +14,7 @@ export declare class Postgres {
 export declare function getConnection(): Promise<Connection>;
 /**
  * @class Connection
- * @description class for one mysql connection to the DB. can be used for transactions, querying etc.. Please remember to close this connection in try {..} finally { close here. }.
+ * @description class for one Postgres connection to the DB. can be used for transactions, querying etc.. Please remember to close this connection in try {..} finally { close here. }.
  */
 export declare class Connection {
     private isClosed;

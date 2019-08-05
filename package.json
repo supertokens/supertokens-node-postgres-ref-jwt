@@ -1,6 +1,6 @@
 {
   "name": "supertokens-node-postgres-ref-jwt",
-  "version": "4.2.0",
+  "version": "0.0.1",
   "description": "",
   "main": "index.js",
   "directories": {

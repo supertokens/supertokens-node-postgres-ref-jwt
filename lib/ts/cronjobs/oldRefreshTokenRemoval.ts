@@ -6,10 +6,10 @@ import { getConnection } from "../helpers/postgres";
  * The purpose of this is only to clean up the table.
  */
 export default async function oldRefreshTokenRemoval() {
-    const mysqlConnection = await getConnection();
+    const postgresConnection = await getConnection();
     try {
-        await deleteAllExpiredSessions(mysqlConnection);
+        await deleteAllExpiredSessions(postgresConnection);
     } finally {
-        mysqlConnection.closeConnection();
+        postgresConnection.closeConnection();
     }
 }

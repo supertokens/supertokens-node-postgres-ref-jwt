@@ -7,7 +7,7 @@ import { TypeConfig, TypeGetSigningKeyUserFunction } from "./helpers/types";
 import { generateNewSigningKey, sanitizeNumberInput, sanitizeStringInput } from "./helpers/utils";
 
 /**
- * @description called during library init. Should be called after initing Config and MySQL.
+ * @description called during library init. Should be called after initing Config and PostgreSQL.
  * @throws AuthError GENERAL_ERROR
  */
 export async function init() {

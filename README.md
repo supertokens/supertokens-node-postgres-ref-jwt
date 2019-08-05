@@ -1,19 +1,19 @@
 ![SuperTokens banner](https://raw.githubusercontent.com/supertokens/supertokens-logo/master/images/Artboard%20%E2%80%93%2027%402x.png)
 
-[![License: MIT](https://img.shields.io/badge/License-MIT-brightgreen.svg)](https://github.com/supertokens/supertokens-node-mysql-ref-jwt/blob/master/LICENSE)
+[![License: MIT](https://img.shields.io/badge/License-MIT-brightgreen.svg)](https://github.com/supertokens/supertokens-node-postgres-ref-jwt/blob/master/LICENSE)
 <a href="https://supertokens.io/discord">
         <img src="https://img.shields.io/discord/603466164219281420.svg?logo=discord"
             alt="chat on Discord"></a>
 
 # UNDER CONSTRUCTION
 
-<!-- **Master**
-[![CircleCI](https://circleci.com/gh/supertokens/supertokens-node-mysql-ref-jwt.svg?style=svg)](https://circleci.com/gh/supertokens/supertokens-node-mysql-ref-jwt)
+**Master**
+[![CircleCI](https://circleci.com/gh/supertokens/supertokens-node-postgres-ref-jwt.svg?style=svg)](https://circleci.com/gh/supertokens/supertokens-node-postgres-ref-jwt)
 **Dev**
-[![CircleCI](https://circleci.com/gh/supertokens/supertokens-node-mysql-ref-jwt/tree/dev.svg?style=svg)](https://circleci.com/gh/supertokens/supertokens-node-mysql-ref-jwt/tree/dev)
+[![CircleCI](https://circleci.com/gh/supertokens/supertokens-node-postgres-ref-jwt/tree/dev.svg?style=svg)](https://circleci.com/gh/supertokens/supertokens-node-postgres-ref-jwt/tree/dev)
 
 
-This library implements user session management for websites and apps that run on **NodeJS** and **MySQL**. If you do not use these technologies, please checkout [our website](https://supertokens.io) to find the right library for you.
+This library implements user session management for websites and apps that run on **NodeJS** and **PostgreSQL**. If you do not use these technologies, please checkout [our website](https://supertokens.io) to find the right library for you.
 
 **The session protocol SuperTokens uses is described in detail in [this article](https://supertokens.io/blog/the-best-way-to-securely-manage-user-sessions).**
 
@@ -32,26 +32,26 @@ The library has the following features:
 - Using this library, you can keep a user logged in for however long you want - without worrying about any security consequences. 
 
 ## Index
-- [Documentation](https://github.com/supertokens/supertokens-node-mysql-ref-jwt#documentation)
-- [Making changes](https://github.com/supertokens/supertokens-node-mysql-ref-jwt#making-changes)
-- [Tests](https://github.com/supertokens/supertokens-node-mysql-ref-jwt#tests)
-- [Future work](https://github.com/supertokens/supertokens-node-mysql-ref-jwt#future-work)
-- [Support, questions and bugs](https://github.com/supertokens/supertokens-node-mysql-ref-jwt#support-questions-and-bugs)
-- [Authors](https://github.com/supertokens/supertokens-node-mysql-ref-jwt#authors)
+- [Documentation](https://github.com/supertokens/supertokens-node-postgres-ref-jwt#documentation)
+- [Making changes](https://github.com/supertokens/supertokens-node-postgres-ref-jwt#making-changes)
+- [Tests](https://github.com/supertokens/supertokens-node-postgres-ref-jwt#tests)
+- [Future work](https://github.com/supertokens/supertokens-node-postgres-ref-jwt#future-work)
+- [Support, questions and bugs](https://github.com/supertokens/supertokens-node-postgres-ref-jwt#support-questions-and-bugs)
+- [Authors](https://github.com/supertokens/supertokens-node-postgres-ref-jwt#authors)
 
 ## Documentation: 
-Please see our [Documentation website](https://supertokens.github.io/supertokens-node-mysql-ref-jwt/)
+Please see our [Documentation website](https://supertokens.github.io/supertokens-node-postgres-ref-jwt/)
 
 ## Making changes
-Please see our [Contributing](https://github.com/supertokens/supertokens-node-mysql-ref-jwt/blob/master/CONTRIBUTING.md) guide
+Please see our [Contributing](https://github.com/supertokens/supertokens-node-postgres-ref-jwt/blob/master/CONTRIBUTING.md) guide
 
 ## Tests
-To test this library, you need Node and MySQL running on your system.
+To test this library, you need Node and PostgreSQL running on your system.
 ```bash
 npm install -d
 npm test
 ```
-See our [Contributing](https://github.com/supertokens/supertokens-node-mysql-ref-jwt/blob/master/CONTRIBUTING.md) guide for more information.
+See our [Contributing](https://github.com/supertokens/supertokens-node-postgres-ref-jwt/blob/master/CONTRIBUTING.md) guide for more information.
 
 ## Future work
 - Enable this to work with mobile apps as well.
@@ -80,4 +80,4 @@ Dedicated support includes the following:
 To show some love to our early adopters, we’re offering to give them a discount on our dedicated support on a case to case basis.
 
 ## Authors
-Created with :heart: by the folks at SuperTokens. We are a startup passionate about security and solving software challenges in a way that's helpful for everyone! Please feel free to give us feedback at team@supertokens.io, until our website is ready :grinning: -->
+Created with :heart: by the folks at SuperTokens. We are a startup passionate about security and solving software challenges in a way that's helpful for everyone! Please feel free to give us feedback at team@supertokens.io, until our website is ready :grinning:

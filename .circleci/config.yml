@@ -9,10 +9,11 @@ jobs:
       - run: npm publish
   test:
     docker:
-      - image: rishabhpoddar/node-mysql-git
+      - image: rishabhpoddar/node-postgres-git
     steps:
-      - run: (cd / && ./runMySQL.sh)
-      - run: mysql -u root --password=root -e "CREATE DATABASE auth_session;"
+      - run: /usr/lib/postgresql/9.5/bin/postgres -D /var/lib/postgresql/9.5/main -c config_file=/etc/postgresql/9.5/main/postgresql.conf -i
+      - run: sleep 5
+      - run: psql -c "CREATE DATABASE auth_session"
       - checkout
       - run: npm install -d
       - run: npm test
@@ -30,7 +31,6 @@ workflows:
       - test:
           filters:
             branches:
-              only: 
-                - testing
+              only:
                 - dev
                 - master

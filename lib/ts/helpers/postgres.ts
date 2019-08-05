@@ -7,7 +7,7 @@ import { checkIfTableExists, createTablesIfNotExists as createTablesIfNotExistsQ
 import { PostgresParamTypes, TypeConfig } from "./types";
 
 /**
- * @description This is a singleton class since we need just one MySQL pool per node process.
+ * @description This is a singleton class since we need just one Postgres pool per node process.
  */
 export class Postgres {
     private static instance: undefined | Postgres;
@@ -74,7 +74,7 @@ export async function getConnection(): Promise<Connection> {
 
 /**
  * @class Connection
- * @description class for one mysql connection to the DB. can be used for transactions, querying etc.. Please remember to close this connection in try {..} finally { close here. }.
+ * @description class for one Postgres connection to the DB. can be used for transactions, querying etc.. Please remember to close this connection in try {..} finally { close here. }.
  */
 export class Connection {
     private isClosed = false;
@@ -124,7 +124,7 @@ export class Connection {
                 return;
             }
             if (this.postgresConnection === undefined) {
-                throw Error("no connect to MySQL server.");
+                throw Error("no connect to Postgres server.");
             }
             if (this.currTransactionCount > 0) {
                 this.setDestroyConnection();
@@ -144,7 +144,7 @@ export class Connection {
 }
 
 async function createTablesIfNotExists() {
-    // first we check if the tables exist so that if the given mysql user does not have the privilege of creating them, then it won't throw an error.
+    // first we check if the tables exist so that if the given Postgres user does not have the privilege of creating them, then it won't throw an error.
     if ((await checkIfSigningKeyTableExists()) && (await checkIfRefreshTokensTableExists())) {
         return;
     }

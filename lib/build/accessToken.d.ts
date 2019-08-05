@@ -1,5 +1,5 @@
 /**
- * @description called during library init. Should be called after initing Config and MySQL.
+ * @description called during library init. Should be called after initing Config and PostgreSQL.
  * @throws AuthError GENERAL_ERROR
  */
 export declare function init(): Promise<void>;

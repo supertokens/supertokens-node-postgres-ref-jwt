@@ -4,7 +4,7 @@ import { Connection, getConnection } from "./postgres";
 import { parseUserIdToCorrectFormat, stringifyUserId } from "./utils";
 
 /**
- * @description contains all the mysql queries.
+ * @description contains all the postgres queries.
  * @throws AuthError GENERAL_ERROR
  */
 
