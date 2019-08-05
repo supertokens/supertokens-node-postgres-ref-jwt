@@ -1,4 +1,4 @@
-FROM mypostgres
+FROM ubuntu:16.04
 
 RUN apt-get update && apt-get upgrade -y
 
@@ -29,3 +29,5 @@ EXPOSE 5432
 RUN echo "host all all 0.0.0.0/0 trust" >> /etc/postgresql/9.5/main/pg_hba.conf
 
 USER postgres
+
+RUN echo "listen_addresses = '0.0.0.0'" >> /etc/postgresql/9.5/main/postgresql.conf
