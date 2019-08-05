@@ -1,4 +1,4 @@
-FROM ubuntu:16.04
+FROM mypostgres
 
 RUN apt-get update && apt-get upgrade -y
 
@@ -27,3 +27,5 @@ RUN apt install postgresql postgresql-contrib -y
 EXPOSE 5432
 
 RUN echo "host all all 0.0.0.0/0 trust" >> /etc/postgresql/9.5/main/pg_hba.conf
+
+USER postgres
