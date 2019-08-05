@@ -17,7 +17,7 @@ SuperTokens.createNewSession(res, userId, jwtPayload, sessionData);
 
 ## Example code
 ```js
-import * as SuperTokens from 'supertokens-node-mysql-ref-jwt/express';
+import * as SuperTokens from 'supertokens-node-postgres-ref-jwt/express';
 
 app.post("/login", function (req, res) {
     // check for user credentials..

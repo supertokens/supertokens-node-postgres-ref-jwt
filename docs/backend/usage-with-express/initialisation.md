@@ -6,7 +6,7 @@ sidebar_label: Init & Imports
 
 ## Importing
 ```js
-import * as SuperTokens from 'supertokens-node-mysql-ref-jwt/express';
+import * as SuperTokens from 'supertokens-node-postgres-ref-jwt/express';
 ```
 
 ## Call the ```init``` function: [API Reference](../api-reference#initconfig)
@@ -19,11 +19,11 @@ SuperTokens.init(config);
 The config object has the following parameters (<span class="highlighted-text">The commented out parameters are optional</span>):
 ```ts
 let config = {
-    mysql: {
-    //  host: "localhost",  // location of your MySQL instance.
-    //  port: 3306,
-        user: "root", // Change this to whichever user you want
-        password: "root",
+    postgres: {
+    //  host: "localhost",  // location of your PostgreSQL instance.
+    //  port: 5432,
+        user: "postgres", // Change this to whichever user you want
+    //  password: undefined, // pass PostgreSQL user password here. Example: "somepassword"
     //  connectionLimit: 50,
         database: "auth_session", // change this to your database name
     //  tables: {
@@ -64,15 +64,14 @@ let config = {
 
 ## Example code
 ```ts
-import * as SuperTokens from 'supertokens-node-mysql-ref-jwt/express';
+import * as SuperTokens from 'supertokens-node-postgres-ref-jwt/express';
 
 let app = express();
 
 // minimum config
 let config = {
-    mysql: {
-        user: "root",
-        password: "root",
+    postgres: {
+        user: "postgres",
         database: "auth_session",
     },
     tokens: {
@@ -103,11 +102,11 @@ Below is the type of the <code>config</code> object for your reference:
 ```ts
 // "?" means that parameter is optional
 let config = {
-    mysql: {
+    postgres: {
         host?: string,
         port?: number,
         user: string,
-        password: string,
+        password?: string,
         connectionLimit?: number,
         database: string,
         tables?: {

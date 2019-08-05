@@ -12,7 +12,7 @@ You will first need to install our library and setup your project to work with i
 If you use a middleware for authentication, you can replace that by creating your own middleware using SuperTokens. An example of how to do that would be:
 
 ```js
-import * as SuperTokens from 'supertokens-node-mysql-ref-jwt/express';
+import * as SuperTokens from 'supertokens-node-postgres-ref-jwt/express';
 
 // do not call this middleware for refresh token APIs.
 async function superTokensMiddleware (req, res, next) {

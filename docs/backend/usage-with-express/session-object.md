@@ -50,7 +50,7 @@ session.updateSessionData(data)
 
 ## Example code
 ```js
-import * as SuperTokens from 'supertokens-node-mysql-ref-jwt/express';
+import * as SuperTokens from 'supertokens-node-postgres-ref-jwt/express';
 
 async function testSessionAPI(req: express.Request, res: express.Response) {
     

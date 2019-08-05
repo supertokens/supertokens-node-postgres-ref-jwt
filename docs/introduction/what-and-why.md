@@ -4,7 +4,7 @@ title: SuperTokens
 sidebar_label: Introduction
 ---
 
-<span class="highlighted-text">This library works with <b>NodeJS</b> and <b>MySQL</b>.</span> If you are using a different technology stack, please visit the [SuperTokens](https://supertokens.io#tech-stack) home page.
+<span class="highlighted-text">This library works with <b>NodeJS</b> and <b>PostgreSQL</b>.</span> If you are using a different technology stack, please visit the [SuperTokens](https://supertokens.io#tech-stack) home page.
 
 ## Starting from scratch?
 Please install and use our <span class="highlighted-text">backend and frontend libraries</span> as instructed in the subsequent sections.
@@ -18,6 +18,6 @@ For implementation issues, please visit the <a href="../troubleshooting/troubles
 
 <div style="height: 20px"></div>
 <div class="specialNote">
-This library only supports a single instance of MySQL. We are working on an enterprise version that will support many MySQL instances.
+This library only supports a single instance of PostgreSQL. We are working on an enterprise version that will support many PostgreSQL instances.
 </div>
 <div style="height: 20px"></div>

@@ -28,7 +28,7 @@ SuperTokens.revokeAllSessionsForUser(userId);
 
 ## Example code
 ```js
-import * as SuperTokens from 'supertokens-node-mysql-ref-jwt';
+import * as SuperTokens from 'supertokens-node-postgres-ref-jwt';
 
 // -------------------------------------------------
 

@@ -16,7 +16,7 @@ SuperTokens.getSession(req, res, enableCsrfProtection);
 
 ## Example code
 ```js
-import * as SuperTokens from 'supertokens-node-mysql-ref-jwt/express';
+import * as SuperTokens from 'supertokens-node-postgres-ref-jwt/express';
 
 app.post("/like-comment", function (req, res) {
     SuperTokens.getSession(req, res, true).then(session => {

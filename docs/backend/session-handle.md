@@ -25,8 +25,8 @@ SuperTokens.getAllSessionHandlesForUser(userId);
 
 ## Example code
 ```js
-import * as SuperTokens from 'supertokens-node-mysql-ref-jwt';
-// or import * as SuperTokens from 'supertokens-node-mysql-ref-jwt/express';
+import * as SuperTokens from 'supertokens-node-postgres-ref-jwt';
+// or import * as SuperTokens from 'supertokens-node-postgres-ref-jwt/express';
 
 async function sessionHandleAPI() {
     let userId = "User1";

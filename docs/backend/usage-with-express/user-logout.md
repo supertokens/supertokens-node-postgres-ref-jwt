@@ -35,7 +35,7 @@ SuperTokens.revokeAllSessionsForUser(userId);
 
 ## Example code
 ```js
-import * as SuperTokens from 'supertokens-node-mysql-ref-jwt/express';
+import * as SuperTokens from 'supertokens-node-postgres-ref-jwt/express';
 
 // example using Session object
 app.use("/logout", function (req, res) {

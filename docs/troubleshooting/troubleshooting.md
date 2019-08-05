@@ -4,15 +4,6 @@ title: Troubleshooting
 sidebar_label: Troubleshooting
 ---
 
-## MySQL errors
-#### Error: ```Client does not support authentication protocol```
-- Run the following command in your MySQL monitor:
-  ```SQL
-  ALTER USER 'root' IDENTIFIED WITH mysql_native_password BY 'password'
-  ```
-    - Change the username from ```root``` to whatever you want.
-    - Change the password from ```password``` to your actual password.
-
 ## Cookie errors
 #### I cannot see any cookies in my browser
 - Make sure you have set the correct domain for the cookies. For example, is your Website domain is ```example.com``` and your API domain is ```api.example.com```, then your cookie domain should be ```.example.com```
