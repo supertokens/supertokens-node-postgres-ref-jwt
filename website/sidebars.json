@@ -1,0 +1,57 @@
+{
+    "docs": {
+        "Introduction": [
+            "introduction/what-and-why",
+            "introduction/general-structure"
+        ],
+        "Backend": [
+            "backend/installation",
+            {
+                "type": "subcategory",
+                "label": "Usage with Express",
+                "ids": [
+                    "backend/usage-with-express/initialisation",
+                    "backend/usage-with-express/user-login",
+                    "backend/usage-with-express/verify-session",
+                    "backend/usage-with-express/session-object",
+                    "backend/usage-with-express/manipulating-session-data",
+                    "backend/usage-with-express/options-api",
+                    "backend/usage-with-express/refreshing-session",
+                    "backend/usage-with-express/user-logout",
+                    "backend/usage-with-express/revoking-session"
+                ]
+            },
+            {
+                "type": "subcategory",
+                "label": "Usage without Express",
+                "ids": [
+                    "backend/usage-without-express/initialisation",
+                    "backend/usage-without-express/user-login",
+                    "backend/usage-without-express/verify-session",
+                    "backend/usage-without-express/manipulating-session-data",
+                    "backend/usage-without-express/options-api",
+                    "backend/usage-without-express/refreshing-session",
+                    "backend/usage-without-express/user-logout",
+                    "backend/usage-without-express/revoking-session"
+                ]
+            },
+            "backend/error-handling",
+            "backend/session-handle",
+            "backend/api-reference"
+        ],
+        "Frontend": [
+            "frontend/frontend"
+        ],
+        "Example Project": [
+            "try-it-out/example"
+        ],
+        "Migration": [
+            "migration/backend",
+            "migration/database",
+            "migration/website"
+        ],
+        "Troubleshooting": [
+            "troubleshooting/troubleshooting"
+        ]
+    }
+}

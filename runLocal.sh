@@ -1,0 +1,1 @@
+(cd website && npm run build && npm start)

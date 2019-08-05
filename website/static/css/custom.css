@@ -1,0 +1,295 @@
+/* your custom css */
+
+@media only screen and (min-device-width: 360px) and (max-device-width: 736px) {
+    .docsNavContainer .toc .navBreadcrumb {
+        background-color: #000000;
+    }
+    
+    .docsNavContainer {
+        background-color: #000000;
+    }
+}
+
+@media only screen and (max-width: 1023px) {
+    .docsNavContainer .toc .navBreadcrumb {
+        background-color: #000000;
+    }
+    
+    .docsNavContainer {
+        background-color: #000000;
+    }
+    
+}
+
+@media only screen and (min-width: 1024px) {
+    html {
+        background-color: #141414;
+    }
+    
+    body {
+        display: none;
+    }
+}
+
+@media only screen and (min-width: 1400px) {
+    html {
+        background-color: #141414;
+    }
+    
+    body {
+        display: none;
+    }
+}
+
+@media only screen and (min-width: 1500px) {
+    html {
+        background-color: #141414;
+    }
+    
+    body {
+        display: none;
+    }
+}
+
+.toc .toggleNav ul li.navListItemActive a {
+    color: #ffffff;
+    text-decoration: underline;
+}
+
+.toc .toggleNav ul li a {
+    color: #999999;
+    padding-left: 20px
+}
+
+.toc .toggleNav ul li a:hover {
+    color: #ffffff
+}
+
+.toc .toggleNav .navGroup .navGroupSubcategoryTitle {
+    padding-left: 20px;
+    color: #999999;
+}
+
+.toc .toggleNav .navGroup .navGroupSubcategoryTitle:hover {
+    color: #ffffff;
+}
+
+.toc .toggleNav .subNavGroup .navListItem .navItem {
+    padding-left: 40px;
+}
+
+.navigationSlider .slidingNav ul li a {
+    color: #dddddd
+}
+
+.navigationSlider .slidingNav ul li a:hover, .navigationSlider .slidingNav ul li.siteNavItemActive a, .navigationSlider .slidingNav ul li.siteNavGroupActive a {
+    color: #ffffff
+}
+
+.sideNavVisible {
+    background-color: #141414;
+}
+
+.line1, .line2, .line3 {
+    background-color: #ffffff;
+}
+
+.navBreadcrumb a, .navBreadcrumb span {
+    color: #ffffff;
+}
+
+.toggleNav h2 i {
+    font-size: 0px
+}
+
+.toc .toggleNav .navGroup .navGroupCategoryTitle {
+    color: #999999;
+    font-weight: normal;
+}
+
+.toc .toggleNav .navGroup .navGroupCategoryTitle:hover {
+    color: #ffffff;
+}
+
+.toc .toggleNav .navGroup .navGroupSubcategoryTitle:hover .arrow.rotate path[d="M7.41 15.41L12 10.83l4.59 4.58L18 14l-6-6-6 6z"] {
+    fill: #ffffff
+} 
+
+.toc .toggleNav .navGroup .navGroupSubcategoryTitle:hover .arrow path[d="M7.41 15.41L12 10.83l4.59 4.58L18 14l-6-6-6 6z"] {
+    fill: #ffffff
+} 
+
+.toc .toggleNav .navGroup .navGroupCategoryTitle:hover .arrow.rotate path[d="M7.41 15.41L12 10.83l4.59 4.58L18 14l-6-6-6 6z"] {
+    fill: #ffffff
+} 
+
+.toc .toggleNav .navGroup .navGroupCategoryTitle:hover .arrow path[d="M7.41 15.41L12 10.83l4.59 4.58L18 14l-6-6-6 6z"] {
+    fill: #ffffff
+} 
+
+.collapsible .arrow path[d="M7.41 15.41L12 10.83l4.59 4.58L18 14l-6-6-6 6z"] {
+    fill: #999999
+}
+
+.mainContainer {
+    color: #ffffff
+}
+
+a.docs-next.button {
+    border: 1px solid #ffffff;
+    color: #ffffff;
+}
+
+a.docs-prev.button {
+    border: 1px solid #ffffff;
+    color: #ffffff;
+}
+
+.docsSliderActive .toc .navBreadcrumb {
+    border-bottom: 1px solid #333333;
+}
+
+.fixedHeaderContainer header .headerTitleWithLogo {
+    display: none
+}
+
+.mainContainer {
+    color: #dddddd
+}
+
+.mainContainer h1 {
+    color: #FFFFFF
+}
+
+.mainContainer h2 {
+    color: #6ab1fd
+}
+
+.mainContainer h3 {
+    color: #6ab1fd
+}
+
+.mainContainer h4 {
+    color: #6ab1fd
+}
+
+.mainContainer h5 {
+    color: #6ab1fd
+}
+
+.mainContainer a {
+    color: #ffffff;
+    text-decoration: underline;
+    font-style: italic;
+}
+
+.docs-prevnext a {
+    color: #ffffff;
+    text-decoration: none;
+    font-style: normal;
+}
+
+.highlighted-text {
+    color: #ff9933;
+}
+
+.mainContainer h2 a {
+    color: #6ab1fd;
+    text-decoration: underline;
+    font-style: normal;
+}
+
+.mainContainer h3 a {
+    color: #6ab1fd;
+    text-decoration: underline;
+    font-style: normal;
+}
+
+.mainContainer h4 a {
+    color: #6ab1fd;
+    text-decoration: underline;
+    font-style: normal;
+}
+
+.mainContainer h5 a {
+    color: #6ab1fd;
+    text-decoration: underline;
+    font-style: normal;
+}
+
+.divider {
+    background-color: #444444; 
+    height: 1px; 
+    width: 100%; 
+    margin-top: 40px; 
+    margin-bottom: 40px;
+}
+
+.fixedHeaderContainer a.header-version-text h3 {
+    color: #dddddd; 
+    font-size: 1em; 
+    font-weight: normal; 
+    line-height: 1.2em; 
+    align-items: center; 
+    justify-content: center;
+}
+
+body { 
+    background-color: #141414;
+}
+
+.version-documentation {
+    margin-left: 13vw; 
+    color: #dddddd;
+    text-decoration: none;
+}
+
+.version-documentation:hover {
+    color: #ffffff; 
+    text-decoration: underline;
+}
+
+a.highlighted-link {
+    color: #6ab1fd;
+}
+
+a.highlighted-link.orange{
+    color: #ff9933;
+}
+
+a.highlighted-text {
+    color: #ff9933;
+}
+
+.feedback-button-happy {
+    height: 30px;
+    width: 40px;
+    content: url("../img/happyUnselected.png");
+    background-size: 30px 40px;
+    margin-left: 20px;
+    cursor: pointer;
+}
+
+.feedback-button-happy.selected {
+    content: url("../img/happySelected.png");
+}
+
+.feedback-button-happy:hover {
+    content: url("../img/happySelected.png");
+}
+
+.feedback-button-sad {
+    height: 30px;
+    width: 40px;
+    content: url("../img/sadUnselected.png");
+    background-size: 30px 40px;
+    cursor: pointer;
+}
+
+.feedback-button-sad.selected {
+    content: url("../img/sadSelected.png");
+}
+
+.feedback-button-sad:hover {
+    content: url("../img/sadSelected.png");
+}

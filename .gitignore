@@ -1,7 +1,5 @@
-/node_modules
-package-lock.json
+*/node_modules
 .DS_Store
-/.history
-*.js.map
-coverage
-.vscode
+package-lock.json
+build/
+.history/
