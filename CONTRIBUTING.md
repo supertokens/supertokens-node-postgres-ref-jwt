@@ -80,7 +80,7 @@ If you have docker, we have a container that has node, postgres and git installe
 docker pull rishabhpoddar/node-postgres-git
 
 # open a shell in the container, checkout your repo and run:
-service postgresql start
+nohup /usr/lib/postgresql/9.5/bin/postgres -D /var/lib/postgresql/9.5/main -c config_file=/etc/postgresql/9.5/main/postgresql.conf -i >/dev/null 2>&1 </dev/null &
 psql -c "CREATE DATABASE auth_session"
 npm install -d
 npm test
