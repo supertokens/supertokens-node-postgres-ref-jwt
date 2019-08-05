@@ -7,7 +7,7 @@ original_id: example
 
 You can check out the <a href="https://github.com/supertokens/auth-demo" target="_blank" class="highlighted-link">sample project</a> as an example for how to use the frontend and backend SuperTokens libraries.
 
-We have created a live demo to show how SuperTokens helps prevent session theft and how it behaves in the event of an attack. You can interact with the demo on <a href="https://github.com/supertokens/auth-demo" target="_blank" class="highlighted-link">http://demo.supertokens.io</a>
+We have created a live demo to show how SuperTokens helps prevent session theft and how it behaves in the event of an attack. You can interact with the demo on <a href="http://demo.supertokens.io" target="_blank" class="highlighted-link">http://demo.supertokens.io</a>
 
 <div class="specialNote">
 You will need Mozilla Firefox to interact with the live demo, because only Firefox allows you to view all cookies regardless of your current URL path.
