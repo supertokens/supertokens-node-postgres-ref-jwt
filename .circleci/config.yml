@@ -14,6 +14,7 @@ jobs:
       - run: service postgresql start
       - run: sleep 5
       - run: psql -c "CREATE DATABASE auth_session"
+      - run: psql -c "ALTER USER postgres PASSWORD 'password'"
       - checkout
       - run: npm install -d
       - run: npm test

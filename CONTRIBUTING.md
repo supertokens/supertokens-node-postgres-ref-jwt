@@ -82,6 +82,7 @@ docker pull rishabhpoddar/node-postgres-git
 # open a shell in the container, checkout your repo and run:
 service postgresql start
 psql -c "CREATE DATABASE auth_session"
+psql -c "ALTER USER postgres PASSWORD 'password'"
 npm install -d
 npm test
 ````
