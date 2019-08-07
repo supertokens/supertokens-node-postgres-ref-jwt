@@ -221,7 +221,7 @@ export function getCookieValue(req: IncomingMessage, key: string): string | unde
         return (req as any).cookies[key];
     }
 
-    let cookies: { [key: string]: string } | string | undefined = req.headers.cookie;
+    let cookies: any = req.headers.cookie;
 
     if (cookies === undefined) {
         return undefined;
