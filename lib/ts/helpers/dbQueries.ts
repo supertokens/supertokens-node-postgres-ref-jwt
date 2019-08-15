@@ -32,7 +32,7 @@ export async function createTablesIfNotExists(
             CREATE TABLE IF NOT EXISTS ${signingKeyTableName} (
                 key_name VARCHAR(128),
                 key_value VARCHAR(255),
-                created_at_time TIMESTAMPTZ(3),
+                created_at_time BIGINT,
                 PRIMARY KEY(key_name)
             );
         `;
@@ -42,7 +42,7 @@ export async function createTablesIfNotExists(
                 user_id VARCHAR(128) NOT NULL,
                 refresh_token_hash_2 VARCHAR(128) NOT NULL,
                 session_info TEXT,
-                expires_at TIMESTAMPTZ(3),
+                expires_at BIGINT,
                 jwt_user_payload TEXT,
                 PRIMARY KEY(session_handle)
             );
@@ -68,7 +68,7 @@ export async function getKeyValueFromKeyName_Transaction(
     }
     return {
         keyValue: result[0].key_value.toString(),
-        createdAtTime: convertTimestampToMilli(result[0].created_at_time)
+        createdAtTime: Number(result[0].created_at_time)
     };
 }
 
@@ -82,7 +82,7 @@ export async function insertKeyValueForKeyName_Transaction(
     connection.throwIfTransactionIsNotStarted("expected to be in transaction when reading signing keys");
     let query = `INSERT INTO ${
         config.postgres.tables.signingKey
-    }(key_name, key_value, created_at_time) VALUES ($1, $2, to_timestamp($3)) ON CONFLICT (key_name) DO UPDATE SET key_value = $4, created_at_time = to_timestamp($5)`;
+    }(key_name, key_value, created_at_time) VALUES ($1, $2, $3) ON CONFLICT (key_name) DO UPDATE SET key_value = $4, created_at_time = $5`;
     await connection.executeQuery(query, [keyName, keyValue, createdAtTime, keyValue, createdAtTime]);
 }
 
@@ -133,7 +133,7 @@ export async function createNewSession(
     const config = Config.get();
     let query = `INSERT INTO ${config.postgres.tables.refreshTokens} 
     (session_handle, user_id, refresh_token_hash_2,
-    session_info, expires_at, jwt_user_payload) VALUES ($1, $2, $3, $4, to_timestamp($5), $6)`;
+    session_info, expires_at, jwt_user_payload) VALUES ($1, $2, $3, $4, $5, $6)`;
     await connection.executeQuery(query, [
         sessionHandle,
         userId,
@@ -178,7 +178,7 @@ export async function getSessionInfo_Transaction(
         userId: parseUserIdToCorrectFormat(row.user_id),
         refreshTokenHash2: row.refresh_token_hash_2,
         sessionData: unserialiseSessionData(row.session_info),
-        expiresAt: convertTimestampToMilli(row.expires_at),
+        expiresAt: Number(row.expires_at),
         jwtPayload: unserialiseSessionData(row.jwt_user_payload)
     };
 }
@@ -193,7 +193,7 @@ export async function updateSessionInfo_Transaction(
     const config = Config.get();
     connection.throwIfTransactionIsNotStarted("expected to be in transaction when updating session data");
     let query = `UPDATE ${config.postgres.tables.refreshTokens} SET refresh_token_hash_2 = $1, 
-    session_info = $2, expires_at = to_timestamp($3) WHERE session_handle = $4 RETURNING *`;
+    session_info = $2, expires_at = $3 WHERE session_handle = $4 RETURNING *`;
     let result = await connection.executeQuery(query, [
         refreshTokenHash2,
         serialiseSessionData(sessionData),
@@ -213,7 +213,7 @@ export async function getAllSessionHandlesForUser(connection: Connection, userId
 
 export async function deleteAllExpiredSessions(connection: Connection) {
     const config = Config.get();
-    const query = `DELETE FROM ${config.postgres.tables.refreshTokens} WHERE expires_at <= to_timestamp($1);`;
+    const query = `DELETE FROM ${config.postgres.tables.refreshTokens} WHERE expires_at <= $1;`;
     await connection.executeQuery(query, [Date.now()]);
 }
 
@@ -259,8 +259,4 @@ export async function getNumberOfRowsInRefreshTokensTable(): Promise<number> {
     } finally {
         connection.closeConnection();
     }
-}
-
-function convertTimestampToMilli(ts: string) {
-    return new Date(ts).getTime() / 1000;
 }
