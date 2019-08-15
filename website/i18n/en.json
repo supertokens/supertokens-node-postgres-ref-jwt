@@ -252,6 +252,10 @@
       "version-1.0.X/try-it-out/version-1.0.X-example": {
         "title": "Example code and Demo",
         "sidebar_label": "Example code and Demo"
+      },
+      "version-2.0.X/backend/version-2.0.X-installation": {
+        "title": "Backend Installation",
+        "sidebar_label": "Installation"
       }
     },
     "links": {
