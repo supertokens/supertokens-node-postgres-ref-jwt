@@ -5,8 +5,6 @@
         <img src="https://img.shields.io/discord/603466164219281420.svg?logo=discord"
             alt="chat on Discord"></a>
 
-# UNDER CONSTRUCTION
-
 **Master**
 [![CircleCI](https://circleci.com/gh/supertokens/supertokens-node-postgres-ref-jwt.svg?style=svg)](https://circleci.com/gh/supertokens/supertokens-node-postgres-ref-jwt)
 **Dev**
