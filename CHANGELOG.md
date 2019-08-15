@@ -6,6 +6,10 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+## [2.0.0] - 2019-08-15
+### Breaking Changed
+- Time based column types from timestamptz to bigint
+
 ## [1.0.0] - 2019-08-05
 ### Added
 - Initial release
