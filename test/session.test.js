@@ -2,7 +2,7 @@ const session = require("../");
 const assert = require("assert");
 const { reset, delay } = require("../lib/build/helpers/utils");
 const config = require("./config");
-const { getNumberOfRowsInRefreshTokensTable, deleteAllExpiredSessions } = require("../lib/build/helpers/dbQueries");
+const { getNumberOfRowsInRefreshTokensTable, removeOldSessions } = require("../lib/build/helpers/dbQueries");
 const { printPath } = require("./utils");
 const errors = require("../lib/build/error");
 const { getConnection } = require("../lib/build/helpers/postgres");
@@ -825,7 +825,7 @@ describe(`Session: ${printPath("[test/session.test.js]")}`, function() {
         assert.strictEqual(typeof newSession.refreshToken.value, "string");
         const noOfRowsBefore = await getNumberOfRowsInRefreshTokensTable();
         assert.deepStrictEqual(noOfRowsBefore, 2);
-        await session.revokeSessionUsingSessionHandle(newSession.session.handle);
+        assert.strictEqual(await session.revokeSessionUsingSessionHandle(newSession.session.handle), true);
         const noOfRowsAfter = await getNumberOfRowsInRefreshTokensTable();
         assert.deepStrictEqual(noOfRowsAfter, 1);
         try {
@@ -877,7 +877,7 @@ describe(`Session: ${printPath("[test/session.test.js]")}`, function() {
         assert.deepStrictEqual(sessionObject1.session.jwtPayload, jwtPayload);
         assert.strictEqual(typeof sessionObject1.session.userId, "string");
         assert.deepStrictEqual(sessionObject1.session.userId, userId);
-        await session.revokeSessionUsingSessionHandle(newSession1.session.handle);
+        assert.strictEqual(await session.revokeSessionUsingSessionHandle(newSession1.session.handle), true);
         const noOfRowsAfter = await getNumberOfRowsInRefreshTokensTable();
         assert.deepStrictEqual(noOfRowsAfter, 1);
         try {
@@ -920,7 +920,7 @@ describe(`Session: ${printPath("[test/session.test.js]")}`, function() {
         assert.strictEqual(typeof newSession.session.handle, "string");
         assert.strictEqual(typeof newSession.accessToken, "object");
         assert.strictEqual(typeof newSession.accessToken.value, "string");
-        await session.revokeSessionUsingSessionHandle(newSession.session.handle);
+        assert.strictEqual(await session.revokeSessionUsingSessionHandle(newSession.session.handle), true);
         const sessionObject = await session.getSession(newSession.accessToken.value, newSession.antiCsrfToken);
         assert.strictEqual(typeof sessionObject, "object");
         assert.deepStrictEqual(sessionObject.newAccessToken, undefined);
@@ -1039,20 +1039,19 @@ describe(`Session: ${printPath("[test/session.test.js]")}`, function() {
         const userId = "testing";
         const jwtPayload = { a: "testing" };
         const sessionInfo = { s: "session" };
-        let session1 = await session.createNewSession(userId, jwtPayload, sessionInfo);
-        let session2 = await session.createNewSession(userId, jwtPayload, sessionInfo);
-        let session3 = await session.createNewSession(userId, jwtPayload, sessionInfo);
+
+        await session.createNewSession(userId, jwtPayload, sessionInfo);
+        await session.createNewSession(userId, jwtPayload, sessionInfo);
+        await session.createNewSession(userId, jwtPayload, sessionInfo);
+
         const noOfRows = await getNumberOfRowsInRefreshTokensTable();
         assert.deepStrictEqual(noOfRows, 3);
+
         await delay(3000);
         await session.createNewSession(userId, jwtPayload, sessionInfo);
-        let client = await getConnection();
-        try {
-            await deleteAllExpiredSessions(client);
-            const noOfRows = await getNumberOfRowsInRefreshTokensTable();
-            assert.deepStrictEqual(noOfRows, 1);
-        } finally {
-            client.closeConnection();
-        }
+        await removeOldSessions();
+
+        const noOfRowsAfter = await getNumberOfRowsInRefreshTokensTable();
+        assert.deepStrictEqual(noOfRowsAfter, 1);
     });
 });

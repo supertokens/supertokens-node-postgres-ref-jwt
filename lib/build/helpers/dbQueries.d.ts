@@ -42,3 +42,4 @@ export declare function getAllSessionHandlesForUser(connection: Connection, user
 export declare function deleteAllExpiredSessions(connection: Connection): Promise<void>;
 export declare function resetTables(connection: Connection): Promise<void>;
 export declare function getNumberOfRowsInRefreshTokensTable(): Promise<number>;
+export declare function removeOldSessions(): Promise<void>;
