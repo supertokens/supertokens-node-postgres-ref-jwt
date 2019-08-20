@@ -6,6 +6,15 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+## [2.1.0] - 2019-08-20
+### Added
+- For with express implementation: Session.getSessionInfo, Session.updateSessionInfo
+- For without express implementation: getSessionInfo, updateSessionInfo
+
+### Deprecated
+- For with express implementation: Session.getSessionData, Session.updateSessionData where Session is the session object returned after create new session or get session
+- For without express implementation: getSessionData, updateSessionData
+
 ## [1.0.0] - 2019-08-05
 ### Added
 - Initial release

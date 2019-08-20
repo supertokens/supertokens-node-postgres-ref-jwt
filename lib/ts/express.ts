@@ -41,9 +41,9 @@ export async function createNewSession(
     res: express.Response,
     userId: string | number,
     jwtPayload?: any,
-    sessionData?: any
+    sessionInfo?: any
 ): Promise<Session> {
-    let response = await SessionFunctions.createNewSession(userId, jwtPayload, sessionData);
+    let response = await SessionFunctions.createNewSession(userId, jwtPayload, sessionInfo);
 
     // attach tokens to cookies
     attachAccessTokenToCookie(res, response.accessToken.value, response.accessToken.expires);
@@ -169,16 +169,16 @@ export async function revokeSessionUsingSessionHandle(sessionHandle: string): Pr
  * @returns session data as provided by the user earlier
  * @throws AuthError GENERAL_ERROR, UNAUTHORISED.
  */
-export async function getSessionData(sessionHandle: string): Promise<any> {
-    return SessionFunctions.getSessionData(sessionHandle);
+export async function getSessionInfo(sessionHandle: string): Promise<any> {
+    return SessionFunctions.getSessionInfo(sessionHandle);
 }
 
 /**
  * @description: It provides no locking mechanism in case other processes are updating session data for this session as well. If you have a Session object, please use that instead.
  * @throws AuthError GENERAL_ERROR, UNAUTHORISED.
  */
-export async function updateSessionData(sessionHandle: string, newSessionData: any) {
-    return SessionFunctions.updateSessionData(sessionHandle, newSessionData);
+export async function updateSessionInfo(sessionHandle: string, newSessionInfo: any) {
+    return SessionFunctions.updateSessionInfo(sessionHandle, newSessionInfo);
 }
 
 /**
@@ -223,9 +223,9 @@ export class Session {
      * @sideEffect may clear cookies from response.
      * @throws AuthError GENERAL_ERROR, UNAUTHORISED.
      */
-    getSessionData = async (): Promise<any> => {
+    getSessionInfo = async (): Promise<any> => {
         try {
-            return await SessionFunctions.getSessionData(this.sessionHandle);
+            return await SessionFunctions.getSessionInfo(this.sessionHandle);
         } catch (err) {
             if (AuthError.isErrorFromAuth(err) && err.errType === AuthError.UNAUTHORISED) {
                 clearSessionFromCookie(this.res);
@@ -235,20 +235,34 @@ export class Session {
     };
 
     /**
+     * @deprecated
+     */
+    getSessionData = async (): Promise<any> => {
+        return await this.getSessionInfo();
+    };
+
+    /**
      * @description: It provides no locking mechanism in case other processes are updating session data for this session as well.
-     * @param newSessionData this can be anything: an array, a promitive type, object etc etc. This will overwrite the current value stored in the database.
+     * @param newSessionInfo this can be anything: an array, a promitive type, object etc etc. This will overwrite the current value stored in the database.
      * @sideEffect may clear cookies from response.
      * @throws AuthError GENERAL_ERROR, UNAUTHORISED.
      */
-    updateSessionData = async (newSessionData: any) => {
+    updateSessionInfo = async (newSessionInfo: any) => {
         try {
-            await SessionFunctions.updateSessionData(this.sessionHandle, newSessionData);
+            await SessionFunctions.updateSessionInfo(this.sessionHandle, newSessionInfo);
         } catch (err) {
             if (AuthError.isErrorFromAuth(err) && err.errType === AuthError.UNAUTHORISED) {
                 clearSessionFromCookie(this.res);
             }
             throw err;
         }
+    };
+
+    /**
+     * @deprecated
+     */
+    updateSessionData = async (newSessionInfo: any) => {
+        await this.updateSessionInfo(newSessionInfo);
     };
 
     getUserId = () => {

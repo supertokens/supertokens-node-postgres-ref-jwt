@@ -10,7 +10,7 @@ export declare function init(config: TypeInputConfig, clientPool?: pg.Pool): Pro
  * @description call this to "login" a user.
  * @throws GENERAL_ERROR in case anything fails.
  */
-export declare function createNewSession(userId: string | number, jwtPayload?: any, sessionData?: any): Promise<{
+export declare function createNewSession(userId: string | number, jwtPayload?: any, sessionInfo?: any): Promise<{
     session: {
         handle: string;
         userId: string | number;
@@ -92,9 +92,17 @@ export declare function revokeSessionUsingSessionHandle(sessionHandle: string): 
  * @returns session data as provided by the user earlier
  * @throws AuthError GENERAL_ERROR, UNAUTHORISED.
  */
+export declare function getSessionInfo(sessionHandle: string): Promise<any>;
+/**
+ * @deprecated
+ */
 export declare function getSessionData(sessionHandle: string): Promise<any>;
 /**
  * @description: It provides no locking mechanism in case other processes are updating session data for this session as well.
  * @throws AuthError GENERAL_ERROR, UNAUTHORISED.
  */
-export declare function updateSessionData(sessionHandle: string, newSessionData: any): Promise<void>;
+export declare function updateSessionInfo(sessionHandle: string, newSessionInfo: any): Promise<void>;
+/**
+ * @deprecated
+ */
+export declare function updateSessionData(sessionHandle: string, newSessionInfo: any): Promise<void>;
