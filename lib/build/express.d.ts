@@ -16,7 +16,7 @@ export declare function init(config: TypeInputConfig, clientPool?: pg.Pool): Pro
  * @throws GENERAL_ERROR in case anything fails.
  * @sideEffect sets cookies in res
  */
-export declare function createNewSession(res: express.Response, userId: string | number, jwtPayload?: any, sessionData?: any): Promise<Session>;
+export declare function createNewSession(res: express.Response, userId: string | number, jwtPayload?: any, sessionInfo?: any): Promise<Session>;
 /**
  * @description authenticates a session. To be used in APIs that require authentication
  * @throws AuthError, GENERAL_ERROR, UNAUTHORISED and TRY_REFRESH_TOKEN
@@ -51,12 +51,12 @@ export declare function revokeSessionUsingSessionHandle(sessionHandle: string): 
  * @returns session data as provided by the user earlier
  * @throws AuthError GENERAL_ERROR, UNAUTHORISED.
  */
-export declare function getSessionData(sessionHandle: string): Promise<any>;
+export declare function getSessionInfo(sessionHandle: string): Promise<any>;
 /**
  * @description: It provides no locking mechanism in case other processes are updating session data for this session as well. If you have a Session object, please use that instead.
  * @throws AuthError GENERAL_ERROR, UNAUTHORISED.
  */
-export declare function updateSessionData(sessionHandle: string, newSessionData: any): Promise<void>;
+export declare function updateSessionInfo(sessionHandle: string, newSessionInfo: any): Promise<void>;
 /**
  * @description Sets relevant Access-Control-Allow-Headers and Access-Control-Allow-Credentials headers
  */
@@ -84,14 +84,22 @@ export declare class Session {
      * @sideEffect may clear cookies from response.
      * @throws AuthError GENERAL_ERROR, UNAUTHORISED.
      */
+    getSessionInfo: () => Promise<any>;
+    /**
+     * @deprecated
+     */
     getSessionData: () => Promise<any>;
     /**
      * @description: It provides no locking mechanism in case other processes are updating session data for this session as well.
-     * @param newSessionData this can be anything: an array, a promitive type, object etc etc. This will overwrite the current value stored in the database.
+     * @param newSessionInfo this can be anything: an array, a promitive type, object etc etc. This will overwrite the current value stored in the database.
      * @sideEffect may clear cookies from response.
      * @throws AuthError GENERAL_ERROR, UNAUTHORISED.
      */
-    updateSessionData: (newSessionData: any) => Promise<void>;
+    updateSessionInfo: (newSessionInfo: any) => Promise<void>;
+    /**
+     * @deprecated
+     */
+    updateSessionData: (newSessionInfo: any) => Promise<void>;
     getUserId: () => string | number;
     getJWTPayload: () => any;
 }

@@ -86,16 +86,16 @@ export async function insertKeyValueForKeyName_Transaction(
     await connection.executeQuery(query, [keyName, keyValue, createdAtTime, keyValue, createdAtTime]);
 }
 
-export async function updateSessionData(connection: Connection, sessionHandle: string, sessionData: any) {
+export async function updateSessionInfo(connection: Connection, sessionHandle: string, sessionInfo: any) {
     const config = Config.get();
     let query = `UPDATE ${
         config.postgres.tables.refreshTokens
     } SET session_info = $1 WHERE session_handle = $2 RETURNING *`;
-    let result = await connection.executeQuery(query, [serialiseSessionData(sessionData), sessionHandle]);
+    let result = await connection.executeQuery(query, [serialiseSessionInfo(sessionInfo), sessionHandle]);
     return result.length;
 }
 
-export async function getSessionData(
+export async function getSessionInfo(
     connection: Connection,
     sessionHandle: string
 ): Promise<{ found: false } | { found: true; data: any }> {
@@ -109,7 +109,7 @@ export async function getSessionData(
     }
     return {
         found: true,
-        data: unserialiseSessionData(result[0].session_info)
+        data: unserialiseSessionInfo(result[0].session_info)
     };
 }
 
@@ -125,7 +125,7 @@ export async function createNewSession(
     sessionHandle: string,
     userId: string | number,
     refreshTokenHash2: string,
-    sessionData: any,
+    sessionInfo: any,
     expiresAt: number,
     jwtPayload: any
 ) {
@@ -138,9 +138,9 @@ export async function createNewSession(
         sessionHandle,
         userId,
         refreshTokenHash2,
-        serialiseSessionData(sessionData),
+        serialiseSessionInfo(sessionInfo),
         expiresAt,
-        serialiseSessionData(jwtPayload)
+        serialiseSessionInfo(jwtPayload)
     ]);
 }
 
@@ -151,14 +151,14 @@ export async function isSessionBlacklisted(connection: Connection, sessionHandle
     return result.length === 0;
 }
 
-export async function getSessionInfo_Transaction(
+export async function getSessionObject_Transaction(
     connection: Connection,
     sessionHandle: string
 ): Promise<
     | {
           userId: string | number;
           refreshTokenHash2: string;
-          sessionData: any;
+          sessionInfo: any;
           expiresAt: number;
           jwtPayload: any;
       }
@@ -177,17 +177,17 @@ export async function getSessionInfo_Transaction(
     return {
         userId: parseUserIdToCorrectFormat(row.user_id),
         refreshTokenHash2: row.refresh_token_hash_2,
-        sessionData: unserialiseSessionData(row.session_info),
+        sessionInfo: unserialiseSessionInfo(row.session_info),
         expiresAt: Number(row.expires_at),
-        jwtPayload: unserialiseSessionData(row.jwt_user_payload)
+        jwtPayload: unserialiseSessionInfo(row.jwt_user_payload)
     };
 }
 
-export async function updateSessionInfo_Transaction(
+export async function updateSessionObject_Transaction(
     connection: Connection,
     sessionHandle: string,
     refreshTokenHash2: string,
-    sessionData: any,
+    sessionInfo: any,
     expiresAt: number
 ): Promise<number> {
     const config = Config.get();
@@ -196,7 +196,7 @@ export async function updateSessionInfo_Transaction(
     session_info = $2, expires_at = $3 WHERE session_handle = $4 RETURNING *`;
     let result = await connection.executeQuery(query, [
         refreshTokenHash2,
-        serialiseSessionData(sessionData),
+        serialiseSessionInfo(sessionInfo),
         expiresAt,
         sessionHandle
     ]);
@@ -217,7 +217,7 @@ export async function deleteAllExpiredSessions(connection: Connection) {
     await connection.executeQuery(query, [Date.now()]);
 }
 
-function serialiseSessionData(data: any): string {
+function serialiseSessionInfo(data: any): string {
     if (data === undefined) {
         return "";
     } else {
@@ -225,7 +225,7 @@ function serialiseSessionData(data: any): string {
     }
 }
 
-function unserialiseSessionData(data: string): any {
+function unserialiseSessionInfo(data: string): any {
     if (data === "") {
         return undefined;
     } else {

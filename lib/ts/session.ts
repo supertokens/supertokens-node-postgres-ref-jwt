@@ -6,11 +6,11 @@ import {
     createNewSession as createNewSessionInDB,
     deleteSession,
     getAllSessionHandlesForUser as getAllSessionHandlesForUserDB,
-    getSessionData as getSessionDataFromDB,
-    getSessionInfo_Transaction,
+    getSessionInfo as getSessionInfoFromDB,
+    getSessionObject_Transaction,
     isSessionBlacklisted,
-    updateSessionData as updateSessionDataInDB,
-    updateSessionInfo_Transaction
+    updateSessionInfo as updateSessionInfoInDB,
+    updateSessionObject_Transaction
 } from "./helpers/dbQueries";
 import { getConnection, Postgres } from "./helpers/postgres";
 import { TypeInputConfig } from "./helpers/types";
@@ -38,7 +38,7 @@ export async function init(config: TypeInputConfig, clientPool?: pg.Pool) {
 export async function createNewSession(
     userId: string | number,
     jwtPayload?: any,
-    sessionData?: any
+    sessionInfo?: any
 ): Promise<{
     session: {
         handle: string;
@@ -78,7 +78,7 @@ export async function createNewSession(
             sessionHandle,
             userId,
             hash(hash(refreshToken.token)),
-            sessionData,
+            sessionInfo,
             refreshToken.expiry,
             jwtPayload
         );
@@ -163,24 +163,24 @@ export async function getSession(
     try {
         // we start a transaction so that we can later lock that particular row for updating.
         await connection.startTransaction();
-        let sessionInfo = await getSessionInfo_Transaction(connection, sessionHandle);
+        let sessionObject = await getSessionObject_Transaction(connection, sessionHandle);
 
-        if (sessionInfo === undefined) {
+        if (sessionObject === undefined) {
             // this session no longer exists in db
             await connection.commit();
             throw generateError(AuthError.UNAUTHORISED, new Error("missing session in db"));
         }
 
-        let promote = sessionInfo.refreshTokenHash2 === hash(accessTokenInfo.parentRefreshTokenHash1);
-        if (promote || sessionInfo.refreshTokenHash2 === hash(accessTokenInfo.refreshTokenHash1)) {
+        let promote = sessionObject.refreshTokenHash2 === hash(accessTokenInfo.parentRefreshTokenHash1);
+        if (promote || sessionObject.refreshTokenHash2 === hash(accessTokenInfo.refreshTokenHash1)) {
             // at this point, the sent access token's refresh token is either a parent or child
             if (promote) {
                 // we now have to promote to make the child a parent since we now know that the frontend has these tokens for sure.
-                await updateSessionInfo_Transaction(
+                await updateSessionObject_Transaction(
                     connection,
                     sessionHandle,
                     hash(accessTokenInfo.refreshTokenHash1),
-                    sessionInfo.sessionData,
+                    sessionObject.sessionInfo,
                     Date.now() + config.tokens.refreshToken.validity
                 );
             }
@@ -273,14 +273,14 @@ async function refreshSessionHelper(
         // we start a transaction so that we can later lock that particular row for updating.
         await connection.startTransaction();
 
-        let sessionInfo = await getSessionInfo_Transaction(connection, sessionHandle);
+        let sessionObject = await getSessionObject_Transaction(connection, sessionHandle);
 
-        if (sessionInfo === undefined || sessionInfo.expiresAt < Date.now()) {
+        if (sessionObject === undefined || sessionObject.expiresAt < Date.now()) {
             await connection.commit();
             throw generateError(AuthError.UNAUTHORISED, new Error("session does not exist or has expired"));
         }
 
-        if (sessionInfo.userId !== refreshTokenInfo.userId) {
+        if (sessionObject.userId !== refreshTokenInfo.userId) {
             // TODO: maybe refresh token key has been compromised since the validation part checked out. And the row is in the table.
             // The only way this is possible is if there is a bug somewhere, or the client somehow generated a valid refresh token and changed the userId in it.
             await connection.commit();
@@ -290,7 +290,7 @@ async function refreshSessionHelper(
             );
         }
 
-        if (sessionInfo.refreshTokenHash2 === hash(hash(refreshToken))) {
+        if (sessionObject.refreshTokenHash2 === hash(hash(refreshToken))) {
             // at this point, the input refresh token is the parent one.
             await connection.commit();
             // we create children token for this refresh token. The child tokens have a refrence to the current refresh token which will enable them to become parents when they are used.
@@ -308,13 +308,13 @@ async function refreshSessionHelper(
                 hash(newRefreshToken.token),
                 newAntiCsrfToken,
                 hash(refreshToken),
-                sessionInfo.jwtPayload
+                sessionObject.jwtPayload
             );
             return {
                 session: {
                     handle: sessionHandle,
                     userId: refreshTokenInfo.userId,
-                    jwtPayload: sessionInfo.jwtPayload
+                    jwtPayload: sessionObject.jwtPayload
                 },
                 newAccessToken: {
                     value: newAccessToken.token,
@@ -334,7 +334,7 @@ async function refreshSessionHelper(
 
         if (
             refreshTokenInfo.parentRefreshTokenHash1 !== undefined &&
-            hash(refreshTokenInfo.parentRefreshTokenHash1) === sessionInfo.refreshTokenHash2
+            hash(refreshTokenInfo.parentRefreshTokenHash1) === sessionObject.refreshTokenHash2
         ) {
             // At this point, the input refresh token is a child and its parent is in the database. Normally, this part of the code
             // will be reached only when the client uses a refresh token to request a new refresh token before
@@ -346,11 +346,11 @@ async function refreshSessionHelper(
             // result in refresh tokens living on for a longer period of time than what is expected. But that is OK, since they keep changing
             // based on access token's expiry anyways.
             // This can be solved fairly easily by keeping the expiry time in the refresh token payload as well.
-            await updateSessionInfo_Transaction(
+            await updateSessionObject_Transaction(
                 connection,
                 sessionHandle,
                 hash(hash(refreshToken)),
-                sessionInfo.sessionData,
+                sessionObject.sessionInfo,
                 Date.now() + config.tokens.refreshToken.validity
             );
             await connection.commit();
@@ -422,10 +422,10 @@ export async function revokeSessionUsingSessionHandle(sessionHandle: string): Pr
  * @returns session data as provided by the user earlier
  * @throws AuthError GENERAL_ERROR, UNAUTHORISED.
  */
-export async function getSessionData(sessionHandle: string): Promise<any> {
+export async function getSessionInfo(sessionHandle: string): Promise<any> {
     let connection = await getConnection();
     try {
-        let result = await getSessionDataFromDB(connection, sessionHandle);
+        let result = await getSessionInfoFromDB(connection, sessionHandle);
         if (!result.found) {
             throw generateError(AuthError.UNAUTHORISED, new Error("session does not exist anymore"));
         } else {
@@ -437,13 +437,20 @@ export async function getSessionData(sessionHandle: string): Promise<any> {
 }
 
 /**
+ * @deprecated
+ */
+export async function getSessionData(sessionHandle: string): Promise<any> {
+    return await getSessionInfo(sessionHandle);
+}
+
+/**
  * @description: It provides no locking mechanism in case other processes are updating session data for this session as well.
  * @throws AuthError GENERAL_ERROR, UNAUTHORISED.
  */
-export async function updateSessionData(sessionHandle: string, newSessionData: any) {
+export async function updateSessionInfo(sessionHandle: string, newSessionInfo: any) {
     let connection = await getConnection();
     try {
-        let numberOfAffectedRows = await updateSessionDataInDB(connection, sessionHandle, newSessionData);
+        let numberOfAffectedRows = await updateSessionInfoInDB(connection, sessionHandle, newSessionInfo);
         if (numberOfAffectedRows !== 1) {
             // did not update anything, which means there was nothing to update, which means the session does not exist.
             throw generateError(AuthError.UNAUTHORISED, new Error("session does not exist anymore"));
@@ -451,4 +458,11 @@ export async function updateSessionData(sessionHandle: string, newSessionData: a
     } finally {
         connection.closeConnection();
     }
+}
+
+/**
+ * @deprecated
+ */
+export async function updateSessionData(sessionHandle: string, newSessionInfo: any) {
+    await updateSessionInfo(sessionHandle, newSessionInfo);
 }
