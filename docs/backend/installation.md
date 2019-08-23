@@ -4,7 +4,7 @@ title: Backend Installation
 sidebar_label: Installation
 ---
 
-### 1. Create a database in MySQL that will store session related information
+### 1. Create a database in PostgreSQL that will store session related information
 This could either be existing app database or a new database.
 ```SQL
 CREATE DATABASE DATABASE_NAME; # example name: auth_session
@@ -14,7 +14,7 @@ Note: We recommend that you create a new database as it would become easier for 
 
 ### 2. Install SuperTokens package
 ```js
-npm i --save supertokens-node-mysql-ref-jwt@^4.2.0
+npm i --save supertokens-node-postgres-ref-jwt@^2.0.0
 ```
 
 <div class="divider"></div>
@@ -26,13 +26,13 @@ For a complete solution, you will also need to use our frontend SDK along with o
 </div>
 
 
-### 3. Optionally create tables in the MySQL database
+### 3. Optionally create tables in the PostgreSQL database
 - If you do not create them, our library will create these two tables for you:
   ```SQL
   CREATE TABLE signing_key (
       key_name VARCHAR(128),
       key_value VARCHAR(255),
-      created_at_time BIGINT UNSIGNED,
+      created_at_time BIGINT,
       PRIMARY KEY(key_name)
   );
 
@@ -41,7 +41,7 @@ For a complete solution, you will also need to use our frontend SDK along with o
       session_handle VARCHAR(255) NOT NULL,
       user_id VARCHAR(128) NOT NULL,
       refresh_token_hash_2 VARCHAR(128) NOT NULL,
-      expires_at BIGINT UNSIGNED NOT NULL,
+      expires_at BIGINT,
       jwt_user_payload TEXT,
       PRIMARY KEY(session_handle)
   );    

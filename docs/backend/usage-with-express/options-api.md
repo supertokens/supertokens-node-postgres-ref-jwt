@@ -23,7 +23,7 @@ SuperTokens.setRelevantHeadersForOptionsAPI(res);
 
 ## Example code
 ```js
-import * as SuperTokens from 'supertokens-node-mysql-ref-jwt/express';
+import * as SuperTokens from 'supertokens-node-postgres-ref-jwt/express';
 
 app.options("/like-comment", function (req, res) {
     res.header("Access-Control-Allow-Origin", "some-origin.com");

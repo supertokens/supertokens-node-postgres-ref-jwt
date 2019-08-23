@@ -129,137 +129,133 @@
         "title": "Example code and Demo",
         "sidebar_label": "Example code and Demo"
       },
-      "version-4.0.X/backend/version-4.0.X-api-reference": {
+      "version-1.0.X/backend/version-1.0.X-api-reference": {
         "title": "API Reference",
         "sidebar_label": "API Reference"
       },
-      "version-4.0.X/backend/version-4.0.X-blacklisting": {
-        "title": "Blacklisting",
-        "sidebar_label": "Blacklisting"
-      },
-      "version-4.0.X/backend/version-4.0.X-config": {
-        "title": "Configuration",
-        "sidebar_label": "Configuration"
-      },
-      "version-4.0.X/backend/version-4.0.X-error-handling": {
+      "version-1.0.X/backend/version-1.0.X-error-handling": {
         "title": "Error Handling",
         "sidebar_label": "Error Handling"
       },
-      "version-4.0.X/backend/version-4.0.X-installation": {
+      "version-1.0.X/backend/version-1.0.X-installation": {
         "title": "Backend Installation",
         "sidebar_label": "Installation"
       },
-      "version-4.0.X/backend/version-4.0.X-jwt-key-rotation": {
-        "title": "JWT Signing key rotation",
-        "sidebar_label": "JWT Signing key rotation"
-      },
-      "version-4.0.X/backend/version-4.0.X-session-handle": {
+      "version-1.0.X/backend/version-1.0.X-session-handle": {
         "title": "Session Handle",
         "sidebar_label": "Session Handle"
       },
-      "version-4.0.X/backend/version-4.0.X-token-theft": {
-        "title": "Token Theft Detection",
-        "sidebar_label": "Token Theft Detection"
-      },
-      "version-4.0.X/backend/usage-with-express/version-4.0.X-initialisation": {
+      "version-1.0.X/backend/usage-with-express/version-1.0.X-initialisation": {
         "title": "Initialisation & Imports",
         "sidebar_label": "Init & Imports"
       },
-      "version-4.0.X/backend/usage-with-express/version-4.0.X-manipulating-session-data": {
+      "version-1.0.X/backend/usage-with-express/version-1.0.X-manipulating-session-data": {
         "title": "Manipulating Session Data",
         "sidebar_label": "Manipulating Session Data"
       },
-      "version-4.0.X/backend/usage-with-express/version-4.0.X-refreshing-session": {
+      "version-1.0.X/backend/usage-with-express/version-1.0.X-options-api": {
+        "title": "Handling Options API",
+        "sidebar_label": "Handling Options API"
+      },
+      "version-1.0.X/backend/usage-with-express/version-1.0.X-refreshing-session": {
         "title": "Refreshing Session",
         "sidebar_label": "Refreshing Session"
       },
-      "version-4.0.X/backend/usage-with-express/version-4.0.X-revoking-session": {
+      "version-1.0.X/backend/usage-with-express/version-1.0.X-revoking-session": {
         "title": "Revoking Session",
         "sidebar_label": "Revoking Session"
       },
-      "version-4.0.X/backend/usage-with-express/version-4.0.X-session-object": {
+      "version-1.0.X/backend/usage-with-express/version-1.0.X-session-object": {
         "title": "Session Object",
         "sidebar_label": "Session Object"
       },
-      "version-4.0.X/backend/usage-with-express/version-4.0.X-user-login": {
+      "version-1.0.X/backend/usage-with-express/version-1.0.X-user-login": {
         "title": "User login",
         "sidebar_label": "User login"
       },
-      "version-4.0.X/backend/usage-with-express/version-4.0.X-user-logout": {
+      "version-1.0.X/backend/usage-with-express/version-1.0.X-user-logout": {
         "title": "User Logout",
         "sidebar_label": "User Logout"
       },
-      "version-4.0.X/backend/usage-with-express/version-4.0.X-verify-session": {
+      "version-1.0.X/backend/usage-with-express/version-1.0.X-verify-session": {
         "title": "Verify Session",
         "sidebar_label": "Verify Session"
       },
-      "version-4.0.X/backend/usage-without-express/version-4.0.X-initialisation": {
+      "version-1.0.X/backend/usage-without-express/version-1.0.X-initialisation": {
         "title": "Initialisation & Imports",
         "sidebar_label": "Init & Imports"
       },
-      "version-4.0.X/backend/usage-without-express/version-4.0.X-manipulating-session-data": {
+      "version-1.0.X/backend/usage-without-express/version-1.0.X-manipulating-session-data": {
         "title": "Manipulating Session Data",
         "sidebar_label": "Manipulating Session Data"
       },
-      "version-4.0.X/backend/usage-without-express/version-4.0.X-refreshing-session": {
+      "version-1.0.X/backend/usage-without-express/version-1.0.X-options-api": {
+        "title": "Handling Options API",
+        "sidebar_label": "Handling Options API"
+      },
+      "version-1.0.X/backend/usage-without-express/version-1.0.X-refreshing-session": {
         "title": "Refreshing Session",
         "sidebar_label": "Refreshing Session"
       },
-      "version-4.0.X/backend/usage-without-express/version-4.0.X-revoking-session": {
+      "version-1.0.X/backend/usage-without-express/version-1.0.X-revoking-session": {
         "title": "Revoking Session",
         "sidebar_label": "Revoking Session"
       },
-      "version-4.0.X/backend/usage-without-express/version-4.0.X-user-login": {
+      "version-1.0.X/backend/usage-without-express/version-1.0.X-user-login": {
         "title": "User login",
         "sidebar_label": "User login"
       },
-      "version-4.0.X/backend/usage-without-express/version-4.0.X-user-logout": {
+      "version-1.0.X/backend/usage-without-express/version-1.0.X-user-logout": {
         "title": "User Logout",
         "sidebar_label": "User Logout"
       },
-      "version-4.0.X/backend/usage-without-express/version-4.0.X-verify-session": {
+      "version-1.0.X/backend/usage-without-express/version-1.0.X-verify-session": {
         "title": "Verify Session",
         "sidebar_label": "Verify Session"
       },
-      "version-4.0.X/frontend/version-4.0.X-frontend": {
+      "version-1.0.X/frontend/version-1.0.X-frontend": {
         "title": "Choose your frontend",
         "sidebar_label": "Choose your frontend"
       },
-      "version-4.0.X/how-it-works/version-4.0.X-details": {
+      "version-1.0.X/how-it-works/version-1.0.X-details": {
         "title": "How it works",
         "sidebar_label": "How it works"
       },
-      "version-4.0.X/introduction/version-4.0.X-next-steps": {
-        "title": "Next Steps",
-        "sidebar_label": "Next Steps"
+      "version-1.0.X/introduction/version-1.0.X-general-structure": {
+        "title": "General Flow",
+        "sidebar_label": "General Flow"
       },
-      "version-4.0.X/introduction/version-4.0.X-what-and-why": {
+      "version-1.0.X/introduction/version-1.0.X-what-and-why": {
         "title": "SuperTokens",
-        "sidebar_label": "What and Why"
+        "sidebar_label": "Introduction"
       },
-      "version-4.0.X/limitations/version-4.0.X-limitations": {
+      "version-1.0.X/limitations/version-1.0.X-limitations": {
         "title": "Limitations",
         "sidebar_label": "Limitations"
       },
-      "version-4.0.X/migration/version-4.0.X-backend": {
+      "version-1.0.X/migration/version-1.0.X-backend": {
         "title": "Add SuperTokens to an existing system",
         "sidebar_label": "Backend"
       },
-      "version-4.0.X/migration/version-4.0.X-database": {
+      "version-1.0.X/migration/version-1.0.X-database": {
         "title": "Add SuperTokens to an exisiting Database",
         "sidebar_label": "Database"
       },
-      "version-4.0.X/migration/version-4.0.X-website": {
+      "version-1.0.X/migration/version-1.0.X-website": {
         "title": "Add SuperTokens to an existing website",
         "sidebar_label": "Website"
       },
-      "version-4.0.X/try-it-out/version-4.0.X-docker": {
-        "title": "Docker",
-        "sidebar_label": "Docker"
+      "version-1.0.X/troubleshooting/version-1.0.X-troubleshooting": {
+        "title": "Troubleshooting",
+        "sidebar_label": "Troubleshooting"
       },
-      "version-4.0.X/try-it-out/version-4.0.X-example": {
+      "version-1.0.X/try-it-out/version-1.0.X-example": {
         "title": "Example code and Demo",
         "sidebar_label": "Example code and Demo"
+      },
+      "version-2.0.X/backend/version-2.0.X-installation": {
+        "title": "Backend Installation",
+        "sidebar_label": "Installation"
       }
     },
     "links": {
@@ -273,9 +269,7 @@
       "Frontend": "Frontend",
       "Example Project": "Example Project",
       "Migration": "Migration",
-      "Troubleshooting": "Troubleshooting",
-      "How it works": "How it works",
-      "Limitations": "Limitations"
+      "Troubleshooting": "Troubleshooting"
     }
   },
   "pages-strings": {

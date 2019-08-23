@@ -33,7 +33,7 @@ SuperTokens.refreshSession(refreshToken);
 
 ## Example code
 ```js
-import * as SuperTokens from 'supertokens-node-mysql-ref-jwt';
+import * as SuperTokens from 'supertokens-node-postgres-ref-jwt';
 
 // Should be a POST API
 function refreshSessionAPI() {

@@ -40,7 +40,7 @@ SuperTokens.updateSessionData(sessionHandle, newSessionData);
 
 ## Example code
 ```js
-import * as SuperTokens from 'supertokens-node-mysql-ref-jwt/express';
+import * as SuperTokens from 'supertokens-node-postgres-ref-jwt/express';
 
 async function changeSessionDataAPI(req, res) {
     // first we get the session object
