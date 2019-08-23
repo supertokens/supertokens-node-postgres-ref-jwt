@@ -129,6 +129,34 @@ function addFeedbackButtons() {
     }
 }
 
+function addChat() {
+    let code = `
+    var $zoho = $zoho || {};
+    $zoho.salesiq = $zoho.salesiq || {
+        widgetcode: "efafccf9d6d7d27460a05d4a76361143d076be81031a0c995358044f0cc8b3841a2010ab7b6727677d37b27582c0e9c4",
+        values: {},
+        ready: function() {}
+    };
+    var d = document;
+    s = d.createElement("script");
+    s.type = "text/javascript";
+    s.id = "zsiqscript";
+    s.defer = true;
+    s.src = "https://salesiq.zoho.com/widget";
+    t = d.getElementsByTagName("script")[0];
+    t.parentNode.insertBefore(s, t);
+    `
+
+    let zohodiv = document.createElement("div");
+    zohodiv.id = "zsiqwidget";
+    document.body.appendChild(zohodiv);
+
+    let script = document.createElement("script");
+    script.type = "text/javascript";
+    script.text = code;
+    document.body.appendChild(script);
+}
+
 document.addEventListener("DOMContentLoaded", () => {
     function uncollapseInitial(node, title, currNav) {
         node.classList.remove("hide");
@@ -297,6 +325,7 @@ document.addEventListener("DOMContentLoaded", () => {
     gtag('config', 'UA-143540696-1');
 
     let body = document.getElementsByTagName("body")[0];
+    addChat();
     body.style.display = "block";
 });
 
