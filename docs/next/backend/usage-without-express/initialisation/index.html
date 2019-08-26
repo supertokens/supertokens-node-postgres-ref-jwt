@@ -165,8 +165,8 @@ Below is the type of the <code>config</code> object for your reference:
                 dynamic?: <span class="hljs-built_in">boolean</span>,
                 updateInterval?: <span class="hljs-built_in">number</span>,
                 <span class="hljs-keyword">get</span>?: <span class="hljs-function"><span class="hljs-params">()</span> =&gt;</span> <span class="hljs-built_in">Promise</span>&lt;<span class="hljs-built_in">string</span>&gt;,
-                accessTokenPath?: <span class="hljs-built_in">string</span>
             },
+            accessTokenPath?: <span class="hljs-built_in">string</span>,
             validity?: <span class="hljs-built_in">number</span>,
             blacklisting?: <span class="hljs-built_in">boolean</span>
         },
@@ -174,7 +174,8 @@ Below is the type of the <code>config</code> object for your reference:
             validity?: <span class="hljs-built_in">number</span>,
             removalCronjobInterval?: <span class="hljs-built_in">string</span>,
             renewTokenPath: <span class="hljs-built_in">string</span>
-        }
+        },
+        enableAntiCsrf?: <span class="hljs-built_in">boolean</span>
     },
     logging?: {
         info?: <span class="hljs-function">(<span class="hljs-params">info: <span class="hljs-built_in">any</span></span>) =&gt;</span> <span class="hljs-built_in">void</span>,
