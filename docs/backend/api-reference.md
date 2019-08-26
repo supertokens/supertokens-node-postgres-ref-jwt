@@ -21,7 +21,7 @@ sidebar_label: API Reference
 
 <div class="divider"></div>
 
-## ```createNewSession(res, userId, jwtPayload?, sessionData?)```
+## ```createNewSession(res, userId, jwtPayload?, sessionInfo?)```
 ##### Important
 - Use this only if you are importing from ```supertokens-node-postgres-ref-jwt/express```
 ##### Parameters
@@ -34,7 +34,7 @@ sidebar_label: API Reference
     - Type: ```object | array | number | string | boolean | undefined | null``` 
     - This information is stored in the JWT sent to the frontend, so <span class="highlighted-text">it should not contain any sensitive information.</span>
     - Once set, it cannot be changed during the lifetime of a session.
-- ```sessionData``` (Optional)
+- ```sessionInfo``` (Optional)
     - Type: ```object | array | number | string | boolean | undefined | null``` 
     - This information is stored only in your database, so <span class="highlighted-text">it can contain sensitive information if needed.</span>
     - This can be freely modified during the lifetime of a session. But we do not synchronize calls to modify this - you must take care of locks yourself.
@@ -127,7 +127,7 @@ sidebar_label: API Reference
 
 <div class="divider"></div>
 
-## ```session.getSessionData()```
+## ```session.getSessionInfo()```
 ##### Important
 - Use this only if you are importing from ```supertokens-node-postgres-ref-jwt/express```
 ##### Parameters
@@ -143,15 +143,18 @@ sidebar_label: API Reference
     - This is thrown if the current session was revoked or has expired.
     - When this is thrown, all the relevant auth cookies are cleared by this function call, so you can redirect the user to a login page.
 ##### Additional information
-- It does nothing to synchronize with other ```getSessionData``` or ```updateSessionData``` calls on this session. So it is up to you to handle various race conditions depending on your use case. 
+- It does nothing to synchronize with other ```getSessionInfo``` or ```updateSessionInfo``` calls on this session. So it is up to you to handle various race conditions depending on your use case. 
+
+## ```session.getSessionData()``` **(deprecated)**
+- This has the same semantics as session.getSessionInfo(), please use that instead.
 
 <div class="divider"></div>
 
-## ```session.updateSessionData(data)```
+## ```session.updateSessionInfo(info)```
 ##### Important
 - Use this only if you are importing from ```supertokens-node-postgres-ref-jwt/express```
 ##### Parameters
-- ```data```
+- ```info```
     - Type: ```object | array | number | string | boolean | undefined | null``` 
 ##### Returns
 - ```Promise<void>```
@@ -164,7 +167,10 @@ sidebar_label: API Reference
     - This is thrown if the current session was revoked or has expired.
     - When this is thrown, all the relevant auth cookies are cleared by this function call, so you can redirect the user to a login page.
 ##### Additional information
-- It does nothing to synchronize with other ```getSessionData``` or ```updateSessionData``` calls on this session. So it is up to you to handle various race conditions depending on your use case. 
+- It does nothing to synchronize with other ```getSessionInfo``` or ```updateSessionInfo``` calls on this session. So it is up to you to handle various race conditions depending on your use case. 
+
+## ```session.updateSessionData(info)``` **(deprecated)**
+- This has the same semantics as session.updateSessionInfo(info), please use that instead.
 
 <div class="divider"></div>
 
@@ -197,7 +203,7 @@ sidebar_label: API Reference
 
 <div class="divider"></div>
 
-## ```getSessionData(sessionHandle)```
+## ```getSessionInfo(sessionHandle)```
 ##### Parameters
 - ```sessionHandle```
     - Type: ```string```
@@ -213,16 +219,19 @@ sidebar_label: API Reference
     - This is thrown if the current session was revoked or has expired.
     - You must handle auth cookie management yourself here (if relevant). Please see the Error Handling section for more details.
 ##### Additional information
-- It does nothing to synchronize with other getSessionData or updateSessionData calls on this ```sessionHandle```. So it is up to you to handle various race conditions depending on your use case.
+- It does nothing to synchronize with other getSessionInfo or updateSessionInfo calls on this ```sessionHandle```. So it is up to you to handle various race conditions depending on your use case.
+
+## ```getSessionData(sessionHandle)``` **(deprecated)**
+- This has the same semantics as getSessionInfo(sessionHandle), please use that instead.
 
 <div class="divider"></div>
 
-## ```updateSessionData(sessionHandle, data)```
+## ```updateSessionInfo(sessionHandle, info)```
 ##### Parameters
 - ```sessionHandle```
     - Type: ```string```
     - Identifies a unique session in your system. Please see the Session Handle section for more information.
-- ```data```
+- ```info```
     - Type: ```object | array | number | string | boolean | undefined | null``` 
 ##### Returns
 - ```Promise<void>```
@@ -235,7 +244,10 @@ sidebar_label: API Reference
     - This is thrown if the current session was revoked or has expired.
     - You must handle auth cookie management yourself here (if relevant). Please see the Error Handling section for more details.
 ##### Additional information
-- It does nothing to synchronize with other getSessionData or updateSessionData calls on this ```sessionHandle```. So it is up to you to handle various race conditions depending on your use case.
+- It does nothing to synchronize with other getSessionInfo or updateSessionInfo calls on this ```sessionHandle```. So it is up to you to handle various race conditions depending on your use case.
+
+## ```updateSessionData(sessionHandle, info)``` **(deprecated)**
+- This has the same semantics as updateSessionInfo(sessionHandle, info), please use that instead.
 
 <div class="divider"></div>
 
@@ -274,7 +286,7 @@ sidebar_label: API Reference
 
 <div class="divider"></div>
 
-## ```createNewSession(userId, jwtPayload?, sessionData?)```
+## ```createNewSession(userId, jwtPayload?, sessionInfo?)```
 ##### Parameters
 - ```userId```
     - Type: ```string | number```
@@ -283,7 +295,7 @@ sidebar_label: API Reference
     - Type: ```object | array | number | string | boolean | undefined | null``` 
     - This information is stored in the JWT sent to the frontend, so <span class="highlighted-text">it should not contain any sensitive information.</span>
     - Once set, it cannot be changed during the lifetime of a session.
-- ```sessionData``` (Optional)
+- ```sessionInfo``` (Optional)
     - Type: ```object | array | number | string | boolean | undefined | null``` 
     - This information is stored only in your database, so <span class="highlighted-text">it can contain sensitive information if needed.</span>
     - This can be freely modified during the lifetime of a session. But we do not synchronize calls to modify this - you must take care of locks yourself.

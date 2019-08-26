@@ -33,17 +33,17 @@ session.revokeSession()
 - This function deletes the session from the database and clears relevant auth cookies
 - If using ```blacklisting```, this will immediately invalidate the ```JWT``` access token. If not, the user may still be able to continue using their access token to call authenticated APIs (until it expires).
 
-## Call the ```getSessionData``` function: [API Reference](../api-reference#sessiongetsessiondata)
+## Call the ```getSessionInfo``` function: [API Reference](../api-reference#sessiongetsessioninfo)
 ```js
-session.getSessionData()
+session.getSessionInfo()
 ```
 - This function requires a database call each time it's called.
 
-## Call the ```updateSessionData``` function: [API Reference](../api-reference#sessionupdatesessiondatadata)
+## Call the ```updateSessionInfo``` function: [API Reference](../api-reference#sessionupdatesessioninfoinfo)
 ```js
-session.updateSessionData(data)
+session.updateSessionInfo(info)
 ```
-- This function overrides the current data stored for this session.
+- This function overrides the current session info stored for this session.
 - This function requires a database call each time it's called.
 
 <div class="divider"></div>
@@ -59,11 +59,11 @@ async function testSessionAPI(req: express.Request, res: express.Response) {
     let userId = session.getUserId();
     let getJWTPayload = session.getJWTPayload();
 
-    // update session data example
+    // update session info example
     try {
-        let sessionData = await session.getSessionData();
-        let newSessionData = {...sessionData, joke: "Knock, knock"};
-        await session.updateSessionData(newSessionData);
+        let sessionInfo = await session.getSessionInfo();
+        let newSessionInfo = {...sessionInfo, joke: "Knock, knock"};
+        await session.updateSessionInfo(newSessionInfo);
     } catch (err) {
         if (SuperTokens.Error.isErrorFromAuth(err)) {
             if (err.errType === SuperTokens.Error.GENERAL_ERROR) {

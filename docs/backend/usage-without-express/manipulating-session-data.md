@@ -9,23 +9,23 @@ sidebar_label: Manipulating Session Data
     - Once set, it cannot be changed further.
     - Should not contain any sensitive information since this is sent over to the client.
     - This is returned on a successful response of the ```getSession``` function call.
-- ```sessionData```
+- ```sessionInfo```
     - This can be changed anytime during the lifetime of a session.
     - Can contain sensitive information since this is only stored in your database.
     - Requires a database call to read or write this information.
     - Reading or writing of this is not synchronized per session.
 
-## Call the ```getSessionData``` function: [API Reference](../api-reference#getsessiondatasessionhandle)
+## Call the ```getSessionInfo``` function: [API Reference](../api-reference#getsessioninfosessionhandle)
 ```js
 SuperTokens.getSessionData(sessionHandle);
 ```
 - This function requires a database call each time it's called.
 
-## Call the ```updateSessionData``` function: [API Reference](../api-reference#updatesessiondatasessionhandle-data)
+## Call the ```updateSessionInfo``` function: [API Reference](../api-reference#updatesessioninfosessionhandle-info)
 ```js
-SuperTokens.updateSessionData(sessionHandle, newSessionData);
+SuperTokens.updateSessionInfo(sessionHandle, newSessionInfo);
 ```
-- This function overrides the current data stored for this ```sessionHandle```.
+- This function overrides the current session info stored for this ```sessionHandle```.
 - This function requires a database call each time it's called.
 
 <div class="divider"></div>
@@ -34,7 +34,7 @@ SuperTokens.updateSessionData(sessionHandle, newSessionData);
 ```js
 import * as SuperTokens from 'supertokens-node-postgres-ref-jwt';
 
-async function changeSessionDataAPI() {
+async function changeSessionInfoAPI() {
     let session;
     try {
         let accessToken = //...
@@ -50,11 +50,11 @@ async function changeSessionDataAPI() {
         // get JWT payload
         let jwtPayload = session.jwtPayload;
 
-        // get session data from database
-        let sessionData = await SuperTokens.getSessionData(session.handle);
+        // get session info from database
+        let sessionInfo = await SuperTokens.getSessionInfo(session.handle);
 
-        // overwrite current session data.
-        await SuperTokens.updateSessionData(session.handle, {comment: "new session data"});
+        // overwrite current session info.
+        await SuperTokens.updateSessionInfo(session.handle, {comment: "new session info"});
         // success!
     } catch (err) {
         if (SuperTokens.Error.isErrorFromAuth(err)) {
