@@ -5,9 +5,9 @@ sidebar_label: User login
 ---
 To login a user, you must first authenticate their credentials and then create a session for them so that they can access your APIs.
 
-## Call the ```createNewSession``` function: [API Reference](../api-reference#createnewsessionuserid-jwtpayload-sessiondata)
+## Call the ```createNewSession``` function: [API Reference](../api-reference#createnewsessionuserid-jwtpayload-sessioninfo)
 ```js
-SuperTokens.createNewSession(userId, jwtPayload, sessionData);
+SuperTokens.createNewSession(userId, jwtPayload, sessionInfo);
 ```
 - Call this function after you have verified the user credentials.
 - ```userId``` must be of type ```string``` or ```number```.
@@ -49,8 +49,8 @@ function loginAPI() {
     // check for user credentials..
     let userId = "User1";
     let jwtPayload = {userId, name: "spooky action at a distance"};
-    let sessionData = {awesomeThings: ["programming", "javascript", "SuperTokens"]};
-    SuperTokens.createNewSession(userId, jwtPayload, sessionData).then(session => {
+    let sessionInfo = {awesomeThings: ["programming", "javascript", "SuperTokens"]};
+    SuperTokens.createNewSession(userId, jwtPayload, sessionInfo).then(session => {
 
         let accessToken = session.accessToken;
         setCookie("sAccessToken", accessToken.value, "example.com", true, true, 

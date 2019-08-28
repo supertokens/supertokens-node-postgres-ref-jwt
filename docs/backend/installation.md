@@ -14,7 +14,7 @@ Note: We recommend that you create a new database as it would become easier for 
 
 ### 2. Install SuperTokens package
 ```js
-npm i --save supertokens-node-postgres-ref-jwt@^2.0.0
+npm i --save supertokens-node-postgres-ref-jwt@^2.1.0
 ```
 
 <div class="divider"></div>

@@ -119,8 +119,8 @@ let config = {
                 dynamic?: boolean,
                 updateInterval?: number,
                 get?: () => Promise<string>,
-                accessTokenPath?: string
             },
+            accessTokenPath?: string,
             validity?: number,
             blacklisting?: boolean
         },
@@ -128,7 +128,8 @@ let config = {
             validity?: number,
             removalCronjobInterval?: string,
             renewTokenPath: string
-        }
+        },
+        enableAntiCsrf?: boolean
     },
     logging?: {
         info?: (info: any) => void,
