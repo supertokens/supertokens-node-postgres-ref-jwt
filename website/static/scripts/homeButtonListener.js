@@ -6,9 +6,16 @@ let viewAppearedEventType = "View Appeared"
 let analyticsMessageType = "analytics";
 let webSource = "supertokens-web-source";
 let iframeId = "st-timer-frame";
-let blockedIp = [
-    "49.36.0.143",
+const blockedUserIds = [
+    "ST1566567977207yfvepU", // r
+    "ST1566568839844eyRqkU", // b
+    "ST1566799601658ljXWFU", // j
+    "ST1566566094822uKpOuU", // n
+    "ST1566558830508GAYlhU", // n 0.0.0.0
+    "ST1566395222245ZLWomU", // n localhost
+    "ST1566999771277eNuDcU", // a
 ]
+
 
 async function sendFeedback(uuid, url, happy) {
     try {
@@ -167,7 +174,7 @@ function feedbackSelected(happy) {
 
 function goToGithub() {
     window.open(
-        'https://github.com/supertokens/supertokens-node-postgres-ref-jwt',
+        getGithubUrl(),
         '_blank'
     );
 }
@@ -256,44 +263,37 @@ function addFeedbackButtons() {
 }
 
 function addChat() {
-    fetch("https://api-jdhry57disoejch.qually.com/0/supertokens/ip", {
-        method: "GET",
-        headers: {
-            'Content-Type': 'application/json',
-            "api-version": "0",
-        },
-    })
-        .then(response => response.json())
-        .then(response => {
-            let ip = response.ip;
-            if ( blockedIp.indexOf(ip) === -1 ) {
-                let code = `
-                var $zoho = $zoho || {};
-                $zoho.salesiq = $zoho.salesiq || {
-                    widgetcode: "efafccf9d6d7d27460a05d4a76361143d076be81031a0c995358044f0cc8b3841a2010ab7b6727677d37b27582c0e9c4",
-                    values: {},
-                    ready: function() {}
-                };
-                var d = document;
-                s = d.createElement("script");
-                s.type = "text/javascript";
-                s.id = "zsiqscript";
-                s.defer = true;
-                s.src = "https://salesiq.zoho.com/widget";
-                t = d.getElementsByTagName("script")[0];
-                t.parentNode.insertBefore(s, t);
-                `
+    let code = `
+    var $zoho = $zoho || {};
+    $zoho.salesiq = $zoho.salesiq || {
+        widgetcode: "efafccf9d6d7d27460a05d4a76361143d076be81031a0c995358044f0cc8b3841a2010ab7b6727677d37b27582c0e9c4",
+        values: {},
+        ready: function() {}
+    };
+    var d = document;
+    s = d.createElement("script");
+    s.type = "text/javascript";
+    s.id = "zsiqscript";
+    s.defer = true;
+    s.src = "https://salesiq.zoho.com/widget";
+    t = d.getElementsByTagName("script")[0];
+    t.parentNode.insertBefore(s, t);
+    `
 
-                let zohodiv = document.createElement("div");
-                zohodiv.id = "zsiqwidget";
-                document.body.appendChild(zohodiv);
+    let zohodiv = document.createElement("div");
+    zohodiv.id = "zsiqwidget";
+    document.body.appendChild(zohodiv);
 
-                let script = document.createElement("script");
-                script.type = "text/javascript";
-                script.text = code;
-                document.body.appendChild(script);
-            }
-        });
+    let script = document.createElement("script");
+    script.type = "text/javascript";
+    script.text = code;
+    document.body.appendChild(script);
+}
+
+function addChatIfRequired() {
+    if ( blockedUserIds.indexOf(userIdFromFrame) === -1 && !window.location.origin.includes("test.supertokens.io") ) {
+        addChat();
+    }
 }
 
 function sendWindowOriginToFrame(){
@@ -304,16 +304,16 @@ function sendWindowOriginToFrame(){
             origin: window.location.origin,
             pageUrl: window.location.href,
             messageType: "handshake",
-        }, "https://supertokens.io");
+        }, iframeOrigin);
     }
 }
 
 function addIframe() {
     let iframe = document.createElement("iframe");
-    iframe.id = "st-timer-frame";
+    iframe.id = iframeId;
     iframe.width = "0px";
     iframe.height = "0px";
-    iframe.src = "https://supertokens.io/utils/iframe.html";
+    iframe.src = `${iframeOrigin}/utils/iframe.html`;
     iframe.style.borderWidth = "0px";
     iframe.onload = sendWindowOriginToFrame
     document.body.appendChild(iframe);
@@ -489,10 +489,9 @@ document.addEventListener("DOMContentLoaded", () => {
     gtag('js', new Date());
 
     gtag('config', 'UA-143540696-1');
-
+    
     let body = document.getElementsByTagName("body")[0];
     addIframe();
-    addChat();
     body.style.display = "block";
 });
 
@@ -500,6 +499,7 @@ window.addEventListener("message", (e) => {
     if ( typeof e.data === "object" && e.data.source === "st-timer" ) {
         if ( e.data.userId !== undefined ) {
             userIdFromFrame = e.data.userId;
+            addChatIfRequired();
         }
 
         if ( e.data.sessionId !== undefined ) {
