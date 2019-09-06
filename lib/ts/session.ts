@@ -1,3 +1,5 @@
+import * as pg from "pg";
+
 import { createNewAccessToken, getInfoFromAccessToken, init as accessTokenInit } from "./accessToken";
 import Config from "./config";
 import CronJob from "./cronjobs";
@@ -16,7 +18,6 @@ import { getConnection, Postgres } from "./helpers/postgres";
 import { TypeInputConfig } from "./helpers/types";
 import { assertUserIdHasCorrectType, generateSessionHandle, generateUUID, hash } from "./helpers/utils";
 import { createNewRefreshToken, getInfoFromRefreshToken, init as refreshTokenInit } from "./refreshToken";
-import * as pg from "pg";
 
 /**
  * @description: to be called by user of the library. This initiates all the modules necessary for this library to work.
@@ -236,8 +237,6 @@ export async function refreshSession(
     newIdRefreshToken: { value: string; expires: number };
     newAntiCsrfToken: string | undefined;
 }> {
-    let config = Config.get();
-
     // here we decrypt and verify the refresh token. If this fails, it means either the key has changed. Or that someone is sending a "fake" refresh token.
     let refreshTokenInfo = await getInfoFromRefreshToken(refreshToken);
 
