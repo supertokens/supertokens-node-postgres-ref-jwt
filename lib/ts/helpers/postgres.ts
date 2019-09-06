@@ -25,7 +25,7 @@ export class Postgres {
             password: config.postgres.password,
             database: config.postgres.database
         });
-        this.pool.on("error", (err, client) => {
+        this.pool.on("error", err => {
             // we should log this event.
             generateError(AuthError.GENERAL_ERROR, err);
         });

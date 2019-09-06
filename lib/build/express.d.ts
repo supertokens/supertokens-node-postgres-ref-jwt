@@ -1,6 +1,6 @@
 import * as express from "express";
-import { TypeInputConfig } from "./helpers/types";
 import * as pg from "pg";
+import { TypeInputConfig } from "./helpers/types";
 export { AuthError as Error } from "./error";
 /**
  * @description: to be called by user of the library. This initiates all the modules necessary for this library to work.

@@ -6,6 +6,10 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+## [2.1.1] - 2019-00-06
+### Changed
+- Removes unused variables
+
 ## [2.1.0] - 2019-08-20
 ### Added
 - For with express implementation: Session.getSessionInfo, Session.updateSessionInfo

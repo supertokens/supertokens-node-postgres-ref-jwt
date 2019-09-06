@@ -16,7 +16,6 @@ import {
  * @description: called during library init. Should be called after initing Config and Postgres.
  */
 export async function init() {
-    let config = Config.get();
     await Key.init();
 }
 

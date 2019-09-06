@@ -1,4 +1,5 @@
 import * as express from "express";
+import * as pg from "pg";
 
 import Config from "./config";
 import {
@@ -17,7 +18,6 @@ import { AuthError, generateError } from "./error";
 import { TypeInputConfig } from "./helpers/types";
 import * as SessionFunctions from "./session";
 
-import * as pg from "pg";
 export { AuthError as Error } from "./error";
 
 /**
@@ -109,8 +109,6 @@ export async function getSession(
  * @sideEffects may remove cookies, or change the accessToken and refreshToken.
  */
 export async function refreshSession(req: express.Request, res: express.Response): Promise<Session> {
-    let config = Config.get();
-
     let refreshToken = getRefreshTokenFromCookie(req);
     let idRefreshToken = getIdRefreshTokenFromCookie(req);
     if (refreshToken === undefined || idRefreshToken === undefined) {
