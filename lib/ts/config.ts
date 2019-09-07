@@ -1,6 +1,7 @@
 import { AuthError, generateError } from "./error";
 import { TypeConfig, TypeGetSigningKeyUserFunction, TypeInputConfig } from "./helpers/types";
 import { sanitizeBooleanInput, sanitizeNumberInput, sanitizeStringInput } from "./helpers/utils";
+import * as pg from "pg";
 
 /**
  * @class Config
@@ -59,21 +60,14 @@ const validateAndNormalise = (config: any): TypeInputConfig => {
         throw generateError(AuthError.GENERAL_ERROR, new Error("passed config is not an object"), false);
     }
     const postgresInputConfig = config.postgres;
-    if (typeof postgresInputConfig !== "object") {
+    if (typeof postgresInputConfig !== "object" || typeof postgresInputConfig.config !== "object") {
         throw generateError(
             AuthError.GENERAL_ERROR,
-            new Error("postgres config not passed. user, password and database are required"),
+            new Error("postgres config not passed. database is required"),
             false
         );
     }
-    const host = sanitizeStringInput(postgresInputConfig.host);
-    const port = sanitizeNumberInput(postgresInputConfig.port);
-    const user = sanitizeStringInput(postgresInputConfig.user);
-    if (user === undefined) {
-        throw generateError(AuthError.GENERAL_ERROR, new Error("postgres config error. user not passed"), false);
-    }
-    const password = sanitizeStringInput(postgresInputConfig.password);
-    const database = sanitizeStringInput(postgresInputConfig.database);
+    const database = sanitizeStringInput(postgresInputConfig.config.database);
     if (database === undefined) {
         throw generateError(AuthError.GENERAL_ERROR, new Error("postgres config error. database not passed"), false);
     }
@@ -93,11 +87,7 @@ const validateAndNormalise = (config: any): TypeInputConfig => {
         };
     }
     const postgres = {
-        host,
-        port,
-        user,
-        password,
-        database,
+        config: postgresInputConfig.config,
         tables
     };
     let tokensInputConfig = config.tokens;
@@ -287,11 +277,7 @@ const setDefaults = (config: TypeInputConfig): TypeConfig => {
     // TODO: change this style of a || b to a === undefined ? b : a
     return {
         postgres: {
-            host: config.postgres.host || defaultConfig.postgres.host,
-            port: config.postgres.port || defaultConfig.postgres.port,
-            user: config.postgres.user,
-            password: config.postgres.password,
-            database: config.postgres.database,
+            config: { ...defaultConfig.postgres.config, ...config.postgres.config },
             tables:
                 config.postgres.tables === undefined
                     ? defaultConfig.postgres.tables
@@ -382,8 +368,10 @@ const setDefaults = (config: TypeInputConfig): TypeConfig => {
 
 const defaultConfig = {
     postgres: {
-        host: "localhost",
-        port: 5432,
+        config: {
+            host: "localhost",
+            port: 5432
+        },
         tables: {
             signingKey: "signing_key",
             refreshTokens: "refresh_token"

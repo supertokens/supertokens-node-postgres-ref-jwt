@@ -18,13 +18,7 @@ export class Postgres {
             this.pool = clientPool;
             return;
         }
-        this.pool = new Pool({
-            host: config.postgres.host,
-            port: config.postgres.port,
-            user: config.postgres.user,
-            password: config.postgres.password,
-            database: config.postgres.database
-        });
+        this.pool = new Pool(config.postgres.config);
         this.pool.on("error", err => {
             // we should log this event.
             generateError(AuthError.GENERAL_ERROR, err);

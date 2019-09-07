@@ -5,7 +5,6 @@ const config = require("./config");
 const { getNumberOfRowsInRefreshTokensTable, removeOldSessions } = require("../lib/build/helpers/dbQueries");
 const { printPath } = require("./utils");
 const errors = require("../lib/build/error");
-const { getConnection } = require("../lib/build/helpers/postgres");
 
 describe(`Session: ${printPath("[test/session.test.js]")}`, function() {
     it("testing non-string userId (number)", async function() {

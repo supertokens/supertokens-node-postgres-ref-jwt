@@ -1,10 +1,7 @@
+import * as pg from "pg";
 export declare type TypeInputConfig = {
     postgres: {
-        host?: string;
-        port?: number;
-        user: string;
-        password?: string;
-        database: string;
+        config?: pg.PoolConfig;
         tables?: {
             signingKey?: string;
             refreshTokens?: string;
@@ -39,11 +36,7 @@ export declare type TypeInputConfig = {
 };
 export declare type TypeConfig = {
     postgres: {
-        host: string;
-        port: number;
-        user: string;
-        password?: string;
-        database: string;
+        config: pg.PoolConfig;
         tables: {
             signingKey: string;
             refreshTokens: string;

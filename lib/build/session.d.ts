@@ -1,5 +1,5 @@
-import * as pg from 'pg';
-import { TypeInputConfig } from './helpers/types';
+import * as pg from "pg";
+import { TypeInputConfig } from "./helpers/types";
 /**
  * @description: to be called by user of the library. This initiates all the modules necessary for this library to work.
  * Please create a database in your postgres instance before calling this function
