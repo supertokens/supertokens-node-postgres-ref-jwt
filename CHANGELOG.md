@@ -6,7 +6,11 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
-## [2.1.1] - 2019-00-06
+## [3.0.0] - 2019-09-07
+### Changed
+- passing of postgres config. user can now pass all configs as stated in node-postgres (pg) library. The user should pass config inside the config parameter of postgres configuration.
+
+## [2.1.1] - 2019-09-06
 ### Changed
 - Removes unused variables
 
