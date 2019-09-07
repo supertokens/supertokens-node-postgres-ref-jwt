@@ -20,12 +20,10 @@ The config object has the following parameters (<span class="highlighted-text">T
 ```ts
 let config = {
     postgres: {
-    //  host: "localhost",  // location of your PostgreSQL instance.
-    //  port: 5432,
-        user: "postgres", // Change this to whichever user you want
-    //  password: undefined, // pass PostgreSQL user password here. Example: "somepassword"
-    //  connectionLimit: 50,
-        database: "auth_session", // change this to your database name
+        config: {   // Can put other config params that will be directly passed to node-postgres package, specifically when creating a Pool. 
+            user: "postgres",
+            database: "auth_session"
+        },
     //  tables: {
     //      signingKey: "signing_key", // name of the table to store secrets.
     //      refreshTokens: "refresh_token" // name of the table to store session information.
@@ -71,8 +69,10 @@ let app = express();
 // minimum config
 let config = {
     postgres: {
-        user: "postgres",
-        database: "auth_session",
+        config: {
+            user: "postgres",
+            database: "auth_session",
+        }
     },
     tokens: {
         refreshToken: {
@@ -103,12 +103,7 @@ Below is the type of the <code>config</code> object for your reference:
 // "?" means that parameter is optional
 let config = {
     postgres: {
-        host?: string,
-        port?: number,
-        user: string,
-        password?: string,
-        connectionLimit?: number,
-        database: string,
+        config: pg.PoolConfig,
         tables?: {
             signingKey?: string,
             refreshTokens?: string

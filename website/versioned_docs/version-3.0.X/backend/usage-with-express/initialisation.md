@@ -1,23 +1,20 @@
 ---
-id: initialisation
+id: version-3.0.X-initialisation
 title: Initialisation & Imports
 sidebar_label: Init & Imports
+original_id: initialisation
 ---
 
 ## Importing
 ```js
-import * as SuperTokens from 'supertokens-node-postgres-ref-jwt';
+import * as SuperTokens from 'supertokens-node-postgres-ref-jwt/express';
 ```
 
 ## Call the ```init``` function: [API Reference](../api-reference#initconfig)
 ```js
 SuperTokens.init(config);
 ```
-- Call this function somewhere at the start of your node process.
-
-<div class="specialNote">
-We highly recommend that you create a wrapper around the provided APIs. This will make it much easier for you to do error handling in your API logic. An example express wrapper can be found here: <a href="https://github.com/supertokens/supertokens-node-postgres-ref-jwt/blob/master/lib/ts/express.ts">Express wrapper</a>
-</div>
+- Call this function in the same place where you initialize your express server.
 
 ## Configurations
 The config object has the following parameters (<span class="highlighted-text">The commented out parameters are optional</span>):
@@ -65,8 +62,10 @@ let config = {
 <div class="divider"></div>
 
 ## Example code
-```js
-import * as SuperTokens from 'supertokens-node-postgres-ref-jwt';
+```ts
+import * as SuperTokens from 'supertokens-node-postgres-ref-jwt/express';
+
+let app = express();
 
 // minimum config
 let config = {
@@ -87,7 +86,10 @@ let config = {
 };
 
 SuperTokens.init(config).then(() => {
-    // setup your API routes and start your server.
+    app.get(...); // Setup your API routes here.
+    app.post(...); // Setup your API routes here.
+    let server = http.createServer(app);
+    server.listen(8080, "0.0.0.0");
 }).catch((err: any) => {
     console.log("Oops!! Something went wrong :(", err);
 });

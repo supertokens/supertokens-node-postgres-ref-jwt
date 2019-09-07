@@ -1,7 +1,8 @@
 ---
-id: initialisation
+id: version-3.0.X-initialisation
 title: Initialisation & Imports
 sidebar_label: Init & Imports
+original_id: initialisation
 ---
 
 ## Importing
