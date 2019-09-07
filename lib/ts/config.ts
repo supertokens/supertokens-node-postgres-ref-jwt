@@ -63,9 +63,13 @@ const validateAndNormalise = (config: any): TypeInputConfig => {
     if (typeof postgresInputConfig !== "object" || typeof postgresInputConfig.config !== "object") {
         throw generateError(
             AuthError.GENERAL_ERROR,
-            new Error("postgres config not passed. database is required"),
+            new Error("postgres config not passed. user and database are required"),
             false
         );
+    }
+    const user = sanitizeStringInput(postgresInputConfig.config.user);
+    if (user === undefined) {
+        throw generateError(AuthError.GENERAL_ERROR, new Error("postgres config error. user not passed"), false);
     }
     const database = sanitizeStringInput(postgresInputConfig.config.database);
     if (database === undefined) {

@@ -2,7 +2,7 @@ import * as pg from "pg";
 
 export type TypeInputConfig = {
     postgres: {
-        config?: pg.PoolConfig;
+        config: pg.PoolConfig;
         tables?: {
             signingKey?: string;
             refreshTokens?: string;
