@@ -1,7 +1,6 @@
 import { AuthError, generateError } from "./error";
 import { TypeConfig, TypeGetSigningKeyUserFunction, TypeInputConfig } from "./helpers/types";
 import { sanitizeBooleanInput, sanitizeNumberInput, sanitizeStringInput } from "./helpers/utils";
-import * as pg from "pg";
 
 /**
  * @class Config

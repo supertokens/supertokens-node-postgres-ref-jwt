@@ -9,7 +9,9 @@
         "noImplicitAny": true,
         "sourceMap": true,
         "noImplicitThis": true,
-        "lib": ["ES2017"]
+        "lib": ["ES2017"],
+        "noUnusedLocals": true,
+        "noUnusedParameters": true
     },
     "include": [
         "ts/**/*"
