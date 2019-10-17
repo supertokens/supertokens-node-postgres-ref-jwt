@@ -29,6 +29,10 @@
     body {
         display: none;
     }
+
+    .docsNavContainer {
+        flex: 0 0 290px
+    }
 }
 
 @media only screen and (min-width: 1400px) {
@@ -311,6 +315,46 @@ a.highlighted-text {
     padding-top: 16px;
     padding-bottom: 16px;
   }
+
+  .schedule-call-modal {
+    box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    -webkit-box-sizing: border-box;
+    padding-left: 20px;
+    padding-right: 20px;
+    padding-top: 10px;
+    padding-bottom: 20px;
+    width: 20vw;
+    min-width: 300px;
+    background-color: #444444;
+    border-top-left-radius: 6px;
+    border-top-right-radius: 6px;
+    position: fixed;
+    bottom: 0px;
+    left: 30px;
+    z-index: 999;
+    transform: translateY(80%);
+}
+
+.schedule-call-modal-open {
+  -webkit-transition: 0.25s;
+  -moz-transition: 0.25s;
+  -ms-transition: 0.25s;
+  -o-transition: 0.25s;
+  transition: 0.25s;
+  transform: translateY(0);
+}
+
+.schedule-call-child {
+  box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  -webkit-box-sizing: border-box;
+  width: 100%;
+}
+
+.wrapper {
+    margin: 0px !important;
+}
 
 /* ZOHO CONTENT */
 
