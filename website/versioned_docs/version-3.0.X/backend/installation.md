@@ -1,7 +1,8 @@
 ---
-id: installation
+id: version-3.0.X-installation
 title: Backend Installation
 sidebar_label: Installation
+original_id: installation
 ---
 
 ### 1. Create a database in PostgreSQL that will store session related information
