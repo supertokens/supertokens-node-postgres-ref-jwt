@@ -356,6 +356,72 @@ a.highlighted-text {
     margin: 0px !important;
 }
 
+.radio-item {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    position: relative;
+    margin-top: 10px;
+}
+
+.radio-item input[type=radio] {
+    display: none;
+}
+
+.radio-item label {
+    color: #dddddd;
+    display: flex;
+    align-items: center;
+    font-size: 16px;
+}
+
+.radio-item label:before {
+    content: "";
+    display: flex;
+    position: relative;
+    width: 18px;
+    height: 18px;
+    margin-right: 12px;
+    border-radius: 100%;
+    border: 1px solid #ffffff;
+    background-color: transparent;
+}
+
+.radio-item input[type=radio]:checked + label:after {
+    border-radius: 100%;
+    width: 12px;
+    height: 12px;
+    position: absolute;
+    left: 4px;
+    top: 6px;
+    content: "";
+    display: flex;
+    background: #ffffff;
+    animation: fadeIn 0.35s ease-in-out;
+}
+
+.schedule-call-email-disabled {
+    background-color: #444444;
+    opacity: 0.6;
+    cursor: pointer;
+    color: rgba(221,221,221,0.6)
+}
+
+.schedule-call-email-enabled {
+    background-color: #007bff;
+    cursor: pointer;
+    color: #dddddd;
+}
+
+@keyframes fadeIn {
+    0% {opacity: 0;};
+    100% {opacity: 1;};
+}
+
+#docs-schedule-call-form-content input[type=text]::placeholder {
+    color: rgba(221,221,221,0.5);
+}
+
 /* ZOHO CONTENT */
 
 .zsiq_theme1 div.zsiq_cnt {
