@@ -32,7 +32,6 @@ The library has the following features:
 
 ## Free one-to-one implementation support
 - Schedule a short call with us on https://calendly.com/supertokens-rishabh.
-- Whatsapp us on +91-7021000012 saying “SuperTokens”.
 
 ## Index
 - [Documentation](https://github.com/supertokens/supertokens-node-postgres-ref-jwt#documentation)
