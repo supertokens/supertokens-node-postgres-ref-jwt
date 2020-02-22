@@ -16,7 +16,7 @@ export declare function attachRefreshTokenToCookie(res: express.Response, token:
 /**
  * @param expiry: must be time in milliseconds from epoch time.
  */
-export declare function attachIdRefreshTokenToCookie(res: express.Response, token: string, expiry: number): void;
+export declare function setIdRefreshTokenInHeaderAndCookie(res: express.Response, token: string, expiry: number): void;
 export declare function getAccessTokenFromCookie(req: express.Request): string | undefined;
 export declare function getRefreshTokenFromCookie(req: express.Request): string | undefined;
 export declare function getIdRefreshTokenFromCookie(req: express.Request): string | undefined;

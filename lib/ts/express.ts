@@ -4,7 +4,7 @@ import * as pg from "pg";
 import Config from "./config";
 import {
     attachAccessTokenToCookie,
-    attachIdRefreshTokenToCookie,
+    setIdRefreshTokenInHeaderAndCookie,
     attachRefreshTokenToCookie,
     clearSessionFromCookie,
     getAccessTokenFromCookie,
@@ -48,7 +48,7 @@ export async function createNewSession(
     // attach tokens to cookies
     attachAccessTokenToCookie(res, response.accessToken.value, response.accessToken.expires);
     attachRefreshTokenToCookie(res, response.refreshToken.value, response.refreshToken.expires);
-    attachIdRefreshTokenToCookie(res, response.idRefreshToken.value, response.idRefreshToken.expires);
+    setIdRefreshTokenInHeaderAndCookie(res, response.idRefreshToken.value, response.idRefreshToken.expires);
     setAntiCsrfTokenInHeadersIfRequired(res, response.antiCsrfToken);
 
     return new Session(response.session.handle, response.session.userId, response.session.jwtPayload, res);
@@ -121,7 +121,7 @@ export async function refreshSession(req: express.Request, res: express.Response
         // attach tokens to cookies
         attachAccessTokenToCookie(res, response.newAccessToken.value, response.newAccessToken.expires);
         attachRefreshTokenToCookie(res, response.newRefreshToken.value, response.newRefreshToken.expires);
-        attachIdRefreshTokenToCookie(res, response.newIdRefreshToken.value, response.newIdRefreshToken.expires);
+        setIdRefreshTokenInHeaderAndCookie(res, response.newIdRefreshToken.value, response.newIdRefreshToken.expires);
         setAntiCsrfTokenInHeadersIfRequired(res, response.newAntiCsrfToken);
 
         return new Session(response.session.handle, response.session.userId, response.session.jwtPayload, res);

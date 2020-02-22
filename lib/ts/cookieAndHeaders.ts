@@ -7,8 +7,12 @@ import { serialize, parse } from "cookie";
 
 const accessTokenCookieKey = "sAccessToken";
 const refreshTokenCookieKey = "sRefreshToken";
+// there are two of them because one is used by the server to check if the user is logged in and the other is checked by the frontend to see if the user is logged in.
 const idRefreshTokenCookieKey = "sIdRefreshToken"; // if you change this name and are using supertokens-website or anything that uses is, then be sure to also change the name of this cookie there. To find the usage of this in those packages, you can simply search for "sIdRefreshToken"
+const idRefreshTokenHeaderKey = "id-refresh-token";
 const antiCsrfHeaderKey = "anti-csrf";
+const frontendSDKNameHeaderKey = "supertokens-sdk-name";
+const frontendSDKVersionHeaderKey = "supertokens-sdk-version";
 
 /**
  * @description clears all the auth cookies from the response
@@ -45,6 +49,8 @@ export function clearSessionFromCookie(res: express.Response) {
         0,
         config.tokens.refreshToken.renewTokenPath
     );
+    setHeader(res, idRefreshTokenHeaderKey, "remove");
+    setHeader(res, "Access-Control-Expose-Headers", idRefreshTokenHeaderKey);
 }
 
 /**
@@ -84,8 +90,11 @@ export function attachRefreshTokenToCookie(res: express.Response, token: string,
 /**
  * @param expiry: must be time in milliseconds from epoch time.
  */
-export function attachIdRefreshTokenToCookie(res: express.Response, token: string, expiry: number) {
+export function setIdRefreshTokenInHeaderAndCookie(res: express.Response, token: string, expiry: number) {
     let config = Config.get();
+    setHeader(res, idRefreshTokenHeaderKey, token + ";" + expiry);
+    setHeader(res, "Access-Control-Expose-Headers", idRefreshTokenHeaderKey);
+
     setCookie(
         res,
         idRefreshTokenCookieKey,
@@ -141,6 +150,8 @@ export function getHeader(req: express.Request, key: string): string | undefined
 
 export function setOptionsAPIHeader(res: express.Response) {
     setHeader(res, "Access-Control-Allow-Headers", antiCsrfHeaderKey);
+    setHeader(res, "Access-Control-Allow-Headers", frontendSDKNameHeaderKey);
+    setHeader(res, "Access-Control-Allow-Headers", frontendSDKVersionHeaderKey);
     setHeader(res, "Access-Control-Allow-Credentials", "true");
 }
 
