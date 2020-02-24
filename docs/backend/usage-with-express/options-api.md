@@ -18,6 +18,10 @@ SuperTokens.setRelevantHeadersForOptionsAPI(res);
 - Adds the following headers to the response:
     - ```Access-Control-Allow-Headers```: ```"anti-csrf"```
     - ```Access-Control-Allow-Credentials```: ```true```
+    - ```Access-Control-Allow-Headers```: ```"supertokens-sdk-name"```
+    - ```Access-Control-Allow-Headers```: ```"supertokens-sdk-version"```
+
+> You'll also need to add **"Access-Control-Allow-Credentials"** header with value **"true"** and **"Access-Control-Allow-Origin"** header to ***"YOUR_SUPPORTED_ORIGINS"*** for all the routes for which you'll be calling [`getSession`](./verify-session).
 
 <div class="divider"></div>
 
