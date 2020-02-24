@@ -69,5 +69,10 @@ This section is only applicable to web browser based apps.
 <ul>
 <li><code>Access-Control-Allow-Headers</code>: <code>&quot;anti-csrf&quot;</code></li>
 <li><code>Access-Control-Allow-Credentials</code>: <code>true</code></li>
+<li><code>Access-Control-Allow-Headers</code>: <code>&quot;supertokens-sdk-name&quot;</code></li>
+<li><code>Access-Control-Allow-Headers</code>: <code>&quot;supertokens-sdk-version&quot;</code></li>
 </ul>
+<blockquote>
+<p>You'll also need to add <strong>&quot;Access-Control-Allow-Credentials&quot;</strong> header with value <strong>&quot;true&quot;</strong> and <strong>&quot;Access-Control-Allow-Origin&quot;</strong> header to <strong><em>&quot;YOUR_SUPPORTED_ORIGINS&quot;</em></strong> for all the routes for which you'll be calling <a href="./verify-session"><code>getSession</code></a>.</p>
+</blockquote>
 </span></div></article></div><div class="docs-prevnext"><a class="docs-prev button" href="/supertokens-node-postgres-ref-jwt/docs/next/backend/usage-without-express/manipulating-session-data"><span class="arrow-prev">← </span><span>Manipulating Session Data</span></a><a class="docs-next button" href="/supertokens-node-postgres-ref-jwt/docs/next/backend/usage-without-express/refreshing-session"><span>Refreshing Session</span><span class="arrow-next"> →</span></a></div></div></div></div></div></body></html>
