@@ -61,11 +61,12 @@ function loginAPI() {
         new Date(refreshToken.expires), "/api/refresh");
         
         let idRefreshToken = session.idRefreshToken;
-        setCookie("sIdRefreshToken", idRefreshToken.value, "example.com", false, false, 
+        setCookie("sIdRefreshToken", idRefreshToken.value, "example.com", true, true, 
         new Date(idRefreshToken.expires), "/");
 
         let antiCsrfToken = session.antiCsrfToken;
         setHeader("anti-csrf", antiCsrfToken);
+        setHeader("id-refresh-token", idRefreshToken.value);
 
         // reply with success
 
