@@ -125,11 +125,12 @@
         <span class="hljs-keyword">new</span> <span class="hljs-built_in">Date</span>(refreshToken.expires), <span class="hljs-string">"/api/refresh"</span>);
         
         <span class="hljs-keyword">let</span> idRefreshToken = session.idRefreshToken;
-        setCookie(<span class="hljs-string">"sIdRefreshToken"</span>, idRefreshToken.value, <span class="hljs-string">"example.com"</span>, <span class="hljs-literal">false</span>, <span class="hljs-literal">false</span>, 
+        setCookie(<span class="hljs-string">"sIdRefreshToken"</span>, idRefreshToken.value, <span class="hljs-string">"example.com"</span>, <span class="hljs-literal">true</span>, <span class="hljs-literal">true</span>, 
         <span class="hljs-keyword">new</span> <span class="hljs-built_in">Date</span>(idRefreshToken.expires), <span class="hljs-string">"/"</span>);
 
         <span class="hljs-keyword">let</span> antiCsrfToken = session.antiCsrfToken;
         setHeader(<span class="hljs-string">"anti-csrf"</span>, antiCsrfToken);
+        setHeader(<span class="hljs-string">"id-refresh-token"</span>, idRefreshToken.value);
 
         <span class="hljs-comment">// reply with success</span>
 
