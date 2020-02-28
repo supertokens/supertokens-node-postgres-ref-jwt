@@ -1,7 +1,8 @@
 ---
-id: user-login
+id: version-4.0.0-user-login
 title: User login
 sidebar_label: User login
+original_id: user-login
 ---
 To login a user, you must first authenticate their credentials and then create a session for them so that they can access your APIs.
 

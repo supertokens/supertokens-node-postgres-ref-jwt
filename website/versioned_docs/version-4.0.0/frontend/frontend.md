@@ -1,7 +1,8 @@
 ---
-id: frontend
+id: version-4.0.0-frontend
 title: Choose your frontend
 sidebar_label: Choose your frontend
+original_id: frontend
 ---
 
 ## Frontend:
