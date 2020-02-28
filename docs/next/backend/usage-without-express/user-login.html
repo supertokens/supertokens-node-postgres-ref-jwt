@@ -75,6 +75,13 @@
 <li>Key: <code>anti-csrf</code>.</li>
 <li>Value: <code>antiCsrfToken</code></li>
 <li>Will be <code>undefined</code> if <code>enableAntiCsrf</code> in the <code>config</code> object is set to <code>false</code>.</li>
+<li>Also add the following header to your response: <code>Access-Control-Expose-Headers: &quot;anti-csrf&quot;</code></li>
+</ul></li>
+<li><code>idRefreshToken</code> (Set in response header)
+<ul>
+<li>Key: <code>id-refresh-token</code>.</li>
+<li>Value: <code>idRefreshToken.value</code></li>
+<li>Also add the following header to your response: <code>Access-Control-Expose-Headers: &quot;id-refresh-token&quot;</code></li>
 </ul></li>
 <li><code>accessToken</code> (Set in cookie)
 <ul>

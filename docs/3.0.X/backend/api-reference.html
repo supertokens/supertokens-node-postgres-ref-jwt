@@ -1,0 +1,716 @@
+<!DOCTYPE html><html lang="en"><head><meta charSet="utf-8"/><meta http-equiv="X-UA-Compatible" content="IE=edge"/><title>API Reference · SuperTokens</title><meta name="viewport" content="width=device-width"/><meta name="generator" content="Docusaurus"/><meta name="description" content="## ```init(config)```"/><meta name="docsearch:version" content="3.0.X"/><meta name="docsearch:language" content="en"/><meta property="og:title" content="API Reference · SuperTokens"/><meta property="og:type" content="website"/><meta property="og:url" content="https://supertokens.github.io/supertokens-node-postgres-ref-jwt//supertokens-node-postgres-ref-jwt/"/><meta property="og:description" content="## ```init(config)```"/><meta name="twitter:card" content="summary"/><link rel="shortcut icon" href="/supertokens-node-postgres-ref-jwt/img/favicon.ico"/><link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/default.min.css"/><script type="text/javascript" src="https://buttons.github.io/buttons.js"></script><script type="text/javascript" src="https://www.googletagmanager.com/gtag/js?id=UA-143540696-1"></script><script type="text/javascript" src="/supertokens-node-postgres-ref-jwt/scripts/homeButtonListener.js"></script><script type="text/javascript" src="/supertokens-node-postgres-ref-jwt/scripts/utils.js"></script><script src="https://unpkg.com/vanilla-back-to-top@7.1.14/dist/vanilla-back-to-top.min.js"></script><script>
+        document.addEventListener('DOMContentLoaded', function() {
+          addBackToTop(
+            {"zIndex":100,"backgroundColor":"#999999","textColor":"#222222"}
+          )
+        });
+        </script><script src="/supertokens-node-postgres-ref-jwt/js/scrollSpy.js"></script><link rel="stylesheet" href="/supertokens-node-postgres-ref-jwt/css/main.css"/><script src="/supertokens-node-postgres-ref-jwt/js/codetabs.js"></script></head><body class="sideNavVisible"><div class="fixedHeaderContainer"><div class="headerWrapper wrapper"><header><a href="/supertokens-node-postgres-ref-jwt/"><img class="logo" src="/supertokens-node-postgres-ref-jwt/img/superTokens.png" alt="SuperTokens"/><h2 class="headerTitleWithLogo">SuperTokens</h2></a><a href="/supertokens-node-postgres-ref-jwt/versions"><h3>3.0.X</h3></a><div class="navigationWrapper navigationSlider"><nav class="slidingNav"><ul class="nav-site nav-site-internal"><li class="siteNavGroupActive"><a href="/supertokens-node-postgres-ref-jwt/docs/3.0.X/introduction/what-and-why" target="_self">Docs</a></li><li class=""><a href="https://supertokens.io/discord" target="_self">Discord</a></li><li class=""><a href="https://supertokens.io/blog/the-best-way-to-securely-manage-user-sessions" target="_self">Blog</a></li></ul></nav></div></header></div></div><div class="navPusher"><div class="docMainWrapper wrapper"><div class="docsNavContainer" id="docsNav"><nav class="toc"><div class="toggleNav"><section class="navWrapper wrapper"><div class="navBreadcrumb wrapper"><div class="navToggle" id="navToggler"><div class="hamburger-menu"><div class="line1"></div><div class="line2"></div><div class="line3"></div></div></div><h2><i>›</i><span>Backend</span></h2></div><div class="navGroups"><div class="navGroup"><h3 class="navGroupCategoryTitle collapsible">Introduction<span class="arrow"><svg width="24" height="24" viewBox="0 0 24 24"><path fill="#565656" d="M7.41 15.41L12 10.83l4.59 4.58L18 14l-6-6-6 6z"></path><path d="M0 0h24v24H0z" fill="none"></path></svg></span></h3><ul class="hide"><li class="navListItem"><a class="navItem" href="/supertokens-node-postgres-ref-jwt/docs/3.0.X/introduction/what-and-why">Introduction</a></li><li class="navListItem"><a class="navItem" href="/supertokens-node-postgres-ref-jwt/docs/3.0.X/introduction/general-structure">General Flow</a></li></ul></div><div class="navGroup"><h3 class="navGroupCategoryTitle collapsible">Backend<span class="arrow"><svg width="24" height="24" viewBox="0 0 24 24"><path fill="#565656" d="M7.41 15.41L12 10.83l4.59 4.58L18 14l-6-6-6 6z"></path><path d="M0 0h24v24H0z" fill="none"></path></svg></span></h3><ul class="hide"><li class="navListItem"><a class="navItem" href="/supertokens-node-postgres-ref-jwt/docs/3.0.X/backend/installation">Installation</a></li><div class="navGroup subNavGroup"><h4 class="navGroupSubcategoryTitle">Usage with Express</h4><ul><li class="navListItem"><a class="navItem" href="/supertokens-node-postgres-ref-jwt/docs/3.0.X/backend/usage-with-express/initialisation">Init &amp; Imports</a></li><li class="navListItem"><a class="navItem" href="/supertokens-node-postgres-ref-jwt/docs/3.0.X/backend/usage-with-express/user-login">User login</a></li><li class="navListItem"><a class="navItem" href="/supertokens-node-postgres-ref-jwt/docs/3.0.X/backend/usage-with-express/verify-session">Verify Session</a></li><li class="navListItem"><a class="navItem" href="/supertokens-node-postgres-ref-jwt/docs/3.0.X/backend/usage-with-express/session-object">Session Object</a></li><li class="navListItem"><a class="navItem" href="/supertokens-node-postgres-ref-jwt/docs/3.0.X/backend/usage-with-express/manipulating-session-data">Manipulating Session Data</a></li><li class="navListItem"><a class="navItem" href="/supertokens-node-postgres-ref-jwt/docs/3.0.X/backend/usage-with-express/options-api">Handling Options API</a></li><li class="navListItem"><a class="navItem" href="/supertokens-node-postgres-ref-jwt/docs/3.0.X/backend/usage-with-express/refreshing-session">Refreshing Session</a></li><li class="navListItem"><a class="navItem" href="/supertokens-node-postgres-ref-jwt/docs/3.0.X/backend/usage-with-express/user-logout">User Logout</a></li><li class="navListItem"><a class="navItem" href="/supertokens-node-postgres-ref-jwt/docs/3.0.X/backend/usage-with-express/revoking-session">Revoking Session</a></li></ul></div><div class="navGroup subNavGroup"><h4 class="navGroupSubcategoryTitle">Usage without Express</h4><ul><li class="navListItem"><a class="navItem" href="/supertokens-node-postgres-ref-jwt/docs/3.0.X/backend/usage-without-express/initialisation">Init &amp; Imports</a></li><li class="navListItem"><a class="navItem" href="/supertokens-node-postgres-ref-jwt/docs/3.0.X/backend/usage-without-express/user-login">User login</a></li><li class="navListItem"><a class="navItem" href="/supertokens-node-postgres-ref-jwt/docs/3.0.X/backend/usage-without-express/verify-session">Verify Session</a></li><li class="navListItem"><a class="navItem" href="/supertokens-node-postgres-ref-jwt/docs/3.0.X/backend/usage-without-express/manipulating-session-data">Manipulating Session Data</a></li><li class="navListItem"><a class="navItem" href="/supertokens-node-postgres-ref-jwt/docs/3.0.X/backend/usage-without-express/options-api">Handling Options API</a></li><li class="navListItem"><a class="navItem" href="/supertokens-node-postgres-ref-jwt/docs/3.0.X/backend/usage-without-express/refreshing-session">Refreshing Session</a></li><li class="navListItem"><a class="navItem" href="/supertokens-node-postgres-ref-jwt/docs/3.0.X/backend/usage-without-express/user-logout">User Logout</a></li><li class="navListItem"><a class="navItem" href="/supertokens-node-postgres-ref-jwt/docs/3.0.X/backend/usage-without-express/revoking-session">Revoking Session</a></li></ul></div><li class="navListItem"><a class="navItem" href="/supertokens-node-postgres-ref-jwt/docs/3.0.X/backend/error-handling">Error Handling</a></li><li class="navListItem"><a class="navItem" href="/supertokens-node-postgres-ref-jwt/docs/3.0.X/backend/session-handle">Session Handle</a></li><li class="navListItem navListItemActive"><a class="navItem" href="/supertokens-node-postgres-ref-jwt/docs/3.0.X/backend/api-reference">API Reference</a></li></ul></div><div class="navGroup"><h3 class="navGroupCategoryTitle collapsible">Frontend<span class="arrow"><svg width="24" height="24" viewBox="0 0 24 24"><path fill="#565656" d="M7.41 15.41L12 10.83l4.59 4.58L18 14l-6-6-6 6z"></path><path d="M0 0h24v24H0z" fill="none"></path></svg></span></h3><ul class="hide"><li class="navListItem"><a class="navItem" href="/supertokens-node-postgres-ref-jwt/docs/3.0.X/frontend/frontend">Choose your frontend</a></li></ul></div><div class="navGroup"><h3 class="navGroupCategoryTitle collapsible">Example Project<span class="arrow"><svg width="24" height="24" viewBox="0 0 24 24"><path fill="#565656" d="M7.41 15.41L12 10.83l4.59 4.58L18 14l-6-6-6 6z"></path><path d="M0 0h24v24H0z" fill="none"></path></svg></span></h3><ul class="hide"><li class="navListItem"><a class="navItem" href="/supertokens-node-postgres-ref-jwt/docs/3.0.X/try-it-out/example">Example code and Demo</a></li></ul></div><div class="navGroup"><h3 class="navGroupCategoryTitle collapsible">Migration<span class="arrow"><svg width="24" height="24" viewBox="0 0 24 24"><path fill="#565656" d="M7.41 15.41L12 10.83l4.59 4.58L18 14l-6-6-6 6z"></path><path d="M0 0h24v24H0z" fill="none"></path></svg></span></h3><ul class="hide"><li class="navListItem"><a class="navItem" href="/supertokens-node-postgres-ref-jwt/docs/3.0.X/migration/backend">Backend</a></li><li class="navListItem"><a class="navItem" href="/supertokens-node-postgres-ref-jwt/docs/3.0.X/migration/database">Database</a></li><li class="navListItem"><a class="navItem" href="/supertokens-node-postgres-ref-jwt/docs/3.0.X/migration/website">Website</a></li></ul></div><div class="navGroup"><h3 class="navGroupCategoryTitle collapsible">Troubleshooting<span class="arrow"><svg width="24" height="24" viewBox="0 0 24 24"><path fill="#565656" d="M7.41 15.41L12 10.83l4.59 4.58L18 14l-6-6-6 6z"></path><path d="M0 0h24v24H0z" fill="none"></path></svg></span></h3><ul class="hide"><li class="navListItem"><a class="navItem" href="/supertokens-node-postgres-ref-jwt/docs/3.0.X/troubleshooting/troubleshooting">Troubleshooting</a></li></ul></div></div></section></div><script>
+            var coll = document.getElementsByClassName('collapsible');
+            var checkActiveCategory = true;
+            for (var i = 0; i < coll.length; i++) {
+              var links = coll[i].nextElementSibling.getElementsByTagName('*');
+              if (checkActiveCategory){
+                for (var j = 0; j < links.length; j++) {
+                  if (links[j].classList.contains('navListItemActive')){
+                    coll[i].nextElementSibling.classList.toggle('hide');
+                    coll[i].childNodes[1].classList.toggle('rotate');
+                    checkActiveCategory = false;
+                    break;
+                  }
+                }
+              }
+
+              coll[i].addEventListener('click', function() {
+                var arrow = this.childNodes[1];
+                arrow.classList.toggle('rotate');
+                var content = this.nextElementSibling;
+                content.classList.toggle('hide');
+              });
+            }
+
+            document.addEventListener('DOMContentLoaded', function() {
+              createToggler('#navToggler', '#docsNav', 'docsSliderActive');
+              createToggler('#tocToggler', 'body', 'tocActive');
+
+              var headings = document.querySelector('.toc-headings');
+              headings && headings.addEventListener('click', function(event) {
+                var el = event.target;
+                while(el !== headings){
+                  if (el.tagName === 'A') {
+                    document.body.classList.remove('tocActive');
+                    break;
+                  } else{
+                    el = el.parentNode;
+                  }
+                }
+              }, false);
+
+              function createToggler(togglerSelector, targetSelector, className) {
+                var toggler = document.querySelector(togglerSelector);
+                var target = document.querySelector(targetSelector);
+
+                if (!toggler) {
+                  return;
+                }
+
+                toggler.onclick = function(event) {
+                  event.preventDefault();
+
+                  target.classList.toggle(className);
+                };
+              }
+            });
+        </script></nav></div><div class="container mainContainer docsContainer"><div class="wrapper"><div class="post"><header class="postHeader"><h1 id="__docusaurus" class="postHeaderTitle">API Reference</h1></header><article><div><span><h2><a class="anchor" aria-hidden="true" id="initconfig"></a><a href="#initconfig" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a><code>init(config)</code></h2>
+<h5><a class="anchor" aria-hidden="true" id="parameters"></a><a href="#parameters" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Parameters</h5>
+<ul>
+<li><code>config</code>
+<ul>
+<li>Type: <code>object</code>. To see the fields in this object, visit the <a href="config">Configurations</a> page</li>
+</ul></li>
+</ul>
+<h5><a class="anchor" aria-hidden="true" id="returns"></a><a href="#returns" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Returns</h5>
+<ul>
+<li><code>Promise&lt;void&gt;</code> on successful initialization</li>
+</ul>
+<h5><a class="anchor" aria-hidden="true" id="throws"></a><a href="#throws" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Throws</h5>
+<ul>
+<li><code>GENERAL_ERROR</code>
+<ul>
+<li>Type: <code>{errType: SuperTokens.Error.GENERAL_ERROR, err: any}</code></li>
+<li>Examples of when this is thrown is if the library could not connect to the PostgreSQL instance, or if the <code>config</code> provided is invalid.</li>
+</ul></li>
+</ul>
+<h5><a class="anchor" aria-hidden="true" id="additional-information"></a><a href="#additional-information" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Additional information</h5>
+<ul>
+<li>Creates the PostgreSQL tables if they don't already exist.</li>
+<li>Creates new signing keys if you do not provide one and they don't already exist. It synchronizes across all running instances of your node app to make sure all of them have the same keys.</li>
+<li>Parses and loads your provided config in memory.</li>
+</ul>
+<div class="divider"></div>
+<h2><a class="anchor" aria-hidden="true" id="createnewsessionres-userid-jwtpayload-sessioninfo"></a><a href="#createnewsessionres-userid-jwtpayload-sessioninfo" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a><code>createNewSession(res, userId, jwtPayload?, sessionInfo?)</code></h2>
+<h5><a class="anchor" aria-hidden="true" id="important"></a><a href="#important" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Important</h5>
+<ul>
+<li>Use this only if you are importing from <code>supertokens-node-postgres-ref-jwt/express</code></li>
+</ul>
+<h5><a class="anchor" aria-hidden="true" id="parameters-1"></a><a href="#parameters-1" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Parameters</h5>
+<ul>
+<li><code>res</code>
+<ul>
+<li>Type: <code>Express.Response</code></li>
+</ul></li>
+<li><code>userId</code>
+<ul>
+<li>Type: <code>string | number</code></li>
+<li>Should be used to ID a user in your system.</li>
+</ul></li>
+<li><code>jwtPayload</code> (Optional)
+<ul>
+<li>Type: <code>object | array | number | string | boolean | undefined | null</code></li>
+<li>This information is stored in the JWT sent to the frontend, so <span class="highlighted-text">it should not contain any sensitive information.</span></li>
+<li>Once set, it cannot be changed during the lifetime of a session.</li>
+</ul></li>
+<li><code>sessionInfo</code> (Optional)
+<ul>
+<li>Type: <code>object | array | number | string | boolean | undefined | null</code></li>
+<li>This information is stored only in your database, so <span class="highlighted-text">it can contain sensitive information if needed.</span></li>
+<li>This can be freely modified during the lifetime of a session. But we do not synchronize calls to modify this - you must take care of locks yourself.</li>
+</ul></li>
+</ul>
+<h5><a class="anchor" aria-hidden="true" id="returns-1"></a><a href="#returns-1" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Returns</h5>
+<ul>
+<li><code>Promise&lt;Session&gt;</code> on successful creation of a session</li>
+</ul>
+<h5><a class="anchor" aria-hidden="true" id="throws-1"></a><a href="#throws-1" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Throws</h5>
+<ul>
+<li><code>GENERAL_ERROR</code>
+<ul>
+<li>Type: <code>{errType: SuperTokens.Error.GENERAL_ERROR, err: any}</code></li>
+<li>Examples of when this is thrown is if the library could not connect to the PostgreSQL instance.</li>
+</ul></li>
+</ul>
+<h5><a class="anchor" aria-hidden="true" id="additional-information-1"></a><a href="#additional-information-1" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Additional information</h5>
+<ul>
+<li>Creates a new access and a new refresh token for this session.</li>
+<li>This function will set the following cookies and headers in the <code>res</code> object for you:
+<ul>
+<li>If <code>enableAntiCsrf</code> (in the <code>config</code> object) is set to <code>true</code>, it sets <code>anti-csrf</code> header that contains an anti-csrf token. This header should be sent for all non-GET API calls that require authentication (except for the refresh session API).</li>
+<li>Sets <code>sAccessToken</code> in cookies with the access token. This cookie has <code>HttpOnly</code> set to <code>true</code> and <code>secure</code> set to <code>true</code> depending on your passed config. This cookie should be sent for all API calls that require authentication.</li>
+<li>Sets <code>sRefreshToken</code> in cookies containing the refresh token. This cookie has <code>HttpOnly</code> set to <code>true</code> and <code>secure</code> set to <code>true</code> depending on your passed config. <span class="highlighted-text">This cookie should be sent only to the refresh token API.</span></li>
+<li>Sets <code>sIdRefreshToken</code> in cookies containing a unique ID. Details for why this is needed can be found in the &quot;How it works&quot; section. This cookie has <code>HttpOnly</code> set to <code>false</code> and <code>secure</code> set to <code>false</code>. This cookie should be sent for all API calls that require authentication.</li>
+</ul></li>
+<li>Inserts a new row in the PostgreSQL table for this new session.</li>
+</ul>
+<div class="divider"></div>
+<h2><a class="anchor" aria-hidden="true" id="getsessionreq-res-enablecsrfprotection"></a><a href="#getsessionreq-res-enablecsrfprotection" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a><code>getSession(req, res, enableCsrfProtection)</code></h2>
+<h5><a class="anchor" aria-hidden="true" id="important-1"></a><a href="#important-1" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Important</h5>
+<ul>
+<li>Use this only if you are importing from <code>supertokens-node-postgres-ref-jwt/express</code></li>
+</ul>
+<h5><a class="anchor" aria-hidden="true" id="parameters-2"></a><a href="#parameters-2" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Parameters</h5>
+<ul>
+<li><code>req</code>
+<ul>
+<li>Type: <code>Express.Request</code></li>
+</ul></li>
+<li><code>res</code>
+<ul>
+<li>Type: <code>Express.Response</code></li>
+</ul></li>
+<li><code>enableCsrfProtection</code>
+<ul>
+<li>Type: <code>boolean</code></li>
+<li>If <code>enableAntiCsrf</code> (in the <code>config</code> object) is set to <code>false</code>, this value will be considered as <code>false</code> even if value <code>true</code> is passed</li>
+</ul></li>
+</ul>
+<h5><a class="anchor" aria-hidden="true" id="returns-2"></a><a href="#returns-2" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Returns</h5>
+<ul>
+<li><code>Promise&lt;Session&gt;</code> on successful verification of a session</li>
+</ul>
+<h5><a class="anchor" aria-hidden="true" id="throws-2"></a><a href="#throws-2" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Throws</h5>
+<ul>
+<li><code>GENERAL_ERROR</code>
+<ul>
+<li>Type: <code>{errType: SuperTokens.Error.GENERAL_ERROR, err: any}</code></li>
+<li>Examples of when this is thrown is if the library could not connect to the PostgreSQL instance.</li>
+</ul></li>
+<li><code>UNAUTHORISED</code>
+<ul>
+<li>Type: <code>{errType: SuperTokens.Error.UNAUTHORISED, err: any}</code></li>
+<li>This is thrown if the <code>idRefreshToken</code> cookie is missing from the <code>req</code> object or if the session has been revoked.</li>
+<li>When this is thrown, all the relevant auth cookies are cleared by this function call, so you can redirect the user to a login page.</li>
+</ul></li>
+<li><code>TRY_REFRESH_TOKEN</code>
+<ul>
+<li>Type: <code>{errType: SuperTokens.Error.TRY_REFRESH_TOKEN, err: any}</code></li>
+<li>This will be thrown if JWT verification fails. This happens, for example, if the token has expired or the JWT signing key has changed.</li>
+<li>This will be thrown if <code>enableCsrfProtection</code> is <code>true</code>, <code>enableAntiCsrf</code> (in the <code>config</code> object) is set to <code>true</code> and <code>anti-csrf</code> token validation fails.</li>
+<li>When this is thrown, none of the auth cookies are removed - you should return a <code>session expired</code> status code and instruct your frontend to call the refresh token API endpoint. Our frontend SDK takes care of this for you in most cases.</li>
+</ul></li>
+</ul>
+<h5><a class="anchor" aria-hidden="true" id="additional-information-2"></a><a href="#additional-information-2" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Additional information</h5>
+<ul>
+<li>Verifies the current session using the <code>req</code> object.</li>
+<li>This function will mostly never require a database call since we are using JWT access tokens unless <code>blacklisting</code> is enabled.</li>
+<li>If <code>enableCsrfProtection</code> is <code>true</code> and <code>enableAntiCsrf</code> (in the <code>config</code> object) is set to <code>true</code>, this function also provides CSRF protection. We strongly recommend that you set it to true for any non-GET API that requires user auth (except for the refresh session API).</li>
+<li>May change the access token - but this is taken care of by this function and our frontend SDK. You do need to worry about handling this.</li>
+</ul>
+<div class="divider"></div>
+<h2><a class="anchor" aria-hidden="true" id="sessiongetuserid"></a><a href="#sessiongetuserid" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a><code>session.getUserId()</code></h2>
+<h5><a class="anchor" aria-hidden="true" id="important-2"></a><a href="#important-2" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Important</h5>
+<ul>
+<li>Use this only if you are importing from <code>supertokens-node-postgres-ref-jwt/express</code></li>
+</ul>
+<h5><a class="anchor" aria-hidden="true" id="parameters-3"></a><a href="#parameters-3" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Parameters</h5>
+<ul>
+<li>none</li>
+</ul>
+<h5><a class="anchor" aria-hidden="true" id="returns-3"></a><a href="#returns-3" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Returns</h5>
+<ul>
+<li><code>string | number</code> - unique ID passed to the library when creating this session.</li>
+</ul>
+<h5><a class="anchor" aria-hidden="true" id="throws-3"></a><a href="#throws-3" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Throws</h5>
+<ul>
+<li>nothing</li>
+</ul>
+<div class="divider"></div>
+<h2><a class="anchor" aria-hidden="true" id="sessiongetjwtpayload"></a><a href="#sessiongetjwtpayload" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a><code>session.getJWTPayload()</code></h2>
+<h5><a class="anchor" aria-hidden="true" id="important-3"></a><a href="#important-3" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Important</h5>
+<ul>
+<li>Use this only if you are importing from <code>supertokens-node-postgres-ref-jwt/express</code></li>
+</ul>
+<h5><a class="anchor" aria-hidden="true" id="parameters-4"></a><a href="#parameters-4" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Parameters</h5>
+<ul>
+<li>none</li>
+</ul>
+<h5><a class="anchor" aria-hidden="true" id="returns-4"></a><a href="#returns-4" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Returns</h5>
+<ul>
+<li><code>object | array | number | string | boolean | undefined | null</code> - Will be deeply equal to whatever was passed to the <code>createNewSession</code> function.</li>
+</ul>
+<h5><a class="anchor" aria-hidden="true" id="throws-4"></a><a href="#throws-4" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Throws</h5>
+<ul>
+<li>nothing</li>
+</ul>
+<div class="divider"></div>
+<h2><a class="anchor" aria-hidden="true" id="sessionrevokesession"></a><a href="#sessionrevokesession" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a><code>session.revokeSession()</code></h2>
+<h5><a class="anchor" aria-hidden="true" id="important-4"></a><a href="#important-4" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Important</h5>
+<ul>
+<li>Use this only if you are importing from <code>supertokens-node-postgres-ref-jwt/express</code></li>
+</ul>
+<h5><a class="anchor" aria-hidden="true" id="parameters-5"></a><a href="#parameters-5" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Parameters</h5>
+<ul>
+<li>none</li>
+</ul>
+<h5><a class="anchor" aria-hidden="true" id="returns-5"></a><a href="#returns-5" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Returns</h5>
+<ul>
+<li><code>Promise&lt;void&gt;</code></li>
+</ul>
+<h5><a class="anchor" aria-hidden="true" id="throws-5"></a><a href="#throws-5" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Throws</h5>
+<ul>
+<li><code>GENERAL_ERROR</code>
+<ul>
+<li>Type: <code>{errType: SuperTokens.Error.GENERAL_ERROR, err: any}</code></li>
+<li>Examples of when this is thrown is if the library could not connect to the PostgreSQL instance.</li>
+</ul></li>
+</ul>
+<div class="divider"></div>
+<h2><a class="anchor" aria-hidden="true" id="sessiongetsessioninfo"></a><a href="#sessiongetsessioninfo" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a><code>session.getSessionInfo()</code></h2>
+<h5><a class="anchor" aria-hidden="true" id="important-5"></a><a href="#important-5" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Important</h5>
+<ul>
+<li>Use this only if you are importing from <code>supertokens-node-postgres-ref-jwt/express</code></li>
+</ul>
+<h5><a class="anchor" aria-hidden="true" id="parameters-6"></a><a href="#parameters-6" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Parameters</h5>
+<ul>
+<li>none</li>
+</ul>
+<h5><a class="anchor" aria-hidden="true" id="returns-6"></a><a href="#returns-6" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Returns</h5>
+<ul>
+<li><code>Promise&lt;object | array | number | string | boolean | undefined | null&gt;</code> - The result of the resolved <code>Promise</code> will be deeply equal to whatever was passed to the <code>createNewSession</code> function.</li>
+</ul>
+<h5><a class="anchor" aria-hidden="true" id="throws-6"></a><a href="#throws-6" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Throws</h5>
+<ul>
+<li><code>GENERAL_ERROR</code>
+<ul>
+<li>Type: <code>{errType: SuperTokens.Error.GENERAL_ERROR, err: any}</code></li>
+<li>Examples of when this is thrown is if the library could not connect to the PostgreSQL instance.</li>
+</ul></li>
+<li><code>UNAUTHORISED</code>
+<ul>
+<li>Type: <code>{errType: SuperTokens.Error.UNAUTHORISED, err: any}</code></li>
+<li>This is thrown if the current session was revoked or has expired.</li>
+<li>When this is thrown, all the relevant auth cookies are cleared by this function call, so you can redirect the user to a login page.</li>
+</ul></li>
+</ul>
+<h5><a class="anchor" aria-hidden="true" id="additional-information-3"></a><a href="#additional-information-3" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Additional information</h5>
+<ul>
+<li>It does nothing to synchronize with other <code>getSessionInfo</code> or <code>updateSessionInfo</code> calls on this session. So it is up to you to handle various race conditions depending on your use case.</li>
+</ul>
+<h2><a class="anchor" aria-hidden="true" id="sessiongetsessiondata-deprecated"></a><a href="#sessiongetsessiondata-deprecated" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a><code>session.getSessionData()</code> <strong>(deprecated)</strong></h2>
+<ul>
+<li>This has the same semantics as session.getSessionInfo(), please use that instead.</li>
+</ul>
+<div class="divider"></div>
+<h2><a class="anchor" aria-hidden="true" id="sessionupdatesessioninfoinfo"></a><a href="#sessionupdatesessioninfoinfo" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a><code>session.updateSessionInfo(info)</code></h2>
+<h5><a class="anchor" aria-hidden="true" id="important-6"></a><a href="#important-6" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Important</h5>
+<ul>
+<li>Use this only if you are importing from <code>supertokens-node-postgres-ref-jwt/express</code></li>
+</ul>
+<h5><a class="anchor" aria-hidden="true" id="parameters-7"></a><a href="#parameters-7" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Parameters</h5>
+<ul>
+<li><code>info</code>
+<ul>
+<li>Type: <code>object | array | number | string | boolean | undefined | null</code></li>
+</ul></li>
+</ul>
+<h5><a class="anchor" aria-hidden="true" id="returns-7"></a><a href="#returns-7" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Returns</h5>
+<ul>
+<li><code>Promise&lt;void&gt;</code></li>
+</ul>
+<h5><a class="anchor" aria-hidden="true" id="throws-7"></a><a href="#throws-7" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Throws</h5>
+<ul>
+<li><code>GENERAL_ERROR</code>
+<ul>
+<li>Type: <code>{errType: SuperTokens.Error.GENERAL_ERROR, err: any}</code></li>
+<li>Examples of when this is thrown is if the library could not connect to the PostgreSQL instance.</li>
+</ul></li>
+<li><code>UNAUTHORISED</code>
+<ul>
+<li>Type: <code>{errType: SuperTokens.Error.UNAUTHORISED, err: any}</code></li>
+<li>This is thrown if the current session was revoked or has expired.</li>
+<li>When this is thrown, all the relevant auth cookies are cleared by this function call, so you can redirect the user to a login page.</li>
+</ul></li>
+</ul>
+<h5><a class="anchor" aria-hidden="true" id="additional-information-4"></a><a href="#additional-information-4" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Additional information</h5>
+<ul>
+<li>It does nothing to synchronize with other <code>getSessionInfo</code> or <code>updateSessionInfo</code> calls on this session. So it is up to you to handle various race conditions depending on your use case.</li>
+</ul>
+<h2><a class="anchor" aria-hidden="true" id="sessionupdatesessiondatainfo-deprecated"></a><a href="#sessionupdatesessiondatainfo-deprecated" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a><code>session.updateSessionData(info)</code> <strong>(deprecated)</strong></h2>
+<ul>
+<li>This has the same semantics as session.updateSessionInfo(info), please use that instead.</li>
+</ul>
+<div class="divider"></div>
+<h2><a class="anchor" aria-hidden="true" id="refreshsessionreq-res"></a><a href="#refreshsessionreq-res" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a><code>refreshSession(req, res)</code></h2>
+<h5><a class="anchor" aria-hidden="true" id="important-7"></a><a href="#important-7" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Important</h5>
+<ul>
+<li>Use this only if you are importing from <code>supertokens-node-postgres-ref-jwt/express</code></li>
+</ul>
+<h5><a class="anchor" aria-hidden="true" id="parameters-8"></a><a href="#parameters-8" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Parameters</h5>
+<ul>
+<li><code>req</code>
+<ul>
+<li>Type: <code>Express.Request</code></li>
+</ul></li>
+<li><code>res</code>
+<ul>
+<li>Type: <code>Express.Response</code></li>
+</ul></li>
+</ul>
+<h5><a class="anchor" aria-hidden="true" id="returns-8"></a><a href="#returns-8" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Returns</h5>
+<ul>
+<li><code>Promise&lt;Session&gt;</code> on successful refresh.</li>
+</ul>
+<h5><a class="anchor" aria-hidden="true" id="throws-8"></a><a href="#throws-8" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Throws</h5>
+<ul>
+<li><code>GENERAL_ERROR</code>
+<ul>
+<li>Type: <code>{errType: SuperTokens.Error.GENERAL_ERROR, err: any}</code></li>
+<li>Examples of when this is thrown is if the library could not connect to the PostgreSQL instance.</li>
+</ul></li>
+<li><code>UNAUTHORISED</code>
+<ul>
+<li>Type: <code>{errType: SuperTokens.Error.UNAUTHORISED, err: any}</code></li>
+<li>This is thrown if the current session was revoked or has expired, or if the provided refresh token is invalid.</li>
+<li>When this is thrown, all the relevant auth cookies are cleared by this function call, so you can redirect the user to a login page.</li>
+</ul></li>
+<li><code>UNAUTHORISED_AND_TOKEN_THEFT_DETECTED</code>
+<ul>
+<li>Type: <code>{errType: SuperTokens.Error.UNAUTHORISED_AND_TOKEN_THEFT_DETECTED, err: { sessionHandle: string, userId: string | number }}</code></li>
+<li>This is thrown if token theft is detected.</li>
+<li>When this is thrown, all the relevant auth cookies are cleared by this function call, so you can redirect the user to a login page.</li>
+<li>Please see the token theft detection section for more information.</li>
+</ul></li>
+</ul>
+<div class="divider"></div>
+<h2><a class="anchor" aria-hidden="true" id="getsessioninfosessionhandle"></a><a href="#getsessioninfosessionhandle" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a><code>getSessionInfo(sessionHandle)</code></h2>
+<h5><a class="anchor" aria-hidden="true" id="parameters-9"></a><a href="#parameters-9" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Parameters</h5>
+<ul>
+<li><code>sessionHandle</code>
+<ul>
+<li>Type: <code>string</code></li>
+<li>Identifies a unique session in your system. Please see the Session Handle section for more information.</li>
+</ul></li>
+</ul>
+<h5><a class="anchor" aria-hidden="true" id="returns-9"></a><a href="#returns-9" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Returns</h5>
+<ul>
+<li><code>Promise&lt;object | array | number | string | boolean | undefined | null&gt;</code> - The result of the resolved <code>Promise</code> will be deeply equal to whatever was passed to the <code>createNewSession</code> function.</li>
+</ul>
+<h5><a class="anchor" aria-hidden="true" id="throws-9"></a><a href="#throws-9" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Throws</h5>
+<ul>
+<li><code>GENERAL_ERROR</code>
+<ul>
+<li>Type: <code>{errType: SuperTokens.Error.GENERAL_ERROR, err: any}</code></li>
+<li>Examples of when this is thrown is if the library could not connect to the PostgreSQL instance.</li>
+</ul></li>
+<li><code>UNAUTHORISED</code>
+<ul>
+<li>Type: <code>{errType: SuperTokens.Error.UNAUTHORISED, err: any}</code></li>
+<li>This is thrown if the current session was revoked or has expired.</li>
+<li>You must handle auth cookie management yourself here (if relevant). Please see the Error Handling section for more details.</li>
+</ul></li>
+</ul>
+<h5><a class="anchor" aria-hidden="true" id="additional-information-5"></a><a href="#additional-information-5" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Additional information</h5>
+<ul>
+<li>It does nothing to synchronize with other getSessionInfo or updateSessionInfo calls on this <code>sessionHandle</code>. So it is up to you to handle various race conditions depending on your use case.</li>
+</ul>
+<h2><a class="anchor" aria-hidden="true" id="getsessiondatasessionhandle-deprecated"></a><a href="#getsessiondatasessionhandle-deprecated" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a><code>getSessionData(sessionHandle)</code> <strong>(deprecated)</strong></h2>
+<ul>
+<li>This has the same semantics as getSessionInfo(sessionHandle), please use that instead.</li>
+</ul>
+<div class="divider"></div>
+<h2><a class="anchor" aria-hidden="true" id="updatesessioninfosessionhandle-info"></a><a href="#updatesessioninfosessionhandle-info" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a><code>updateSessionInfo(sessionHandle, info)</code></h2>
+<h5><a class="anchor" aria-hidden="true" id="parameters-10"></a><a href="#parameters-10" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Parameters</h5>
+<ul>
+<li><code>sessionHandle</code>
+<ul>
+<li>Type: <code>string</code></li>
+<li>Identifies a unique session in your system. Please see the Session Handle section for more information.</li>
+</ul></li>
+<li><code>info</code>
+<ul>
+<li>Type: <code>object | array | number | string | boolean | undefined | null</code></li>
+</ul></li>
+</ul>
+<h5><a class="anchor" aria-hidden="true" id="returns-10"></a><a href="#returns-10" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Returns</h5>
+<ul>
+<li><code>Promise&lt;void&gt;</code></li>
+</ul>
+<h5><a class="anchor" aria-hidden="true" id="throws-10"></a><a href="#throws-10" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Throws</h5>
+<ul>
+<li><code>GENERAL_ERROR</code>
+<ul>
+<li>Type: <code>{errType: SuperTokens.Error.GENERAL_ERROR, err: any}</code></li>
+<li>Examples of when this is thrown is if the library could not connect to the PostgreSQL instance.</li>
+</ul></li>
+<li><code>UNAUTHORISED</code>
+<ul>
+<li>Type: <code>{errType: SuperTokens.Error.UNAUTHORISED, err: any}</code></li>
+<li>This is thrown if the current session was revoked or has expired.</li>
+<li>You must handle auth cookie management yourself here (if relevant). Please see the Error Handling section for more details.</li>
+</ul></li>
+</ul>
+<h5><a class="anchor" aria-hidden="true" id="additional-information-6"></a><a href="#additional-information-6" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Additional information</h5>
+<ul>
+<li>It does nothing to synchronize with other getSessionInfo or updateSessionInfo calls on this <code>sessionHandle</code>. So it is up to you to handle various race conditions depending on your use case.</li>
+</ul>
+<h2><a class="anchor" aria-hidden="true" id="updatesessiondatasessionhandle-info-deprecated"></a><a href="#updatesessiondatasessionhandle-info-deprecated" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a><code>updateSessionData(sessionHandle, info)</code> <strong>(deprecated)</strong></h2>
+<ul>
+<li>This has the same semantics as updateSessionInfo(sessionHandle, info), please use that instead.</li>
+</ul>
+<div class="divider"></div>
+<h2><a class="anchor" aria-hidden="true" id="revokesessionusingsessionhandlesessionhandle"></a><a href="#revokesessionusingsessionhandlesessionhandle" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a><code>revokeSessionUsingSessionHandle(sessionHandle)</code></h2>
+<h5><a class="anchor" aria-hidden="true" id="parameters-11"></a><a href="#parameters-11" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Parameters</h5>
+<ul>
+<li><code>sessionHandle</code>
+<ul>
+<li>Type: <code>string</code></li>
+<li>Identifies a unique session in your system. Please see the Session Handle section for more information.</li>
+</ul></li>
+</ul>
+<h5><a class="anchor" aria-hidden="true" id="returns-11"></a><a href="#returns-11" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Returns</h5>
+<ul>
+<li><code>Promise&lt;boolean&gt;</code>
+<ul>
+<li>Will be <code>true</code> if a row was removed from the PostgreSQL table.</li>
+<li>Will be <code>false</code> if either the <code>sessionHandle</code> is invalid, or the session had already been removed.</li>
+</ul></li>
+</ul>
+<h5><a class="anchor" aria-hidden="true" id="throws-11"></a><a href="#throws-11" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Throws</h5>
+<ul>
+<li><code>GENERAL_ERROR</code>
+<ul>
+<li>Type: <code>{errType: SuperTokens.Error.GENERAL_ERROR, err: any}</code></li>
+<li>Examples of when this is thrown is if the library could not connect to the PostgreSQL instance.</li>
+</ul></li>
+</ul>
+<h5><a class="anchor" aria-hidden="true" id="additional-information-7"></a><a href="#additional-information-7" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Additional information</h5>
+<ul>
+<li>This function deletes the session from the database</li>
+<li>If using blacklisting, this will immediately invalidate the JWT access token. If not, the user may still be able to continue using their access token to call authenticated APIs (until it expires).</li>
+</ul>
+<div class="divider"></div>
+<h2><a class="anchor" aria-hidden="true" id="revokeallsessionsforuseruserid"></a><a href="#revokeallsessionsforuseruserid" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a><code>revokeAllSessionsForUser(userId)</code></h2>
+<h5><a class="anchor" aria-hidden="true" id="parameters-12"></a><a href="#parameters-12" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Parameters</h5>
+<ul>
+<li><code>userId</code>
+<ul>
+<li>Type: <code>string | number</code></li>
+</ul></li>
+</ul>
+<h5><a class="anchor" aria-hidden="true" id="returns-12"></a><a href="#returns-12" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Returns</h5>
+<ul>
+<li><code>Promise&lt;void&gt;</code></li>
+</ul>
+<h5><a class="anchor" aria-hidden="true" id="throws-12"></a><a href="#throws-12" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Throws</h5>
+<ul>
+<li><code>GENERAL_ERROR</code>
+<ul>
+<li>Type: <code>{errType: SuperTokens.Error.GENERAL_ERROR, err: any}</code></li>
+<li>Examples of when this is thrown is if the library could not connect to the PostgreSQL instance.</li>
+</ul></li>
+</ul>
+<h5><a class="anchor" aria-hidden="true" id="additional-information-8"></a><a href="#additional-information-8" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Additional information</h5>
+<ul>
+<li>This function deletes many sessions from the database. If it throws an error, then some sessions may already have been deleted.</li>
+<li>If using blacklisting, this will immediately invalidate the JWT access tokens associated with those sessions. If not, the user may still be able to continue using their access token to call authenticated APIs (until it expires).</li>
+</ul>
+<div class="divider"></div>
+<h2><a class="anchor" aria-hidden="true" id="createnewsessionuserid-jwtpayload-sessioninfo"></a><a href="#createnewsessionuserid-jwtpayload-sessioninfo" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a><code>createNewSession(userId, jwtPayload?, sessionInfo?)</code></h2>
+<h5><a class="anchor" aria-hidden="true" id="parameters-13"></a><a href="#parameters-13" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Parameters</h5>
+<ul>
+<li><code>userId</code>
+<ul>
+<li>Type: <code>string | number</code></li>
+<li>Should be used to ID a user in your system.</li>
+</ul></li>
+<li><code>jwtPayload</code> (Optional)
+<ul>
+<li>Type: <code>object | array | number | string | boolean | undefined | null</code></li>
+<li>This information is stored in the JWT sent to the frontend, so <span class="highlighted-text">it should not contain any sensitive information.</span></li>
+<li>Once set, it cannot be changed during the lifetime of a session.</li>
+</ul></li>
+<li><code>sessionInfo</code> (Optional)
+<ul>
+<li>Type: <code>object | array | number | string | boolean | undefined | null</code></li>
+<li>This information is stored only in your database, so <span class="highlighted-text">it can contain sensitive information if needed.</span></li>
+<li>This can be freely modified during the lifetime of a session. But we do not synchronize calls to modify this - you must take care of locks yourself.</li>
+</ul></li>
+</ul>
+<h5><a class="anchor" aria-hidden="true" id="returns-13"></a><a href="#returns-13" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Returns</h5>
+<pre><code class="hljs css language-ts"><span class="hljs-built_in">Promise</span>&lt;{
+    session: {
+        handle: <span class="hljs-built_in">string</span>,
+        userId: <span class="hljs-built_in">string</span> | <span class="hljs-built_in">number</span>,
+        jwtPayload: <span class="hljs-built_in">any</span>
+    },
+    accessToken: { value: <span class="hljs-built_in">string</span>, expires: <span class="hljs-built_in">number</span> },
+    refreshToken: { value: <span class="hljs-built_in">string</span>, expires: <span class="hljs-built_in">number</span> },
+    idRefreshToken: { value: <span class="hljs-built_in">string</span>, expires: <span class="hljs-built_in">number</span> },
+    antiCsrfToken: <span class="hljs-built_in">string</span> | <span class="hljs-literal">undefined</span>
+}&gt;
+</code></pre>
+<ul>
+<li><code>antiCsrfToken</code> will be <code>undefined</code> if <code>enableAntiCsrf</code> (in the <code>config</code> object) is set to <code>false</code>.</li>
+</ul>
+<h5><a class="anchor" aria-hidden="true" id="throws-13"></a><a href="#throws-13" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Throws</h5>
+<ul>
+<li><code>GENERAL_ERROR</code>
+<ul>
+<li>Type: <code>{errType: SuperTokens.Error.GENERAL_ERROR, err: any}</code></li>
+<li>Examples of when this is thrown is if the library could not connect to the PostgreSQL instance.</li>
+</ul></li>
+</ul>
+<h5><a class="anchor" aria-hidden="true" id="additional-information-9"></a><a href="#additional-information-9" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Additional information</h5>
+<ul>
+<li>Creates a new access and a new refresh token for this session.</li>
+<li>Inserts a new row in the PostgreSQL table for this new session.</li>
+</ul>
+<div class="divider"></div>
+<h2><a class="anchor" aria-hidden="true" id="getsessionaccesstoken-anticsrftoken"></a><a href="#getsessionaccesstoken-anticsrftoken" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a><code>getSession(accessToken, antiCsrfToken)</code></h2>
+<h5><a class="anchor" aria-hidden="true" id="parameters-14"></a><a href="#parameters-14" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Parameters</h5>
+<ul>
+<li><code>accessToken</code>
+<ul>
+<li>Type: <code>string</code></li>
+</ul></li>
+<li><code>antiCsrfToken</code>
+<ul>
+<li>Type: <code>string | null</code></li>
+<li>Pass <code>null</code> if you do not want to have CSRF protection for this auth call.</li>
+<li>If <code>enableAntiCsrf</code> (in the <code>config</code> object) is set to <code>false</code>, this value will be considered as <code>null</code> even if a <code>string</code> value is passed</li>
+</ul></li>
+</ul>
+<h5><a class="anchor" aria-hidden="true" id="returns-14"></a><a href="#returns-14" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Returns</h5>
+<pre><code class="hljs css language-ts"><span class="hljs-built_in">Promise</span>&lt;{
+    session: {
+        handle: <span class="hljs-built_in">string</span>,
+        userId: <span class="hljs-built_in">string</span> | <span class="hljs-built_in">number</span>,
+        jwtPayload: <span class="hljs-built_in">any</span>
+    };
+    newAccessToken: { value: <span class="hljs-built_in">string</span>, expires: <span class="hljs-built_in">number</span> } | <span class="hljs-literal">undefined</span>;
+}&gt;
+</code></pre>
+<h5><a class="anchor" aria-hidden="true" id="throws-14"></a><a href="#throws-14" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Throws</h5>
+<ul>
+<li><code>GENERAL_ERROR</code>
+<ul>
+<li>Type: <code>{errType: SuperTokens.Error.GENERAL_ERROR, err: any}</code></li>
+<li>Examples of when this is thrown is if the library could not connect to the PostgreSQL instance.</li>
+</ul></li>
+<li><code>UNAUTHORISED</code>
+<ul>
+<li>Type: <code>{errType: SuperTokens.Error.UNAUTHORISED, err: any}</code></li>
+<li>This is thrown if the session has been revoked.</li>
+<li>When this is thrown, please be sure to remove all relevant auth cookies. See the Error Handling section for more information.</li>
+</ul></li>
+<li><code>TRY_REFRESH_TOKEN</code>
+<ul>
+<li>Type: <code>{errType: SuperTokens.Error.TRY_REFRESH_TOKEN, err: any}</code></li>
+<li>This will be thrown if JWT verification fails. This happens, for example, if the token has expired or the JWT signing key has changed.</li>
+<li>This will be thrown if <code>enableAntiCsrf</code> (in the <code>config</code> object) is set to <code>true</code> and <code>antiCsrfToken</code> validation fails.</li>
+<li>When this is thrown, you should return a <code>session expired</code> status code and instruct your frontend to call the refresh token API endpoint. <span class="highlighted-text">Do not remove any auth cookie here</span> Our frontend SDK takes care of this for you in most cases.</li>
+</ul></li>
+</ul>
+<h5><a class="anchor" aria-hidden="true" id="additional-information-10"></a><a href="#additional-information-10" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Additional information</h5>
+<ul>
+<li>This function will mostly never require a database call since we are using JWT access tokens unless <code>blacklisting</code> is enabled.</li>
+<li>Verifies the current session using input tokens.</li>
+<li>If <code>antiCsrfToken</code> is not <code>null</code> and <code>enableAntiCsrf</code> (in the <code>config</code> object) is set to <code>true</code>, it also provides CSRF protection. We strongly recommend that you use this feature for all your non-GET APIs (except for the refresh session API).</li>
+</ul>
+<div class="divider"></div>
+<h2><a class="anchor" aria-hidden="true" id="refreshsessionrefreshtoken"></a><a href="#refreshsessionrefreshtoken" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a><code>refreshSession(refreshToken)</code></h2>
+<h5><a class="anchor" aria-hidden="true" id="parameters-15"></a><a href="#parameters-15" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Parameters</h5>
+<ul>
+<li><code>refreshToken</code>
+<ul>
+<li>Type: <code>string</code></li>
+</ul></li>
+</ul>
+<h5><a class="anchor" aria-hidden="true" id="returns-15"></a><a href="#returns-15" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Returns</h5>
+<pre><code class="hljs css language-ts"><span class="hljs-built_in">Promise</span>&lt;{
+    session: {
+        handle: <span class="hljs-built_in">string</span>,
+        userId: <span class="hljs-built_in">string</span> | <span class="hljs-built_in">number</span>,
+        jwtPayload: <span class="hljs-built_in">any</span>,
+    },
+    newAccessToken: { value: <span class="hljs-built_in">string</span>, expires: <span class="hljs-built_in">number</span> },
+    newRefreshToken: { value: <span class="hljs-built_in">string</span>, expires: <span class="hljs-built_in">number</span> },
+    newIdRefreshToken: { value: <span class="hljs-built_in">string</span>, expires: <span class="hljs-built_in">number</span> },
+    newAntiCsrfToken: <span class="hljs-built_in">string</span> | <span class="hljs-literal">undefined</span>
+}&gt;
+</code></pre>
+<ul>
+<li><code>newAntiCsrfToken</code> will be <code>undefined</code> if <code>enableAntiCsrf</code> (in the <code>config</code> object) is set to <code>false</code>.</li>
+</ul>
+<h5><a class="anchor" aria-hidden="true" id="throws-15"></a><a href="#throws-15" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Throws</h5>
+<ul>
+<li><code>GENERAL_ERROR</code>
+<ul>
+<li>Type: <code>{errType: SuperTokens.Error.GENERAL_ERROR, err: any}</code></li>
+<li>Examples of when this is thrown is if the library could not connect to the PostgreSQL instance.</li>
+</ul></li>
+<li><code>UNAUTHORISED</code>
+<ul>
+<li>Type: <code>{errType: SuperTokens.Error.UNAUTHORISED, err: any}</code></li>
+<li>This is thrown if the current session was revoked or has expired, or if the provided refresh token is invalid.</li>
+<li>When this is thrown, please be sure to remove all relevant auth cookies. See the Error Handling section for more information.</li>
+</ul></li>
+<li><code>UNAUTHORISED_AND_TOKEN_THEFT_DETECTED</code>
+<ul>
+<li>Type: <code>{errType: SuperTokens.Error.UNAUTHORISED_AND_TOKEN_THEFT_DETECTED, err: { sessionHandle: string, userId: string | number }}</code></li>
+<li>This is thrown if token theft is detected.</li>
+<li>When this is thrown, please be sure to remove all relevant auth cookies. See the Error Handling section for more information.</li>
+<li>Please see the token theft detection section for more information.</li>
+</ul></li>
+</ul>
+<div class="divider"></div>
+<h2><a class="anchor" aria-hidden="true" id="iserrorfromautherr"></a><a href="#iserrorfromautherr" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a><code>isErrorFromAuth(err)</code></h2>
+<h5><a class="anchor" aria-hidden="true" id="parameters-16"></a><a href="#parameters-16" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Parameters</h5>
+<ul>
+<li><code>err</code>
+<ul>
+<li>Type: <code>any</code> error object got from <code>try catch</code> block</li>
+</ul></li>
+</ul>
+<h5><a class="anchor" aria-hidden="true" id="returns-16"></a><a href="#returns-16" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Returns</h5>
+<ul>
+<li><code>boolean</code></li>
+</ul>
+<h5><a class="anchor" aria-hidden="true" id="throws-16"></a><a href="#throws-16" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Throws</h5>
+<ul>
+<li>nothing</li>
+</ul>
+<div class="divider"></div>
+<h2><a class="anchor" aria-hidden="true" id="getallsessionhandlesforuseruserid"></a><a href="#getallsessionhandlesforuseruserid" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a><code>getAllSessionHandlesForUser(userId)</code></h2>
+<h5><a class="anchor" aria-hidden="true" id="parameters-17"></a><a href="#parameters-17" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Parameters</h5>
+<ul>
+<li><code>userId</code>
+<ul>
+<li>Type: <code>string | number</code></li>
+</ul></li>
+</ul>
+<h5><a class="anchor" aria-hidden="true" id="returns-17"></a><a href="#returns-17" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Returns</h5>
+<ul>
+<li><code>Promise&lt;string[]&gt;</code>
+<ul>
+<li>Each element in the <code>string[]</code> is a <code>sessionHandle</code></li>
+</ul></li>
+</ul>
+<h5><a class="anchor" aria-hidden="true" id="throws-17"></a><a href="#throws-17" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Throws</h5>
+<ul>
+<li><code>GENERAL_ERROR</code>
+<ul>
+<li>Type: <code>{errType: SuperTokens.Error.GENERAL_ERROR, err: any}</code></li>
+<li>Examples of when this is thrown is if the library could not connect to the PostgreSQL instance.</li>
+</ul></li>
+</ul>
+<div class="divider"></div>
+<h2><a class="anchor" aria-hidden="true" id="setrelevantheadersforoptionsapires"></a><a href="#setrelevantheadersforoptionsapires" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a><code>setRelevantHeadersForOptionsAPI(res)</code></h2>
+<h5><a class="anchor" aria-hidden="true" id="parameters-18"></a><a href="#parameters-18" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Parameters</h5>
+<ul>
+<li><code>res</code>
+<ul>
+<li>Type: <code>Express.Response</code></li>
+</ul></li>
+</ul>
+<h5><a class="anchor" aria-hidden="true" id="returns-18"></a><a href="#returns-18" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Returns</h5>
+<ul>
+<li>nothing</li>
+</ul>
+<h5><a class="anchor" aria-hidden="true" id="throws-18"></a><a href="#throws-18" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Throws</h5>
+<ul>
+<li><code>GENERAL_ERROR</code>
+<ul>
+<li>Type: <code>{errType: SuperTokens.Error.GENERAL_ERROR, err: any}</code></li>
+<li>Examples of when this is thrown is if something went wrong while setting headers.</li>
+</ul></li>
+</ul>
+</span></div></article></div><div class="docs-prevnext"><a class="docs-prev button" href="/supertokens-node-postgres-ref-jwt/docs/3.0.X/backend/session-handle"><span class="arrow-prev">← </span><span>Session Handle</span></a><a class="docs-next button" href="/supertokens-node-postgres-ref-jwt/docs/3.0.X/frontend/frontend"><span>Choose your frontend</span><span class="arrow-next"> →</span></a></div></div></div></div></div></body></html>
